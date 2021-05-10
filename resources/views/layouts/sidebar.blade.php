@@ -27,15 +27,15 @@
                 </div>
 
                 <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item @if (Route::current()->uri == 'rekenings' ||
-                    'transactions') active @endif">
+                <li class="nav-item @if (Route::current()->uri == 'rekenings' || 'transactions' ||
+                    'utangs') active @endif">
                     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
                         aria-controls="collapseTwo">
                         <i class="fas fa-fw fa-cog"></i>
                         <span>Home</span>
                     </a>
                     <div id="collapseTwo" class="collapse @if (Route::current()->uri ==
-                        'rekenings' || 'transactions') show @endif"
+                        'rekenings' || 'transactions' || 'utangs') show @endif"
                         aria-labelledby="headingTwo"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
@@ -45,6 +45,8 @@
                             <a class="collapse-item @if (Route::current()->uri ==
                                 'transactions') active @endif"
                                 href="{{ route('transactions.index') }}">Catatan Keuangan</a>
+                            <a class="collapse-item @if (Route::current()->uri == 'utangs') active @endif"
+                                href="{{ route('utangs.index') }}">Utang Anda</a>
                         </div>
                     </div>
                 </li>

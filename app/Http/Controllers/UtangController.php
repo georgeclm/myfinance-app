@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jenis;
-use App\Models\Rekening;
 use App\Models\Utang;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 
-class RekeningController extends Controller
+class UtangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +14,8 @@ class RekeningController extends Controller
      */
     public function index()
     {
-        $jeniss = Jenis::with('user_rekenings')->get();
-        $total = Rekening::where('user_id', auth()->id())->sum('saldo_sekarang');
-        $totalutang = Utang::where('user_id', auth()->id())->sum('jumlah');
-        $uang = $total - $totalutang;
-        return view('rekening.index', compact('jeniss', 'total', 'uang'));
+        $utangs = Utang::where('user_id', auth()->id())->where('lunas', 0)->get();
+        return view('utang.index', compact('utangs'));
     }
 
     /**
@@ -42,25 +36,20 @@ class RekeningController extends Controller
      */
     public function store(Request $request)
     {
+        // dd(request()->all());
         request()->validate([
-            'jenis_id' => 'required',
-            'nama_akun' => 'required',
-            'nama_bank' => 'nullable',
-            'saldo_sekarang' => ['required', 'numeric'],
-            'saldo_mengendap' => ['nullable', 'numeric'],
+            'nama' => 'required',
+            'jumlah' => ['required', 'numeric'],
             'keterangan' => 'nullable',
         ]);
-        Rekening::insert([
-            'user_id' => auth()->id(),
-            'jenis_id' => request()->jenis_id,
-            'nama_akun' => request()->nama_akun,
-            'nama_bank' => request()->nama_bank,
-            'saldo_sekarang' => request()->saldo_sekarang,
-            'saldo_mengendap' => request()->saldo_mengendap,
-            'keterangan' => request()->keterangan,
+        $utang = new Utang;
+        $utang->user_id = auth()->id();
+        $utang->nama = request()->nama;
+        $utang->jumlah = request()->jumlah;
+        $utang->keterangan = request()->keterangan;
+        $utang->save();
 
-        ]);
-        return redirect()->back()->with('success', 'Rekening Baru telah Terdaftar');
+        return redirect()->back()->with('success', 'Utang Telah Tersimpan');
     }
 
     /**
@@ -94,18 +83,15 @@ class RekeningController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd(request()->all());
+
         request()->validate([
-            'nama_akune' => 'required',
-            'nama_banke' => 'nullable',
-            'saldo_mengendap' => ['nullable', 'numeric'],
+            'nama' => 'required',
             'keterangan' => 'nullable',
         ]);
-
-        Rekening::where('id', $id)->update([
-            'nama_akun' => request()->nama_akune,
-            'nama_bank' => request()->nama_banke,
-            'saldo_mengendap' => request()->saldo_mengendape,
-            'keterangan' => request()->keterangane,
+        Utang::where('id', $id)->update([
+            'nama' => request()->nama,
+            'keterangan' => request()->keterangan,
         ]);
 
         return redirect()->back()->with('success', 'Update Succesful');

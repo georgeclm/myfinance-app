@@ -48,4 +48,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Transaction::class);
     }
+    public function utangs()
+    {
+        return $this->hasMany(Utang::class)->where('user_id', auth()->id());
+    }
 }
