@@ -27,15 +27,15 @@
                 </div>
 
                 <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item @if (Route::current()->uri == 'rekenings' || 'transactions' ||
-                    'utangs') active @endif">
+                <li class="nav-item @if (in_array(Route::current()->uri, ['rekenings',
+                    'transactions', 'utangs'])) active @endif">
                     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
                         aria-controls="collapseTwo">
                         <i class="fas fa-fw fa-cog"></i>
-                        <span>Home</span>
+                        <span>Features</span>
                     </a>
-                    <div id="collapseTwo" class="collapse @if (Route::current()->uri ==
-                        'rekenings' || 'transactions' || 'utangs') show @endif"
+                    <div id="collapseTwo" class="collapse @if (in_array(Route::current()->uri,
+                        ['rekenings', 'transactions', 'utangs'])) show @endif"
                         aria-labelledby="headingTwo"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
@@ -370,3 +370,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Scroll to Top Button-->
+                    <a class="scroll-to-top rounded" href="#page-top">
+                        <i class="fas fa-angle-up"></i>
+                    </a>

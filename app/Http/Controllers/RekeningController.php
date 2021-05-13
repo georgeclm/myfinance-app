@@ -18,10 +18,7 @@ class RekeningController extends Controller
     public function index()
     {
         $jeniss = Jenis::with('user_rekenings')->get();
-        $total = Rekening::where('user_id', auth()->id())->sum('saldo_sekarang');
-        $totalutang = Utang::where('user_id', auth()->id())->sum('jumlah');
-        $uang = $total - $totalutang;
-        return view('rekening.index', compact('jeniss', 'total', 'uang'));
+        return view('rekening.index', compact('jeniss'));
     }
 
     /**
