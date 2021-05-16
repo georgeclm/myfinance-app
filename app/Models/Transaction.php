@@ -28,4 +28,8 @@ class Transaction extends Model
     {
         return $this->belongsTo(Utang::class);
     }
+    public function utangteman()
+    {
+        return $this->belongsTo(Utangteman::class, 'utangteman_id');
+    }
 }

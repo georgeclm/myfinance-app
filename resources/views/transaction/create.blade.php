@@ -32,7 +32,7 @@
                         @enderror
                     </div>
                     <div class="form-group" id="utang">
-                        <select
+                        <select disabled
                             class="form-control form-control-user form-block @error('utang_id') is-invalid @enderror"
                             name="utang_id" style="padding: 0.5rem !important" required" aria-describedby="emailHelp">
                             <option value="" selected disabled hidden>Utang Siapa</option>
@@ -51,8 +51,29 @@
                             </span>
                         @enderror
                     </div>
+                    <div class="form-group" id="utangteman">
+                        <select disabled
+                            class="form-control form-control-user form-block @error('utang_id') is-invalid @enderror"
+                            name="utangteman_id" style="padding: 0.5rem !important" required"
+                            aria-describedby="emailHelp">
+                            <option selected disabled hidden>Utang Siapa</option>
+                            @foreach (auth()->user()->utangtemans as $utang)
+                                <option value="{{ $utang->id }}">
+                                    {{ $utang->nama }}, {{ Str::limit($utang->keterangan, 30) }}</option>
+                            @endforeach
+                        </select>
+                        @error('utang_id')
+                            <script>
+                                $('#addRekening').modal('show');
+
+                            </script>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                     <div class="form-group">
-                        <input type="number"
+                        <input type="number" disabled
                             class="form-control form-control-user @error('jumlah') is-invalid @enderror" name="jumlah"
                             value="{{ old('jumlah') }}" required aria-describedby="emailHelp" placeholder="Jumlah">
                         @error('jumlah')
@@ -66,7 +87,7 @@
                         @enderror
                     </div>
                     <div class="form-group" id="kategori">
-                        <input type="text"
+                        <input type="text" disabled
                             class="form-control form-control-user @error('kategori') is-invalid @enderror"
                             name="kategori" value="{{ old('kategori') }}" required aria-describedby="emailHelp"
                             placeholder="Kategori">
@@ -81,7 +102,8 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <select class="form-control form-control-user form-block @error('akun1') is-invalid @enderror"
+                        <select disabled
+                            class="form-control form-control-user form-block @error('akun1') is-invalid @enderror"
                             name="akun1" style="padding: 0.5rem !important" required aria-describedby="emailHelp">
                             <option value="" selected disabled hidden>Pilih Akun</option>
                             @foreach ($rekenings as $rekening)
@@ -99,7 +121,8 @@
                         @enderror
                     </div>
                     <div class="form-group" id="transfer">
-                        <select class="form-control form-control-user form-block @error('akun2') is-invalid @enderror"
+                        <select disabled
+                            class="form-control form-control-user form-block @error('akun2') is-invalid @enderror"
                             name="akun2" style="padding: 0.5rem !important" required" aria-describedby="emailHelp">
                             <option value="" selected disabled hidden>Pilih Akun Tujuan</option>
                             @foreach ($rekenings as $rekening)
@@ -118,7 +141,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="text"
+                        <input type="text" disabled
                             class="form-control form-control-user @error('keterangan') is-invalid @enderror"
                             name="keterangan" value="{{ old('keterangan') }}" aria-describedby="emailHelp"
                             placeholder="Keterangan">
@@ -155,26 +178,33 @@
         $('#jenisuang').on('change', function(e) {
             var optionSelected = $("option:selected", this);
             var valueSelected = this.value;
-            console.log(valueSelected);
+            $('input').prop('disabled', false);
+            $('select').prop('disabled', false);
             if (valueSelected == 1) {
                 $('#kategori').show("slow");
                 $('#transfer').hide("slow");
                 $('#utang').hide("slow");
+                $('#utangteman').hide("slow");
             } else if (valueSelected == 2) {
                 $('#kategori').show("slow");
                 $('#transfer').hide("slow");
                 $('#utang').hide("slow");
-
+                $('#utangteman').hide("slow");
             } else if (valueSelected == 4) {
                 $('#kategori').hide("slow");
                 $('#transfer').hide("slow");
                 $('#utang').show("slow");
-
-            } else {
+                $('#utangteman').hide("slow");
+            } else if (valueSelected == 3) {
                 $('#kategori').hide("slow");
                 $('#transfer').show("slow");
                 $('#utang').hide("slow");
-
+                $('#utangteman').hide("slow");
+            } else {
+                $('#kategori').hide("slow");
+                $('#transfer').hide("slow");
+                $('#utang').hide("slow");
+                $('#utangteman').show("slow");
             }
         });
 

@@ -6,6 +6,7 @@ use App\Models\Jenisuang;
 use App\Models\Rekening;
 use App\Models\Transaction;
 use App\Models\Utang;
+use App\Models\Utangteman;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -47,7 +48,8 @@ class TransactionController extends Controller
             'akun1' => 'required',
             'akun2' => 'sometimes',
             'keterangan' => 'nullable',
-            'utang_id' => 'nullable'
+            'utang_id' => 'nullable',
+            'utang_teman_id' => 'nullable'
         ]);
         $rekening1 = Rekening::firstWhere('id', request()->akun1);
 
@@ -75,6 +77,21 @@ class TransactionController extends Controller
             $utang->save();
             $rekening1->saldo_sekarang -= request()->jumlah;
             $rekening1->save();
+        } else if (request()->jenisuang_id == 5) {
+            if ($rekening1->saldo_sekarang < request()->jumlah) {
+                return redirect()->back()->with('error', 'Jumlah melebihi saldo');
+            }
+            $utang = Utangteman::firstWhere('id', request()->utangteman_id);
+            if ($utang->jumlah < request()->jumlah) {
+                return redirect()->back()->with('error', 'Bayar melebihi Utang');
+            }
+            $utang->jumlah -= request()->jumlah;
+            if ($utang->jumlah == 0) {
+                $utang->lunas = 1;
+            }
+            $utang->save();
+            $rekening1->saldo_sekarang += request()->jumlah;
+            $rekening1->save();
         } else {
             if ($rekening1->saldo_sekarang < request()->jumlah) {
                 return redirect()->back()->with('error', 'Jumlah melebihi saldo');
@@ -90,6 +107,7 @@ class TransactionController extends Controller
         $transaction->user_id = auth()->id();
         $transaction->rekening_id = request()->akun1;
         $transaction->utang_id = request()->utang_id;
+        $transaction->utangteman_id = request()->utangteman_id;
         $transaction->rekening_id2 = request()->akun2;
         $transaction->jenisuang_id = request()->jenisuang_id;
         $transaction->jumlah = request()->jumlah;

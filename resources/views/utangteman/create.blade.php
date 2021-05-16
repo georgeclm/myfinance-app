@@ -9,12 +9,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="user" id="rekening" method="POST" action="{{ route('utangs.store') }}">
+                <form class="user" id="rekening" method="POST" action="{{ route('utangtemans.store') }}">
                     @csrf
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user @error('nama') is-invalid @enderror"
                             name="nama" value="{{ old('nama') }}" required aria-describedby="emailHelp"
-                            placeholder="Utang ke Siapa">
+                            placeholder="Utang dari Siapa">
                         @error('nama')
                             <script>
                                 $('#addRekening').modal('show');

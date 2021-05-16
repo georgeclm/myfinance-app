@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RekeningController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UtangController;
+use App\Http\Controllers\UtangtemanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,4 +29,5 @@ Route::middleware('auth')->group(function () {
     Route::resource('rekenings', RekeningController::class);
     Route::resource('transactions', TransactionController::class);
     Route::resource('utangs', UtangController::class);
+    Route::resource('utangtemans', UtangtemanController::class);
 });

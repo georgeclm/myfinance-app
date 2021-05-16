@@ -33,5 +33,11 @@ class DatabaseSeeder extends Seeder
         DB::table('jenisuangs')->insert([
             'nama' => 'Transfer',
         ]);
+        DB::table('jenisuangs')->insert([
+            'nama' => 'Bayar Utang',
+        ]);
+        DB::table('jenisuangs')->insert([
+            'nama' => 'Teman Bayar Utang',
+        ]);
     }
 }

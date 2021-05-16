@@ -87,16 +87,17 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered" width="100%" cellspacing="0">
                                     <thead>
-                                        <tr class="@switch($jenisuang->id)           @case(1)
+                                        <tr class="@switch($jenisuang->id)               @case(1)
                                                 bg-success @break @case(2) bg-danger
                                                 @break
                                                 @case(3)bg-primary @break
-                                                @default
-                                            bg-warning @endswitch text-light">
+                                                @case(4)
+                                            bg-warning @break @default bg-info @endswitch text-light">
                                             <th>Jumlah</th>
-                                            @if ($jenisuang->id == 4)
+                                            @if (in_array($jenisuang->id, [4, 5]))
                                                 <th>Nama Utang</th>
                                             @endif
+
                                             @if (in_array($jenisuang->id, [1, 2]))
                                                 <th>Kategori</th>
                                             @endif
@@ -106,53 +107,57 @@
                                             @endif
                                             <th>Keterangan</th>
                                             <th>Tanggal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($jenisuang->transactions as $transaction)
+                                        <tr>
+                                            <td>Rp. {{ number_format($transaction->jumlah) }}</td>
+                                            @if ($transaction->utang_id)
+                                                <td>{{ $transaction->utang->keterangan ?? $transaction->utang->nama }}
+                                                </td>
+                                            @endif
+                                            @if ($transaction->utangteman_id)
+                                                <td>{{ $transaction->utangteman->keterangan ?? $transaction->utangteman->nama }}
+                                                </td>
+                                            @endif
+                                            @if (in_array($jenisuang->id, [1, 2]))
+                                                <td>{{ $transaction->kategori }}</td>
+                                            @endif
+                                            <td>{{ $transaction->rekening->nama_akun }}</td>
+                                            @if ($transaction->rekening_tujuan)
+                                                <td>{{ $transaction->rekening_tujuan->nama_akun }}</td>
+                                            @endif
+                                            <td>{{ $transaction->keterangan }}</td>
+                                            <td>{{ $transaction->created_at->format('Y-m-d') }}</td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse ($jenisuang->transactions as $transaction)
-                                            <tr>
-                                                <td>Rp. {{ number_format($transaction->jumlah) }}</td>
-                                                @if ($transaction->utang_id)
-                                                    <td>{{ $transaction->utang->keterangan ?? $transaction->utang->nama }}
-                                                    </td>
-                                                @endif
-                                                @if (in_array($jenisuang->id, [1, 2]))
-                                                    <td>{{ $transaction->kategori }}</td>
-                                                @endif
-                                                <td>{{ $transaction->rekening->nama_akun }}</td>
-                                                @if ($transaction->rekening_tujuan)
-                                                    <td>{{ $transaction->rekening_tujuan->nama_akun }}</td>
-                                                @endif
-                                                <td>{{ $transaction->keterangan }}</td>
-                                                <td>{{ $transaction->created_at->format('Y-m-d') }}</td>
-                                            </tr>
-                                        @empty
-                                            <tr>
-                                                <td colspan="5" class="text-center">Transaksi Kosong</td>
-                                            </tr>
-                                        @endforelse
+                                    @empty
+                                        <tr>
+                                            <td colspan="5" class="text-center">Transaksi Kosong</td>
+                                        </tr>
+                                    @endforelse
 
-                                    </tbody>
-                                </table>
-                            </div>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                @endforeach
-            </div>
-            <!-- /.container-fluid -->
-
+                </div>
+            @endforeach
         </div>
-        <!-- End of Main Content -->
-        @include('layouts.footer')
-    </div>
-    <!-- End of Content Wrapper -->
-    </div>
-    <!-- End of Page Wrapper -->
+        <!-- /.container-fluid -->
 
-    @include('transaction.create')
+    </div>
+    <!-- End of Main Content -->
+    @include('layouts.footer')
+</div>
+<!-- End of Content Wrapper -->
+</div>
+<!-- End of Page Wrapper -->
+
+@include('transaction.create')
 @endsection
 @section('script')
-    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
 
 @endsection

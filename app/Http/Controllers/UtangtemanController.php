@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Utang;
+use App\Models\Utangteman;
 use Illuminate\Http\Request;
 
-class UtangController extends Controller
+class UtangtemanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class UtangController extends Controller
      */
     public function index()
     {
-        $utangs = Utang::where('user_id', auth()->id())->where('lunas', 0)->get();
-        return view('utang.index', compact('utangs'));
+        $utangs = Utangteman::where('user_id', auth()->id())->where('lunas', 0)->get();
+        return view('utangteman.index', compact('utangs'));
     }
 
     /**
@@ -36,13 +36,12 @@ class UtangController extends Controller
      */
     public function store(Request $request)
     {
-        // dd(request()->all());
         request()->validate([
             'nama' => 'required',
             'jumlah' => ['required', 'numeric'],
             'keterangan' => 'nullable',
         ]);
-        $utang = new Utang;
+        $utang = new Utangteman;
         $utang->user_id = auth()->id();
         $utang->nama = request()->nama;
         $utang->jumlah = request()->jumlah;
@@ -50,7 +49,7 @@ class UtangController extends Controller
         $utang->lunas = 0;
         $utang->save();
 
-        return redirect()->back()->with('success', 'Utang Telah Tersimpan');
+        return redirect()->back()->with('success', 'Utang Teman Anda Telah Tersimpan');
     }
 
     /**
@@ -84,13 +83,11 @@ class UtangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd(request()->all());
-
         request()->validate([
             'nama' => 'required',
             'keterangan' => 'nullable',
         ]);
-        Utang::where('id', $id)->update([
+        Utangteman::where('id', $id)->update([
             'nama' => request()->nama,
             'keterangan' => request()->keterangan,
         ]);
