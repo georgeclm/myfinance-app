@@ -23,7 +23,7 @@
 
                 <!-- Heading -->
                 <div class="sidebar-heading">
-                    Features
+                    Keuangan
                 </div>
 
                 <!-- Nav Item - Pages Collapse Menu -->
