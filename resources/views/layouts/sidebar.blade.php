@@ -2,8 +2,8 @@
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
                 <!-- Sidebar - Brand -->
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
-                    <div class="sidebar-brand-icon rotate-n-15">
-                        <i class="fas fa-laugh-wink"></i>
+                    <div class="sidebar-brand-icon">
+                        <i class="fas fa-balance-scale"></i>
                     </div>
                     <div class="sidebar-brand-text mx-3">My Finance</div>
                 </a>
@@ -27,31 +27,29 @@
                 </div>
 
                 <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item @if (in_array(Route::current()->uri, ['rekenings',
-                    'transactions', 'utangs', 'utangtemans'])) active @endif">
-                    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-                        aria-controls="collapseTwo">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Features</span>
+                <li class="nav-item @if (Route::current()->uri == 'rekenings') active @endif">
+                    <a class="nav-link" href="{{ route('rekenings.index') }}">
+                        <i class="fas fa-fw fa-wallet"></i>
+                        <span>Rekeningku</span>
                     </a>
-                    <div id="collapseTwo" class="collapse @if (in_array(Route::current()->uri,
-                        ['rekenings', 'transactions', 'utangs', 'utangtemans'])) show @endif"
-                        aria-labelledby="headingTwo"
-                        data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Feature:</h6>
-                            <a class="collapse-item @if (Route::current()->uri == 'rekenings') active @endif"
-                                href="{{ route('rekenings.index') }}">Rekeningku</a>
-                            <a class="collapse-item @if (Route::current()->uri ==
-                                'transactions') active @endif"
-                                href="{{ route('transactions.index') }}">Catatan Keuangan</a>
-                            <a class="collapse-item @if (Route::current()->uri == 'utangs') active @endif"
-                                href="{{ route('utangs.index') }}">Utang Anda</a>
-                            <a class="collapse-item @if (Route::current()->uri ==
-                                'utangtemans') active @endif"
-                                href="{{ route('utangtemans.index') }}">Utang Teman Anda</a>
-                        </div>
-                    </div>
+                </li>
+                <li class="nav-item @if (Route::current()->uri == 'transactions') active @endif">
+                    <a class="nav-link" href="{{ route('transactions.index') }}">
+                        <i class="fas fa-fw fa-dollar-sign"></i>
+                        <span>Catatan Keuangan</span>
+                    </a>
+                </li>
+                <li class="nav-item @if (Route::current()->uri == 'utangs') active @endif">
+                    <a class="nav-link" href="{{ route('utangs.index') }}">
+                        <i class="fas fa-fw fa-biohazard"></i>
+                        <span>Utang Anda</span>
+                    </a>
+                </li>
+                <li class="nav-item @if (Route::current()->uri == 'utangtemans') active @endif">
+                    <a class="nav-link" href="{{ route('utangtemans.index') }}">
+                        <i class="fas fa-fw fa-bomb"></i>
+                        <span>Utang Teman Anda</span>
+                    </a>
                 </li>
                 {{-- <!-- Nav Item - Utilities Collapse Menu -->
                 <li class="nav-item">

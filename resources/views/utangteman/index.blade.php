@@ -15,7 +15,7 @@
                             class="fas fa-download fa-sm text-white-50"></i> Tambah Utang Anda</a>
                 </div>
                 <div class="row">
-                    <!-- Earnings (Monthly) Card Example -->
+                    <!-- Income (Monthly) Card Example -->
                     @if (!$utangs->isEmpty())
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-danger shadow h-100 py-2">
@@ -31,7 +31,7 @@
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                            <i class="fas fa-donate fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>

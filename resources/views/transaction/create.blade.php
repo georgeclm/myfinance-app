@@ -170,11 +170,6 @@
 @section('script')
 
     <script>
-        // $(document).ready(function() {
-        //     $('#1').DataTable();
-        //     $('#2').DataTable();
-        //     $('#3').DataTable();
-        // });
         $('#jenisuang').on('change', function(e) {
             var optionSelected = $("option:selected", this);
             var valueSelected = this.value;

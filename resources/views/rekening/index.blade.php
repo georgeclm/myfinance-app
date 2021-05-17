@@ -15,7 +15,7 @@
                             class="fas fa-download fa-sm text-white-50"></i> Tambah Rekening</a>
                 </div>
                 <div class="row">
-                    <!-- Earnings (Monthly) Card Example -->
+                    <!-- Income (Monthly) Card Example -->
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
@@ -29,13 +29,13 @@
 ) }}</div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        <i class="fas fa-hand-holding-usd fa-2x text-gray-300"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Earnings (Monthly) Card Example -->
+                    <!-- Income (Monthly) Card Example -->
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card border-left-success shadow h-100 py-2">
                             <div class="card-body">
@@ -49,7 +49,7 @@
 ) }}</div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        <i class="fas fa-money-check-alt fa-2x text-gray-300"></i>
                                     </div>
                                 </div>
                             </div>

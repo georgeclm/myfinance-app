@@ -8,6 +8,7 @@ use App\Models\Transaction;
 use App\Models\Utang;
 use App\Models\Utangteman;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class TransactionController extends Controller
 {
@@ -18,9 +19,10 @@ class TransactionController extends Controller
      */
     public function index()
     {
+        $month = Carbon::now()->format('F');
         $jenisuangs = Jenisuang::with('user_transactions')->get();
         $rekenings = Rekening::where('user_id', auth()->id())->get();
-        return view('transaction.index', compact('jenisuangs', 'rekenings'));
+        return view('transaction.index', compact('jenisuangs', 'rekenings', 'month'));
     }
 
     /**
