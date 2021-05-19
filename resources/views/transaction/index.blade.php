@@ -10,15 +10,21 @@
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-2 text-gray-800">Catatan Keuangan</h1>
-                    <span class="h3 fw-bold text-info"><b>Bulan {{ $month }}</b></span>
                     <a href="#" data-toggle="modal" data-target="#addRekening"
-                        class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                        class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fas fa-download fa-sm text-white-50"></i> Tambah Transaksi</a>
                 </div>
                 <div class="row">
                     @include('layouts.partials.income')
                     @include('layouts.partials.spending')
                     @include('layouts.partials.balance')
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card shadow h-100 py-2 border-bottom-info">
+                            <div class="h3 fw-bold text-info card-body">
+                                <b>Bulan {{ $month }}</b>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 @foreach ($jenisuangs as $jenisuang)
                     <!-- DataTales Example -->
