@@ -16,4 +16,14 @@ class Jenisuang extends Model
     {
         return $this->hasMany(Transaction::class)->where('user_id', auth()->id());
     }
+    public function color()
+    {
+        return [
+            '1' => 'bg-success',
+            '2' => 'bg-danger',
+            '3' => 'bg-primary',
+            '4' => 'bg-warning',
+            '5' => 'bg-info'
+        ][$this->id];
+    }
 }

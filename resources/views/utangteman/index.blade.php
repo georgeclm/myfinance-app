@@ -25,9 +25,7 @@
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Total Utang Teman Anda</div>
                                             <div class="h5 mb-0 font-weight-bold text-success">Rp.
-                                                {{ number_format(
-    auth()->user()->totalutangteman(),
-) }}
+                                                {{ number_format(Auth::user()->totalutangteman()) }}
                                             </div>
                                         </div>
                                         <div class="col-auto">
