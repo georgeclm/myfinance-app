@@ -10,9 +10,11 @@
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-2 text-gray-800">Catatan Keuangan</h1>
-                    <a href="#" data-toggle="modal" data-target="#addRekening"
-                        class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                            class="fas fa-download fa-sm text-white-50"></i> Tambah Transaksi</a>
+                    @if (!auth()->user()->rekenings->isEmpty())
+                        <a href="#" data-toggle="modal" data-target="#addRekening"
+                            class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Tambah Transaksi</a>
+                    @endif
                 </div>
                 <div class="row">
                     @include('layouts.partials.income')
@@ -25,6 +27,15 @@
                             </div>
                         </div>
                     </div>
+                    @if (auth()->user()->rekenings->isEmpty())
+                        <div class="col-lg-6">
+                            <div class="card mb-4 py-3 border-left-success">
+                                <div class="card-body">
+                                    Buat Rekening Dulu Sebelum Mencatat Keuangan
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
                 @foreach ($jenisuangs as $jenisuang)
                     <!-- DataTales Example -->
@@ -54,7 +65,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($jenisuang->transactions as $transaction)
+                                        @forelse ($jenisuang->user_transactions as $transaction)
                                             <tr>
                                                 <td>Rp. {{ number_format($transaction->jumlah) }}</td>
                                                 @if ($transaction->utang_id)

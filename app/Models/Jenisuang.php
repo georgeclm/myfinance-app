@@ -14,7 +14,7 @@ class Jenisuang extends Model
     }
     public function user_transactions()
     {
-        return $this->hasMany(Transaction::class)->where('user_id', auth()->id());
+        return $this->hasMany(Transaction::class)->where('user_id', auth()->id())->latest();
     }
     public function color()
     {

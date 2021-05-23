@@ -41,7 +41,7 @@
                                             <input type="password"
                                                 class="form-control form-control-user @error('password') is-invalid @enderror"
                                                 name="password" required autocomplete="new-password""
-                                                                id=" exampleInputPassword" placeholder="Password">
+                                                                        id=" exampleInputPassword" placeholder="Password">
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -57,13 +57,13 @@
                                     <button type="submit" class="btn btn-primary btn-user btn-block">
                                         Register Account
                                     </button>
-                                    <hr>
-                                    <a href="#" class="btn btn-google btn-user btn-block">
+                                    {{-- <hr> --}}
+                                    {{-- <a href="#" class="btn btn-google btn-user btn-block">
                                         <i class="fab fa-google fa-fw"></i> Register with Google
                                     </a>
                                     <a href="#" class="btn btn-facebook btn-user btn-block">
                                         <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                    </a>
+                                    </a> --}}
                                 </form>
                                 <hr>
                                 <div class="text-center">

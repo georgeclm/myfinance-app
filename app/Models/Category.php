@@ -21,10 +21,13 @@ class Category extends Model
             '4' => 'bg-primary',
             '5' => 'bg-secondary',
             '6' => 'bg-danger'
-        ][$this->id];
+        ][$this->id] ?? 'bg-info';
     }
     public function persen()
     {
-        return round($this->userTransactionsByCategory->sum('jumlah') / auth()->user()->uangkeluar() * 100);
+        if (auth()->user()->uangkeluar() != 0) {
+            return round($this->userTransactionsByCategory->sum('jumlah') / auth()->user()->uangkeluar() * 100);
+        }
+        return 0;
     }
 }

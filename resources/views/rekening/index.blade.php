@@ -59,7 +59,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($jenis->rekenings as $rekening)
+                                        @forelse ($jenis->user_rekenings as $rekening)
                                             @include('rekening.edit')
                                             <tr>
                                                 <td>{{ $rekening->nama_akun }}</td>
