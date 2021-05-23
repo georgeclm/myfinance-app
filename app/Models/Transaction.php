@@ -16,6 +16,10 @@ class Transaction extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
     public function rekening()
     {
         return $this->belongsTo(Rekening::class, 'rekening_id');

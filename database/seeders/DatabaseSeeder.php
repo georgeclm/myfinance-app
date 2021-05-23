@@ -39,5 +39,23 @@ class DatabaseSeeder extends Seeder
         DB::table('jenisuangs')->insert([
             'nama' => 'Teman Bayar Utang',
         ]);
+        DB::table('categories')->insert([
+            'nama' => 'Sedekah atau Donasi',
+        ]);
+        DB::table('categories')->insert([
+            'nama' => 'Cicilan',
+        ]);
+        DB::table('categories')->insert([
+            'nama' => 'Makanan',
+        ]);
+        DB::table('categories')->insert([
+            'nama' => 'Pengeluaran Pribadi',
+        ]);
+        DB::table('categories')->insert([
+            'nama' => 'Kendaraan',
+        ]);
+        DB::table('categories')->insert([
+            'nama' => 'Nongky',
+        ]);
     }
 }

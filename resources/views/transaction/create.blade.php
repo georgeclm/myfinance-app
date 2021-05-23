@@ -102,11 +102,30 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <select
+                            class="form-control form-control-user form-block @error('category_id') is-invalid @enderror"
+                            name="category_id" style="padding: 0.5rem !important" required id="category_id">
+                            <option value="" selected disabled hidden>Pilih Kategori</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->nama }}</option>
+                            @endforeach
+                        </select>
+                        @error('category_id')
+                            <script>
+                                $('#addRekening').modal('show');
+
+                            </script>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                         <select disabled
                             class="form-control form-control-user form-block @error('akun1') is-invalid @enderror"
                             name="akun1" style="padding: 0.5rem !important" required aria-describedby="emailHelp">
                             <option value="" selected disabled hidden>Pilih Akun</option>
-                            @foreach ($rekenings as $rekening)
+                            @foreach (auth()->user()->rekenings as $rekening)
                                 <option value="{{ $rekening->id }}">{{ $rekening->nama_akun }}</option>
                             @endforeach
                         </select>
@@ -125,7 +144,7 @@
                             class="form-control form-control-user form-block @error('akun2') is-invalid @enderror"
                             name="akun2" style="padding: 0.5rem !important" required" aria-describedby="emailHelp">
                             <option value="" selected disabled hidden>Pilih Akun Tujuan</option>
-                            @foreach ($rekenings as $rekening)
+                            @foreach (auth()->user()->rekenings as $rekening)
                                 <option value="{{ $rekening->id }}">{{ $rekening->nama_akun }}</option>
                             @endforeach
                         </select>
@@ -177,26 +196,31 @@
             $('select').prop('disabled', false);
             if (valueSelected == 1) {
                 $('#kategori').show("slow");
+                $('#category_id').hide("slow");
                 $('#transfer').hide("slow");
                 $('#utang').hide("slow");
                 $('#utangteman').hide("slow");
             } else if (valueSelected == 2) {
-                $('#kategori').show("slow");
+                $('#kategori').hide("slow");
+                $('#category_id').show("slow");
                 $('#transfer').hide("slow");
                 $('#utang').hide("slow");
                 $('#utangteman').hide("slow");
             } else if (valueSelected == 4) {
                 $('#kategori').hide("slow");
+                $('#category_id').hide("slow");
                 $('#transfer').hide("slow");
                 $('#utang').show("slow");
                 $('#utangteman').hide("slow");
             } else if (valueSelected == 3) {
                 $('#kategori').hide("slow");
+                $('#category_id').hide("slow");
                 $('#transfer').show("slow");
                 $('#utang').hide("slow");
                 $('#utangteman').hide("slow");
             } else {
                 $('#kategori').hide("slow");
+                $('#category_id').hide("slow");
                 $('#transfer').hide("slow");
                 $('#utang').hide("slow");
                 $('#utangteman').show("slow");

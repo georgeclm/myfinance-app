@@ -21,7 +21,7 @@
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card shadow h-100 py-2 border-bottom-info">
                             <div class="h3 fw-bold text-info card-body">
-                                <b>Bulan {{ $month }}</b>
+                                <b>Bulan {{ now()->format('F') }}</b>
                             </div>
                         </div>
                     </div>
@@ -65,8 +65,11 @@
                                                     <td>{{ $transaction->utangteman->keterangan ?? $transaction->utangteman->nama }}
                                                     </td>
                                                 @endif
-                                                @if (in_array($jenisuang->id, [1, 2]))
+                                                @if ($jenisuang->id == 1)
                                                     <td>{{ $transaction->kategori }}</td>
+                                                @endif
+                                                @if ($jenisuang->id == 2)
+                                                    <td>{{ $transaction->category->nama }}</td>
                                                 @endif
                                                 <td>{{ $transaction->rekening->nama_akun }}</td>
                                                 @if ($transaction->rekening_tujuan)

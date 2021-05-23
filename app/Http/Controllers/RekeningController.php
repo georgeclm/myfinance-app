@@ -40,7 +40,7 @@ class RekeningController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'jenis_id' => 'required',
+            'jenis_id' => ['required', 'in:' . Jenis::pluck('id')->implode(',')],
             'nama_akun' => 'required',
             'nama_bank' => 'nullable',
             'saldo_sekarang' => ['required', 'numeric'],

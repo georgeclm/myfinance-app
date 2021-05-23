@@ -70,7 +70,7 @@
                                             <td>{{ $utang->nama }}</td>
                                             <td>Rp. {{ number_format($utang->jumlah) }}</td>
                                             <td>{{ $utang->keterangan }}</td>
-                                            <td>{{ $utang->created_at->format('Y-m-d') }}</td>
+                                            <td>{{ $utang->created_at->format('l j F Y') }}</td>
                                             <td> <button data-toggle="modal" data-target="#editmodal-{{ $utang->id }}"
                                                     type="button" class="btn btn-info btn-circle">
                                                     <i class="fas fa-info-circle"></i>

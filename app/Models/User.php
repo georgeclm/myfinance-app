@@ -50,11 +50,11 @@ class User extends Authenticatable
     }
     public function utangs()
     {
-        return $this->hasMany(Utang::class)->where('user_id', auth()->id());
+        return $this->hasMany(Utang::class)->where('user_id', auth()->id())->where('lunas', 0);
     }
     public function utangtemans()
     {
-        return $this->hasMany(Utangteman::class)->where('user_id', auth()->id());
+        return $this->hasMany(Utangteman::class)->where('user_id', auth()->id())->where('lunas', 0);
     }
     public function uangmasuk()
     {
@@ -70,7 +70,11 @@ class User extends Authenticatable
     }
     public function saldo()
     {
-        return $this->rekenings()->sum('saldo_sekarang');
+        return $this->rekenings()->sum('saldo_sekarang') - $this->saldoMengendap();
+    }
+    public function saldoMengendap()
+    {
+        return $this->rekenings()->sum('saldo_mengendap');
     }
     public function totalutang()
     {
