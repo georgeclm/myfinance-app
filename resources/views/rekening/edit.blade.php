@@ -56,6 +56,7 @@
                 </form>
             </div>
             <div class="modal-footer">
+                <a class="btn btn-danger" href="{{ route('rekenings.destroy', $rekening) }}">Delete</a>
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-primary"
                     onclick="event.preventDefault();document.getElementById('{{ $rekening->id }}form').submit();">Edit</a>

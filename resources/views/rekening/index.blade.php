@@ -61,6 +61,8 @@
                                     <tbody>
                                         @forelse ($jenis->user_rekenings as $rekening)
                                             @include('rekening.edit')
+                                            @include('rekening.delete')
+
                                             <tr>
                                                 <td>{{ $rekening->nama_akun }}</td>
                                                 @if ($rekening->jenis_id != 1)
@@ -75,6 +77,11 @@
                                                         data-target="#editmodal-{{ $rekening->id }}" type="button"
                                                         class="btn btn-info btn-circle">
                                                         <i class="fas fa-info-circle"></i>
+                                                    </button>
+                                                    <button data-toggle="modal"
+                                                        data-target="#deletemodal-{{ $rekening->id }}" type="button"
+                                                        class="btn btn-danger btn-circle">
+                                                        <i class="fas fa-trash"></i>
                                                     </button>
                                                 </td>
 

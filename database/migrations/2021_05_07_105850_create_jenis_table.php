@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateJenisTable extends Migration
@@ -18,6 +19,13 @@ class CreateJenisTable extends Migration
             $table->string('nama');
             $table->timestamps();
         });
+        DB::table('jenis')->insert(
+            array(
+                ['nama' => 'Akun Kas'],
+                ['nama' => 'Akun Bank'],
+                ['nama' => 'Akun Digital'],
+            )
+        );
     }
 
     /**

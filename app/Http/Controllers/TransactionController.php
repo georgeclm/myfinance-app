@@ -9,7 +9,7 @@ use App\Models\Transaction;
 use App\Models\Utang;
 use App\Models\Utangteman;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
+use App\Http\Requests\CreateTransactionRequest;
 
 class TransactionController extends Controller
 {
@@ -21,6 +21,22 @@ class TransactionController extends Controller
     public function index()
     {
         $jenisuangs = Jenisuang::with('user_transactions')->get();
+        // dd($jenisuangs->user_transactions);
+        if (auth()->user()->utangs->isEmpty()) {
+            $jenisuangs = $jenisuangs->reject(function ($e) {
+                return $e->id  == 4;
+            });
+        }
+        if (auth()->user()->utangtemans->isEmpty()) {
+            $jenisuangs = $jenisuangs->reject(function ($e) {
+                return $e->id  == 5;
+            });
+        }
+        if (auth()->user()->rekenings->count() == 1) {
+            $jenisuangs = $jenisuangs->reject(function ($e) {
+                return $e->id  == 3;
+            });
+        }
         $categories = Category::all();
         return view('transaction.index', compact('jenisuangs', 'categories'));
     }
@@ -41,20 +57,9 @@ class TransactionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateTransactionRequest $request)
     {
-        request()->validate([
-            'jenisuang_id' => ['required', 'in:' . Jenisuang::pluck('id')->implode(',')],
-            'jumlah' => ['required', 'numeric'],
-            'kategori' => 'sometimes',
-            'akun1' => ['required', 'in:' . auth()->user()->rekenings->pluck('id')->implode(',')],
-            'akun2' => ['sometimes', 'in:' . auth()->user()->rekenings->pluck('id')->implode(',')],
-            'keterangan' => 'nullable',
-            'utang_id' => ['sometimes', 'in:' . auth()->user()->utangs->pluck('id')->implode(',')],
-            'utang_teman_id' => ['sometimes', 'in:' . auth()->user()->utangtemans->pluck('id')->implode(',')],
-            'category_id' => ['sometimes', 'in:' . Category::pluck('id')->implode(',')]
-        ]);
-        $rekening1 = Rekening::firstWhere('id', request()->akun1);
+        $rekening1 = Rekening::findOrFail(request()->rekening_id);
 
         if (request()->jenisuang_id == 1) {
             $rekening1->saldo_sekarang += request()->jumlah;
@@ -69,7 +74,7 @@ class TransactionController extends Controller
             if ($rekening1->saldo_sekarang < request()->jumlah) {
                 return redirect()->back()->with('error', 'Jumlah melebihi saldo');
             }
-            $utang = Utang::firstWhere('id', request()->utang_id);
+            $utang = Utang::findOrFail(request()->utang_id);
             if ($utang->jumlah < request()->jumlah) {
                 return redirect()->back()->with('error', 'Bayar melebihi Utang');
             }
@@ -84,7 +89,7 @@ class TransactionController extends Controller
             if ($rekening1->saldo_sekarang < request()->jumlah) {
                 return redirect()->back()->with('error', 'Jumlah melebihi saldo');
             }
-            $utang = Utangteman::firstWhere('id', request()->utangteman_id);
+            $utang = Utangteman::findOrFail(request()->utangteman_id);
             if ($utang->jumlah < request()->jumlah) {
                 return redirect()->back()->with('error', 'Bayar melebihi Utang');
             }
@@ -100,7 +105,7 @@ class TransactionController extends Controller
                 return back()->with('error', 'Jumlah melebihi saldo');
             }
 
-            $rekening2 = Rekening::firstWhere('id', request()->akun2);
+            $rekening2 = Rekening::findOrFail(request()->rekening_id2);
 
             if ($rekening1 == $rekening2) {
                 return back()->with('error', 'Tidak Bisa Transfer ke Rekening yang sama');
@@ -112,18 +117,8 @@ class TransactionController extends Controller
             $rekening2->save();
         }
 
-        $transaction = new Transaction;
-        $transaction->user_id = auth()->id();
-        $transaction->rekening_id = request()->akun1;
-        $transaction->utang_id = request()->utang_id;
-        $transaction->utangteman_id = request()->utangteman_id;
-        $transaction->category_id = request()->category_id;
-        $transaction->rekening_id2 = request()->akun2;
-        $transaction->jenisuang_id = request()->jenisuang_id;
-        $transaction->jumlah = request()->jumlah;
-        $transaction->kategori = request()->kategori;
-        $transaction->keterangan = request()->keterangan;
-        $transaction->save();
+        Transaction::create($request->validated());
+
 
         return back()->with('success', 'Transakasi Telah Tersimpan');
     }

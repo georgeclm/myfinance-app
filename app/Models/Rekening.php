@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Rekening extends Model
 {
     use HasFactory;
+    protected $fillable = ['user_id', 'jenis_id', 'nama_akun', 'nama_bank', 'saldo_sekarang', 'saldo_mengendap', 'keterangan'];
     public function jenis()
     {
         return $this->belongsTo(Jenis::class);

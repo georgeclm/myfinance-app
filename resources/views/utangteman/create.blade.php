@@ -11,6 +11,8 @@
             <div class="modal-body">
                 <form class="user" id="rekening" method="POST" action="{{ route('utangtemans.store') }}">
                     @csrf
+                    <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+                    <input type="hidden" name="lunas" value="0">
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user @error('nama') is-invalid @enderror"
                             name="nama" value="{{ old('nama') }}" required aria-describedby="emailHelp"

@@ -15,7 +15,7 @@
                             class="fas fa-download fa-sm text-white-50"></i> Tambah Utang Anda</a>
                 </div>
                 <div class="row">
-                    @if (!$utangs->isEmpty())
+                    @if (!auth()->user()->utangs->isEmpty())
 
                         <!-- Income (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -64,7 +64,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($utangs as $utang)
+                                    @forelse (auth()->user()->utangs as $utang)
                                         @include('utang.edit')
                                         <tr>
                                             <td>{{ $utang->nama }}</td>

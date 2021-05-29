@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Transaction extends Model
 {
     use HasFactory;
+    protected $fillable = ['user_id', 'rekening_id', 'rekening_id2', 'utang_id', 'utangteman_id', 'category_id', 'jenisuang_id', 'jumlah', 'kategori', 'keterangan'];
     public function jenisuang()
     {
         return $this->belongsTo(Jenisuang::class);

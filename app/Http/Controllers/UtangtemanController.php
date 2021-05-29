@@ -41,13 +41,7 @@ class UtangtemanController extends Controller
             'jumlah' => ['required', 'numeric'],
             'keterangan' => 'nullable',
         ]);
-        $utang = new Utangteman;
-        $utang->user_id = auth()->id();
-        $utang->nama = request()->nama;
-        $utang->jumlah = request()->jumlah;
-        $utang->keterangan = request()->keterangan;
-        $utang->lunas = 0;
-        $utang->save();
+        Utangteman::create($request->validated());
 
         return redirect()->back()->with('success', 'Utang Teman Anda Telah Tersimpan');
     }

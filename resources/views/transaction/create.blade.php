@@ -11,6 +11,7 @@
             <div class="modal-body">
                 <form class="user" id="rekening" method="POST" action="{{ route('transactions.store') }}">
                     @csrf
+                    <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                     <div class="form-group">
                         <select
                             class="form-control form-control-user form-block @error('jenisuang_id') is-invalid @enderror"
@@ -102,7 +103,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <select
+                        <select disabled
                             class="form-control form-control-user form-block @error('category_id') is-invalid @enderror"
                             name="category_id" style="padding: 0.5rem !important" required id="category_id">
                             <option value="" selected disabled hidden>Pilih Kategori</option>
@@ -122,14 +123,14 @@
                     </div>
                     <div class="form-group">
                         <select disabled
-                            class="form-control form-control-user form-block @error('akun1') is-invalid @enderror"
-                            name="akun1" style="padding: 0.5rem !important" required aria-describedby="emailHelp">
+                            class="form-control form-control-user form-block @error('rekening_id') is-invalid @enderror"
+                            name="rekening_id" style="padding: 0.5rem !important" required aria-describedby="emailHelp">
                             <option value="" selected disabled hidden>Pilih Akun</option>
                             @foreach (auth()->user()->rekenings as $rekening)
                                 <option value="{{ $rekening->id }}">{{ $rekening->nama_akun }}</option>
                             @endforeach
                         </select>
-                        @error('akun1')
+                        @error('rekening_id')
                             <script>
                                 $('#addRekening').modal('show');
 
@@ -141,14 +142,15 @@
                     </div>
                     <div class="form-group" id="transfer">
                         <select disabled
-                            class="form-control form-control-user form-block @error('akun2') is-invalid @enderror"
-                            name="akun2" style="padding: 0.5rem !important" required" aria-describedby="emailHelp">
+                            class="form-control form-control-user form-block @error('rekening_id2') is-invalid @enderror"
+                            name="rekening_id2" style="padding: 0.5rem !important" required"
+                            aria-describedby="emailHelp">
                             <option value="" selected disabled hidden>Pilih Akun Tujuan</option>
                             @foreach (auth()->user()->rekenings as $rekening)
                                 <option value="{{ $rekening->id }}">{{ $rekening->nama_akun }}</option>
                             @endforeach
                         </select>
-                        @error('akun2')
+                        @error('rekening_id2')
                             <script>
                                 $('#addRekening').modal('show');
 

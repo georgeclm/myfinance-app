@@ -14,8 +14,7 @@ class UtangController extends Controller
      */
     public function index()
     {
-        $utangs = Utang::where('user_id', auth()->id())->where('lunas', 0)->get();
-        return view('utang.index', compact('utangs'));
+        return view('utang.index');
     }
 
     /**
@@ -42,13 +41,8 @@ class UtangController extends Controller
             'jumlah' => ['required', 'numeric'],
             'keterangan' => 'nullable',
         ]);
-        $utang = new Utang;
-        $utang->user_id = auth()->id();
-        $utang->nama = request()->nama;
-        $utang->jumlah = request()->jumlah;
-        $utang->keterangan = request()->keterangan;
-        $utang->lunas = 0;
-        $utang->save();
+        Utang::create($request->validated());
+
 
         return redirect()->back()->with('success', 'Utang Telah Tersimpan');
     }

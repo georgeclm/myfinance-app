@@ -47,16 +47,9 @@ class RekeningController extends Controller
             'saldo_mengendap' => ['nullable', 'numeric'],
             'keterangan' => 'nullable',
         ]);
-        Rekening::insert([
-            'user_id' => auth()->id(),
-            'jenis_id' => request()->jenis_id,
-            'nama_akun' => request()->nama_akun,
-            'nama_bank' => request()->nama_bank,
-            'saldo_sekarang' => request()->saldo_sekarang,
-            'saldo_mengendap' => request()->saldo_mengendap,
-            'keterangan' => request()->keterangan,
 
-        ]);
+        Rekening::create($request->all());
+
         return redirect()->back()->with('success', 'Rekening Baru telah Terdaftar');
     }
 
@@ -114,8 +107,9 @@ class RekeningController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Rekening $rekening)
     {
-        //
+        $rekening->delete();
+        return redirect()->back()->with('success', 'Rekening has been deleted successfully');
     }
 }

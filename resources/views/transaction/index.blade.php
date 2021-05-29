@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+
     <div id="page-top">
         <!-- Page Wrapper -->
         <div id="wrapper">
@@ -38,6 +41,7 @@
                     @endif
                 </div>
                 @foreach ($jenisuangs as $jenisuang)
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -45,7 +49,86 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" width="100%" cellspacing="0">
+
+                                <div class="wrap-table100 " id="thetable">
+                                    <div class="table">
+                                        <div class="row header">
+                                            <div class="cell ">
+                                                Jumlah
+                                            </div>
+                                            @if (in_array($jenisuang->id, [4, 5]))
+                                                <div class="cell">
+                                                    Nama Utang
+                                                </div>
+                                            @endif
+                                            @if (in_array($jenisuang->id, [1, 2]))
+
+                                                <div class="cell">
+                                                    Kategori
+                                                </div>
+                                            @endif
+                                            <div class="cell">
+                                                Akun
+                                            </div>
+                                            @if ($jenisuang->id == 3)
+
+                                                <div class="cell">
+                                                    Akun Tujuan
+                                                </div>
+                                            @endif
+                                            <div class="cell">
+                                                Keterangan
+                                            </div>
+                                            <div class="cell">
+                                                Tanggal
+                                            </div>
+                                        </div>
+                                        @forelse ($jenisuang->user_transactions as $transaction)
+                                            <div class="row">
+                                                <div class="cell {{ $jenisuang->textColor() }}" data-title="Jumlah">
+                                                    Rp. {{ number_format($transaction->jumlah) }}
+                                                </div>
+                                                @if ($transaction->utang_id)
+                                                    <div class="cell" data-title="Nama Utang">
+                                                        {{ $transaction->utang->keterangan ?? $transaction->utang->nama }}
+                                                    </div>
+                                                @endif
+                                                @if ($transaction->utangteman_id)
+                                                    <div class="cell" data-title="Nama Utang">
+                                                        {{ $transaction->utangteman->keterangan ?? $transaction->utangteman->nama }}
+                                                    </div>
+                                                @endif
+                                                @if ($jenisuang->id == 1)
+                                                    <div class="cell" data-title="Kategori">
+                                                        {{ $transaction->kategori }}
+                                                    </div>
+                                                @endif
+                                                @if ($jenisuang->id == 2)
+                                                    <div class="cell" data-title="Kategori">
+                                                        {{ $transaction->category->nama }}
+                                                    </div>
+                                                @endif
+                                                <div class="cell" data-title="Akun">
+                                                    {{ $transaction->rekening->nama_akun }}
+                                                </div>
+                                                @if ($jenisuang->id == 3)
+                                                    <div class="cell" data-title="Akun Tujuan">
+                                                        {{ $transaction->rekening_tujuan->nama_akun }}
+                                                    </div>
+                                                @endif
+                                                <div class="cell" data-title="Keterangan">
+                                                    {{ $transaction->keterangan }}
+                                                </div>
+                                                <div class="cell" data-title="Tanggal">
+                                                    {{ $transaction->created_at->format('l j F Y') }}
+                                                </div>
+                                            </div>
+                                        @empty
+                                        @endforelse
+                                    </div>
+                                </div>
+
+                                <table class="table table-bordered" width="100%" cellspacing="0" id="bigtable">
                                     <thead>
                                         <tr class="{{ $jenisuang->color() }} text-light">
                                             <th>Jumlah</th>
@@ -115,7 +198,7 @@
     @include('transaction.create')
 @endsection
 @section('script')
-<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
 
 @endsection

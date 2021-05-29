@@ -22,17 +22,20 @@
 
     <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/simple-notify.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
 
     <!-- Styles -->
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 </head>
 
-<body>
-    <div id="app">
+<body onload="myFunction()">
+    <div id="loader"></div>
+    <div style="display:none;" class="animate-bottom" id="app">
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
         </a>
+
         {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -173,7 +176,19 @@
 
         </script>
     @endif
+    <script>
+        var myVar;
 
+        function myFunction() {
+            myVar = setTimeout(showPage, 1500);
+        }
+
+        function showPage() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("app").style.display = "block";
+        }
+
+    </script>
 </body>
 
 </html>

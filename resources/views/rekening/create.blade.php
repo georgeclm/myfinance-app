@@ -11,6 +11,7 @@
             <div class="modal-body">
                 <form class="user" id="rekening" method="POST" action="{{ route('rekenings.store') }}">
                     @csrf
+                    <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                     <div class="form-group">
                         <select
                             class="form-control form-control-user form-block @error('jenis_id') is-invalid @enderror"

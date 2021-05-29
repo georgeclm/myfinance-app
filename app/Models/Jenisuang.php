@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Jenisuang extends Model
 {
     use HasFactory;
+
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
@@ -24,6 +25,16 @@ class Jenisuang extends Model
             '3' => 'bg-primary',
             '4' => 'bg-warning',
             '5' => 'bg-info'
-        ][$this->id];
+        ][$this->id] ?? 'bg-danger';
+    }
+    public function textColor()
+    {
+        return [
+            '1' => 'text-success',
+            '2' => 'text-danger',
+            '3' => 'text-primary',
+            '4' => 'text-warning',
+            '5' => 'text-info'
+        ][$this->id] ?? 'text-danger';
     }
 }

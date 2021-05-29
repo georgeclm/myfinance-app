@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Utang extends Model
 {
     use HasFactory;
+    protected $fillable = ['user_id', 'nama', 'keterangan', 'jumlah', 'lunas'];
 }
