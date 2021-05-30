@@ -35,7 +35,15 @@
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
         </a>
-
+        @if (session('restore'))
+            <div class="row mb-2">
+                <div class="col-lg-12">
+                    <div class="alert alert-success" role="alert">
+                        {!! session('restore') !!}
+                    </div>
+                </div>
+            </div>
+        @endif
         {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -96,8 +104,9 @@
         @yield('content')
 
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src=" https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
     </script>
@@ -159,7 +168,7 @@
             new Notify({
                 status: 'success',
                 title: 'Success',
-                text: "{{ session('success') }}",
+                text: "{!! session('success') !!}",
                 effect: 'fade',
                 speed: 300,
                 customClass: null,

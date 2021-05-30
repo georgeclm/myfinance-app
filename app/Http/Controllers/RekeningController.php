@@ -110,6 +110,17 @@ class RekeningController extends Controller
     public function destroy(Rekening $rekening)
     {
         $rekening->delete();
-        return redirect()->back()->with('success', 'Rekening has been deleted successfully');
+        return redirect()->back()
+            ->with('restore', 'Rekening has been deleted successfully. <a class="btn btn-warning btn-sm" href="' . route('rekenings.restore', $rekening->id) . '">Whhops,Undo</a>');
+    }
+    public function restore(int $rekening_id)
+    {
+        $rekening = Rekening::withTrashed()->findOrFail($rekening_id);
+
+        if ($rekening && $rekening->trashed()) {
+            $rekening->restore();
+        }
+        return redirect()->back()
+            ->with('success', 'Rekening restored successfully');
     }
 }

@@ -27,6 +27,7 @@ Auth::routes();
 Route::middleware('auth')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::resource('rekenings', RekeningController::class)->except('destroy');
+    Route::get('rekenings/{id}/restore', [RekeningController::class, 'restore'])->name('rekenings.restore');
     Route::get('rekenings/{rekening}/destroy', [RekeningController::class, 'destroy'])->name('rekenings.destroy');
     Route::resource('transactions', TransactionController::class);
     Route::resource('utangs', UtangController::class);
