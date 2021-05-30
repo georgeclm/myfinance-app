@@ -83,7 +83,7 @@
                                                 Tanggal
                                             </div>
                                         </div>
-                                        @forelse ($jenisuang->user_transactions as $transaction)
+                                        @forelse ($jenisuang->user_transactions->take(5) as $transaction)
                                             <div class="row">
                                                 <div class="cell {{ $jenisuang->textColor() }}" data-title="Jumlah">
                                                     Rp. {{ number_format($transaction->jumlah) }}
@@ -148,7 +148,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($jenisuang->user_transactions as $transaction)
+                                        @forelse ($jenisuang->user_transactions->take(5) as $transaction)
                                             <tr>
                                                 <td>Rp. {{ number_format($transaction->jumlah) }}</td>
                                                 @if ($transaction->utang_id)
@@ -180,6 +180,8 @@
 
                                     </tbody>
                                 </table>
+                                <div class="text-end mt-3"><a href="{{ route('jenisuangs.show', $jenisuang) }}">Show
+                                        All</a></div>
                             </div>
                         </div>
                     </div>

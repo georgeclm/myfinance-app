@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JenisuangController;
 use App\Http\Controllers\RekeningController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UtangController;
@@ -29,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('rekenings', RekeningController::class)->except('destroy');
     Route::get('rekenings/{id}/restore', [RekeningController::class, 'restore'])->name('rekenings.restore');
     Route::get('rekenings/{rekening}/destroy', [RekeningController::class, 'destroy'])->name('rekenings.destroy');
+    Route::get('jenisuangs/{jenisuang}', [JenisuangController::class, 'show'])->name('jenisuangs.show');
     Route::resource('transactions', TransactionController::class);
     Route::resource('utangs', UtangController::class);
     Route::resource('utangtemans', UtangtemanController::class);

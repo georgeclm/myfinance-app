@@ -18,7 +18,7 @@
                             name="jenisuang_id" style="padding: 0.5rem !important" required id="jenisuang"
                             aria-describedby="emailHelp">
                             <option value="" selected disabled hidden>Pilih Jenis</option>
-                            @foreach ($jenisuangs as $jenis)
+                            @foreach ($jenisuangsSelect as $jenis)
                                 <option value="{{ $jenis->id }}">{{ $jenis->nama }}</option>
                             @endforeach
                         </select>

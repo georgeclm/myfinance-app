@@ -28,9 +28,8 @@
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 </head>
 
-<body onload="myFunction()">
-    <div id="loader"></div>
-    <div style="display:none;" class="animate-bottom" id="app">
+<body>
+    <div id="app">
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
@@ -185,19 +184,7 @@
 
         </script>
     @endif
-    <script>
-        var myVar;
 
-        function myFunction() {
-            myVar = setTimeout(showPage, 1500);
-        }
-
-        function showPage() {
-            document.getElementById("loader").style.display = "none";
-            document.getElementById("app").style.display = "block";
-        }
-
-    </script>
 </body>
 
 </html>

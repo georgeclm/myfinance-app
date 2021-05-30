@@ -29,15 +29,49 @@
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item @if (Route::current()->uri == 'rekenings') active @endif">
                     <a class="nav-link" href="{{ route('rekenings.index') }}">
+
                         <i class="fas fa-fw fa-wallet"></i>
                         <span>Rekeningku</span>
                     </a>
                 </li>
-                <li class="nav-item @if (Route::current()->uri == 'transactions') active @endif">
-                    <a class="nav-link" href="{{ route('transactions.index') }}">
+                <li class="nav-item @if (in_array(Route::current()->uri, ['transactions',
+                    'jenisuangs/{jenisuang}'])) active @endif">
+                    {{-- <a class="nav-link" href="{{ route('transactions.index') }}"> --}}
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                        aria-expanded="true" aria-controls="collapseUtilities">
                         <i class="fas fa-fw fa-dollar-sign"></i>
                         <span>Catatan Keuangan</span>
                     </a>
+                    <div id="collapseUtilities" class="collapse @if (in_array(Route::current()->
+                        uri, ['transactions', 'jenisuangs/{jenisuang}'])) show @endif"
+                        aria-labelledby="headingUtilities"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Jenis Uang:</h6>
+                            <a class="collapse-item @if (Route::current()->uri ==
+                                'transactions') active @endif"
+                                href="{{ route('transactions.index') }}">All</a>
+                            <a class="collapse-item @if (strrchr(url()->current(), 'o') ==
+                                'om/jenisuangs/1') active @endif"
+                                href="{{ route('jenisuangs.show', 1) }}">Uang
+                                Masuk</a>
+                            <a class="collapse-item @if (strrchr(url()->current(), 'o') ==
+                                'om/jenisuangs/2') active @endif"
+                                href="{{ route('jenisuangs.show', 2) }}">Uang
+                                Keluar</a>
+                            <a class="collapse-item @if (strrchr(url()->current(), 'o') ==
+                                'om/jenisuangs/3') active @endif"
+                                href="{{ route('jenisuangs.show', 3) }}">Transfer</a>
+                            <a class="collapse-item @if (strrchr(url()->current(), 'o') ==
+                                'om/jenisuangs/4') active @endif"
+                                href="{{ route('jenisuangs.show', 4) }}">Bayar
+                                Utang</a>
+                            <a class="collapse-item @if (strrchr(url()->current(), 'o') ==
+                                'om/jenisuangs/5') active @endif"
+                                href="{{ route('jenisuangs.show', 5) }}">Teman
+                                Bayar Utang</a>
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item @if (Route::current()->uri == 'utangs') active @endif">
                     <a class="nav-link" href="{{ route('utangs.index') }}">

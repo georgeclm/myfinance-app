@@ -21,24 +21,25 @@ class TransactionController extends Controller
     public function index()
     {
         $jenisuangs = Jenisuang::with('user_transactions')->get();
-        // dd($jenisuangs->user_transactions);
+
         if (auth()->user()->utangs->isEmpty()) {
-            $jenisuangs = $jenisuangs->reject(function ($e) {
+            $jenisuangsSelect = $jenisuangs->reject(function ($e) {
                 return $e->id  == 4;
             });
         }
         if (auth()->user()->utangtemans->isEmpty()) {
-            $jenisuangs = $jenisuangs->reject(function ($e) {
+            $jenisuangsSelect = $jenisuangs->reject(function ($e) {
                 return $e->id  == 5;
             });
         }
         if (auth()->user()->rekenings->count() == 1) {
-            $jenisuangs = $jenisuangs->reject(function ($e) {
+            $jenisuangsSelect = $jenisuangs->reject(function ($e) {
                 return $e->id  == 3;
             });
         }
         $categories = Category::all();
-        return view('transaction.index', compact('jenisuangs', 'categories'));
+
+        return view('transaction.index', compact('jenisuangs', 'categories', 'jenisuangsSelect'));
     }
 
     /**
