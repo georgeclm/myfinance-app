@@ -15,6 +15,8 @@
                             class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Tambah Transaksi</a>
                     @endif
+
+
                 </div>
                 <div class="row">
                     @include('layouts.partials.income')
@@ -23,6 +25,7 @@
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card shadow h-100 py-2 border-bottom-info">
                             <div class="h3 fw-bold text-info card-body">
+
                                 <b>Bulan {{ now()->format('F') }}</b>
                             </div>
                         </div>
@@ -80,7 +83,8 @@
                                                 Tanggal
                                             </div>
                                         </div>
-                                        @forelse ($jenisuang->user_transactions->take(5) as $transaction)
+
+                                        @forelse ($jenisuang->user_transactions('5')->take(5) as $transaction)
                                             <div class="row">
                                                 <div class="cell {{ $jenisuang->textColor() }}" data-title="Jumlah">
                                                     Rp. {{ number_format($transaction->jumlah) }}

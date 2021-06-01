@@ -23,6 +23,7 @@
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card shadow h-100 py-2 border-bottom-info">
                             <div class="h3 fw-bold text-info card-body">
+                                <select name="" id=""></select>
                                 <b>Bulan {{ now()->format('F') }}</b>
                             </div>
                         </div>
