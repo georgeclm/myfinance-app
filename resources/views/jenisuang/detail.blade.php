@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-
-
     <div id="page-top">
         <!-- Page Wrapper -->
         <div id="wrapper">
@@ -40,15 +37,35 @@
                         </div>
                     @endif
                 </div>
-
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">{{ $jenisuang->nama }}</h6>
+                        <div class="row align-items-baseline">
+                            <div class="col-md-5">
+                                <h6 class="font-weight-bold text-primary">{{ $jenisuang->nama }}</h6>
+                            </div>
+                            @if ($jenisuang->id == 2)
+                                <div class="col-md-5">
+                                    <h6 class="font-weight-bold text-danger">Rp.
+                                        {{ number_format(!request()->has('search') ? $jenisuang->categoriesTotal() : $jenisuang->categoryTotal(request()->search)) }}
+                                    </h6>
+                                </div>
+                                <div class="col-md-2">
+                                    <form action="" method="get">
+                                        <select class="form-control form-control-user" name="search"
+                                            onchange="this.form.submit()">
+                                            <option value="" selected disabled hidden>Category</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}" @if (request()->search == $category->id) selected @endif>{{ $category->nama }}</option>
+                                            @endforeach
+                                        </select>
+                                    </form>
+                                </div>
+                            @endif
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-
                             <div class="wrap-table100 " id="thetable">
                                 <div class="table">
                                     <div class="row header">
@@ -61,7 +78,6 @@
                                             </div>
                                         @endif
                                         @if (in_array($jenisuang->id, [1, 2]))
-
                                             <div class="cell">
                                                 Kategori
                                             </div>
@@ -70,7 +86,6 @@
                                             Akun
                                         </div>
                                         @if ($jenisuang->id == 3)
-
                                             <div class="cell">
                                                 Akun Tujuan
                                             </div>
@@ -82,7 +97,7 @@
                                             Tanggal
                                         </div>
                                     </div>
-                                    @forelse ($jenisuang->user_transactions->take(5) as $transaction)
+                                    @forelse ($transactions as $transaction)
                                         <div class="row">
                                             <div class="cell {{ $jenisuang->textColor() }}" data-title="Jumlah">
                                                 Rp. {{ number_format($transaction->jumlah) }}
@@ -126,7 +141,6 @@
                                     @endforelse
                                 </div>
                             </div>
-
                             <table class="table table-bordered" width="100%" cellspacing="0" id="bigtable">
                                 <thead>
                                     <tr class="{{ $jenisuang->color() }} text-light">
@@ -134,7 +148,6 @@
                                         @if (in_array($jenisuang->id, [4, 5]))
                                             <th>Nama Utang</th>
                                         @endif
-
                                         @if (in_array($jenisuang->id, [1, 2]))
                                             <th>Kategori</th>
                                         @endif
@@ -147,7 +160,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($jenisuang->user_transactions as $transaction)
+                                    @forelse ($transactions as $transaction)
                                         <tr>
                                             <td>Rp. {{ number_format($transaction->jumlah) }}</td>
                                             @if ($transaction->utang_id)
@@ -176,27 +189,19 @@
                                             <td colspan="5" class="text-center">Transaksi Kosong</td>
                                         </tr>
                                     @endforelse
-
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                 </div>
             </div>
             <!-- /.container-fluid -->
-
         </div>
         <!-- End of Main Content -->
         @include('layouts.footer')
     </div>
-    <!-- End of Content Wrapper -->
-    </div>
-    <!-- End of Page Wrapper -->
-
 @endsection
 @section('script')
     <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
-
 @endsection

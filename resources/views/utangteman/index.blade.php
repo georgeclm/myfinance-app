@@ -94,7 +94,6 @@
         @include('layouts.footer')
     </div>
     <!-- End of Content Wrapper -->
-    </div>
     <!-- End of Page Wrapper -->
     @include('utangteman.create')
 @endsection

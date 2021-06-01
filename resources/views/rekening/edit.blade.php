@@ -60,7 +60,6 @@
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-primary"
                     onclick="event.preventDefault();document.getElementById('{{ $rekening->id }}form').submit();">Edit</a>
-
             </div>
         </div>
     </div>

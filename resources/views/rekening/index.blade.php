@@ -62,7 +62,6 @@
                                         @forelse ($jenis->user_rekenings as $rekening)
                                             @include('rekening.edit')
                                             @include('rekening.delete')
-
                                             <tr>
                                                 <td>{{ $rekening->nama_akun }}</td>
                                                 @if ($rekening->jenis_id != 1)
@@ -84,7 +83,6 @@
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                 </td>
-
                                             </tr>
                                         @empty
                                             <tr>
@@ -97,21 +95,13 @@
                         </div>
                     </div>
                 @endforeach
-
-
             </div>
             <!-- /.container-fluid -->
-
         </div>
         <!-- End of Main Content -->
         @include('layouts.footer')
-
     </div>
     <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
     @include('rekening.create')
 @endsection
 @section('script')

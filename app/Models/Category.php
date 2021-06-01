@@ -10,7 +10,7 @@ class Category extends Model
     use HasFactory;
     public function userTransactionsByCategory()
     {
-        return $this->hasMany(Transaction::class)->where('user_id', auth()->id());
+        return $this->hasMany(Transaction::class)->whereMonth('created_at', now()->month)->where('user_id', auth()->id());
     }
     public function bgColor()
     {

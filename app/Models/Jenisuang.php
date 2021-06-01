@@ -15,7 +15,7 @@ class Jenisuang extends Model
     }
     public function user_transactions()
     {
-        return $this->hasMany(Transaction::class)->where('user_id', auth()->id())->latest();
+        return $this->hasMany(Transaction::class)->whereMonth('created_at', now()->month)->where('user_id', auth()->id())->latest();
     }
     public function color()
     {
@@ -36,5 +36,13 @@ class Jenisuang extends Model
             '4' => 'text-warning',
             '5' => 'text-info'
         ][$this->id] ?? 'text-danger';
+    }
+    public function categoriesTotal()
+    {
+        return $this->user_transactions->sum('jumlah');
+    }
+    public function categoryTotal($q)
+    {
+        return $this->user_transactions->where('category_id', $q)->sum('jumlah');
     }
 }

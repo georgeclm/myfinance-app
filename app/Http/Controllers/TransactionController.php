@@ -38,7 +38,6 @@ class TransactionController extends Controller
             });
         }
         $categories = Category::all();
-
         return view('transaction.index', compact('jenisuangs', 'categories', 'jenisuangsSelect'));
     }
 

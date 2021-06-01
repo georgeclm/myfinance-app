@@ -106,13 +106,11 @@
                         @enderror
                     </div>
                 </form>
-
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-primary" href="{{ route('rekenings.store') }}"
                     onclick="event.preventDefault();document.getElementById('rekening').submit();">Add</a>
-
             </div>
         </div>
     </div>

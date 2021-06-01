@@ -27,6 +27,8 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::all();
+
+        // dd(now()->subMonth());
         return view('home', compact('categories'));
     }
 }

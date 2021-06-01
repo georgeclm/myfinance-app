@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-
-
     <div id="page-top">
         <!-- Page Wrapper -->
         <div id="wrapper">
@@ -180,8 +177,10 @@
 
                                     </tbody>
                                 </table>
-                                <div class="text-end mt-3"><a href="{{ route('jenisuangs.show', $jenisuang) }}">Show
-                                        All</a></div>
+                                @if ($jenisuang->user_transactions->count() > 5)
+                                    <div class="text-end mt-3"><a href="{{ route('jenisuangs.show', $jenisuang) }}">Show
+                                            All</a></div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -193,9 +192,6 @@
         <!-- End of Main Content -->
         @include('layouts.footer')
     </div>
-    <!-- End of Content Wrapper -->
-    </div>
-    <!-- End of Page Wrapper -->
 
     @include('transaction.create')
 @endsection

@@ -46,7 +46,7 @@ class User extends Authenticatable
     }
     public function transactions()
     {
-        return $this->hasMany(Transaction::class)->where('user_id', auth()->id());
+        return $this->hasMany(Transaction::class)->where('user_id', auth()->id())->whereMonth('created_at', now()->month);
     }
     public function utangs()
     {
@@ -58,11 +58,11 @@ class User extends Authenticatable
     }
     public function uangmasuk()
     {
-        return $this->transactions->where('created_at', '>=', now()->subMonth())->where('jenisuang_id', 1)->sum('jumlah');
+        return $this->transactions->where('jenisuang_id', 1)->sum('jumlah');
     }
     public function uangkeluar()
     {
-        return $this->transactions->where('created_at', '>=', now()->subMonth())->where('jenisuang_id', 2)->sum('jumlah');
+        return $this->transactions->where('jenisuang_id', 2)->sum('jumlah');
     }
     public function saldoperbulan()
     {
