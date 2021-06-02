@@ -84,10 +84,7 @@ class UtangController extends Controller
             'nama' => 'required',
             'keterangan' => 'nullable',
         ]);
-        Utang::where('id', $id)->update([
-            'nama' => request()->nama,
-            'keterangan' => request()->keterangan,
-        ]);
+        Utang::findOrFail($id)->update(request()->all());
 
         return redirect()->back()->with('success', 'Update Succesful');
     }

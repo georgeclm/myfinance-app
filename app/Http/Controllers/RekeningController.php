@@ -91,7 +91,7 @@ class RekeningController extends Controller
             'keterangan' => 'nullable',
         ]);
 
-        Rekening::where('id', $id)->update([
+        Rekening::findOrFail($id)->update([
             'nama_akun' => request()->nama_akune,
             'nama_bank' => request()->nama_banke,
             'saldo_mengendap' => request()->saldo_mengendape,

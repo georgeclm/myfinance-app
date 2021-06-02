@@ -81,10 +81,7 @@ class UtangtemanController extends Controller
             'nama' => 'required',
             'keterangan' => 'nullable',
         ]);
-        Utangteman::where('id', $id)->update([
-            'nama' => request()->nama,
-            'keterangan' => request()->keterangan,
-        ]);
+        Utangteman::findOrFail($id)->update(request()->all());
 
         return redirect()->back()->with('success', 'Update Succesful');
     }
