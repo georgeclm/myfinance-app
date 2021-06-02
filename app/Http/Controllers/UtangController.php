@@ -41,7 +41,7 @@ class UtangController extends Controller
             'jumlah' => ['required', 'numeric'],
             'keterangan' => 'nullable',
         ]);
-        Utang::create($request->validated());
+        Utang::create($request->all());
 
 
         return redirect()->back()->with('success', 'Utang Telah Tersimpan');

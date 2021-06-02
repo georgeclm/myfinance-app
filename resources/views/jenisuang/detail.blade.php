@@ -23,8 +23,17 @@
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card shadow h-100 py-2 border-bottom-info">
                             <div class="h3 fw-bold text-info card-body">
-                                <select name="" id=""></select>
-                                <b>Bulan {{ now()->format('F') }}</b>
+                                <form action="" method="get">
+                                    @if (request()->has('search'))
+                                        <input type="hidden" name="search" value="{{ request()->search }}">
+                                    @endif
+                                    <select class="form-control form-control-user" name="q" onchange="this.form.submit()">
+                                        <option value="" selected disabled hidden>This Month</option>
+                                        <option value="1" @if (request()->q == 1) selected @endif>Previous Month</option>
+                                        <option value="2" @if (request()->q == 2) selected @endif>All</option>
+
+                                    </select>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -53,6 +62,9 @@
                                 </div>
                                 <div class="col-md-2">
                                     <form action="" method="get">
+                                        @if (request()->has('q'))
+                                            <input type="hidden" name="q" value="{{ request()->q }}">
+                                        @endif
                                         <select class="form-control form-control-user" name="search"
                                             onchange="this.form.submit()">
                                             <option value="" selected disabled hidden>Category</option>

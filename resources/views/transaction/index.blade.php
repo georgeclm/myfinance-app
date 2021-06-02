@@ -25,8 +25,17 @@
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card shadow h-100 py-2 border-bottom-info">
                             <div class="h3 fw-bold text-info card-body">
+                                <form action="" method="get">
 
-                                <b>Bulan {{ now()->format('F') }}</b>
+                                    <select class="form-control form-control-user" name="q" onchange="this.form.submit()">
+                                        <option value="" selected disabled hidden>This Month</option>
+                                        <option value="1" @if (request()->q == 1) selected @endif>Previous Month</option>
+                                        <option value="2" @if (request()->q == 2) selected @endif>All</option>
+
+                                    </select>
+
+                                </form>
+                                {{-- <b>Bulan {{ now()->format('F') }}</b> --}}
                             </div>
                         </div>
                     </div>
@@ -84,7 +93,7 @@
                                             </div>
                                         </div>
 
-                                        @forelse ($jenisuang->user_transactions('5')->take(5) as $transaction)
+                                        @forelse ($jenisuang->user_transactions->take(5) as $transaction)
                                             <div class="row">
                                                 <div class="cell {{ $jenisuang->textColor() }}" data-title="Jumlah">
                                                     Rp. {{ number_format($transaction->jumlah) }}
@@ -182,8 +191,16 @@
                                     </tbody>
                                 </table>
                                 @if ($jenisuang->user_transactions->count() > 5)
-                                    <div class="text-end mt-3"><a href="{{ route('jenisuangs.show', $jenisuang) }}">Show
-                                            All</a></div>
+                                    @if (request()->has('q'))
+                                        <div class="text-end mt-3"><a
+                                                href="{{ route('jenisuangs.show', ['q' => request()->q, $jenisuang]) }}">Show
+                                                All</a></div>
+                                    @else
+                                        <div class="text-end mt-3"><a
+                                                href="{{ route('jenisuangs.show', $jenisuang) }}">Show
+                                                All</a></div>
+
+                                    @endif
                                 @endif
                             </div>
                         </div>

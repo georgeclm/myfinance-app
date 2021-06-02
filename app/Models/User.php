@@ -58,11 +58,21 @@ class User extends Authenticatable
     }
     public function uangmasuk()
     {
-        return $this->transactions->where('jenisuang_id', 1)->sum('jumlah');
+        if (request()->has('q')) {
+            return (request()->q == 1)
+                ? $this->hasMany(Transaction::class)->whereMonth('created_at', now()->subMonth()->month)->where('user_id', auth()->id())->where('jenisuang_id', 1)->sum('jumlah')
+                : $this->hasMany(Transaction::class)->where('user_id', auth()->id())->where('jenisuang_id', 1)->sum('jumlah');
+        }
+        return $this->hasMany(Transaction::class)->whereMonth('created_at', now()->month)->where('user_id', auth()->id())->where('jenisuang_id', 1)->sum('jumlah');
     }
     public function uangkeluar()
     {
-        return $this->transactions->where('jenisuang_id', 2)->sum('jumlah');
+        if (request()->has('q')) {
+            return (request()->q == 1)
+                ? $this->hasMany(Transaction::class)->whereMonth('created_at', now()->subMonth()->month)->where('user_id', auth()->id())->where('jenisuang_id', 2)->sum('jumlah')
+                : $this->hasMany(Transaction::class)->where('user_id', auth()->id())->where('jenisuang_id', 2)->sum('jumlah');
+        }
+        return $this->hasMany(Transaction::class)->whereMonth('created_at', now()->month)->where('user_id', auth()->id())->where('jenisuang_id', 2)->sum('jumlah');
     }
     public function saldoperbulan()
     {

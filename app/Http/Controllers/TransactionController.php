@@ -20,20 +20,19 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $jenisuangs = Jenisuang::with('user_transactions')->get();
-
+        $jenisuangs = $jenisuangsSelect = Jenisuang::with('user_transactions')->get();
         if (auth()->user()->utangs->isEmpty()) {
-            $jenisuangsSelect = $jenisuangs->reject(function ($e) {
+            $jenisuangsSelect = $jenisuangsSelect->reject(function ($e) {
                 return $e->id  == 4;
             });
         }
         if (auth()->user()->utangtemans->isEmpty()) {
-            $jenisuangsSelect = $jenisuangs->reject(function ($e) {
+            $jenisuangsSelect = $jenisuangsSelect->reject(function ($e) {
                 return $e->id  == 5;
             });
         }
         if (auth()->user()->rekenings->count() == 1) {
-            $jenisuangsSelect = $jenisuangs->reject(function ($e) {
+            $jenisuangsSelect = $jenisuangsSelect->reject(function ($e) {
                 return $e->id  == 3;
             });
         }

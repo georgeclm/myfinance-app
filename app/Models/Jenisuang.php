@@ -15,16 +15,14 @@ class Jenisuang extends Model
     }
     public function user_transactions($q = null)
     {
+        if (request()->has('q')) {
+            return (request()->q == 1)
+                ? $this->hasMany(Transaction::class)->whereMonth('created_at', now()->subMonth()->month)->where('user_id', auth()->id())->latest()
+                : $this->hasMany(Transaction::class)->where('user_id', auth()->id())->latest();
+        }
         return $this->hasMany(Transaction::class)->whereMonth('created_at', now()->month)->where('user_id', auth()->id())->latest();
     }
-    public function user_transactionsAll()
-    {
-        return $this->hasMany(Transaction::class)->where('user_id', auth()->id())->latest();
-    }
-    public function user_transactionsPreviousMonth()
-    {
-        return $this->hasMany(Transaction::class)->whereMonth('created_at', now()->subMonth()->month)->where('user_id', auth()->id())->latest();
-    }
+
     public function color()
     {
         return [
