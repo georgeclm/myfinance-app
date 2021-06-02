@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JenisuangController;
 use App\Http\Controllers\RekeningController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UtangController;
 use App\Http\Controllers\UtangtemanController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,4 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('transactions', TransactionController::class);
     Route::resource('utangs', UtangController::class);
     Route::resource('utangtemans', UtangtemanController::class);
+    Route::resource('categories', CategoryController::class);
+    Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
+    Route::get('categories/{category}/remove', [CategoryController::class, 'remove'])->name('categories.remove');
 });

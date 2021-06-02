@@ -5,7 +5,10 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            Income (Monthly)</div>
+                                        Income @if (request()->q == 2)@else
+                                                (Monthly)
+                                            @endif
+                                        </div>
                                         <div class="h5 mb-0 font-weight-bold text-success">Rp.
                                             {{ number_format(Auth::user()->uangmasuk()) }}</div>
                                     </div>

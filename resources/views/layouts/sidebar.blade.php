@@ -85,6 +85,12 @@
                         <span>Utang Teman Anda</span>
                     </a>
                 </li>
+                <li class="nav-item @if (Route::current()->uri == 'settings') active @endif">
+                    <a class="nav-link" href="{{ route('settings.index') }}">
+                        <i class="fas fa-fw fa-wrench"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
                 {{-- <!-- Nav Item - Utilities Collapse Menu -->
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"

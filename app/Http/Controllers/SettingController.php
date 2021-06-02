@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class SettingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('settings.settings');
     }
 
     /**
@@ -35,9 +34,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(['nama' => ['required', 'unique:categories']]);
-        Category::create(request()->all());
-        return redirect()->back()->with('success', 'New Category have been added');
+        //
     }
 
     /**
@@ -83,10 +80,5 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function remove(Category $category)
-    {
-        $category->delete();
-        return redirect()->back()->with('success', 'Category have been removed');
     }
 }
