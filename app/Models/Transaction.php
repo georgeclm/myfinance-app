@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Transaction extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id', 'rekening_id', 'rekening_id2', 'utang_id', 'utangteman_id', 'category_id', 'jenisuang_id', 'jumlah', 'kategori', 'keterangan'];
+    protected $fillable = ['user_id', 'rekening_id', 'rekening_id2', 'utang_id', 'utangteman_id', 'category_id', 'category_masuk_id', 'jenisuang_id', 'jumlah', 'kategori', 'keterangan'];
     public function jenisuang()
     {
         return $this->belongsTo(Jenisuang::class);
@@ -20,6 +20,10 @@ class Transaction extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+    public function category_masuk()
+    {
+        return $this->belongsTo(Categorymasuk::class, 'category_masuk_id');
     }
     public function rekening()
     {

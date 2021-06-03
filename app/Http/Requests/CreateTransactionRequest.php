@@ -5,8 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Jenisuang;
 use App\Models\Category;
-
-
+use App\Models\CategoryMasuk;
 
 class CreateTransactionRequest extends FormRequest
 {
@@ -31,13 +30,13 @@ class CreateTransactionRequest extends FormRequest
             'user_id' => 'required',
             'jenisuang_id' => ['required', 'in:' . JenisUang::pluck('id')->implode(',')],
             'jumlah' => ['required', 'numeric'],
-            'kategori' => 'sometimes',
             'rekening_id' => ['required', 'in:' . auth()->user()->rekenings->pluck('id')->implode(',')],
             'rekening_id2' => ['sometimes', 'in:' . auth()->user()->rekenings->pluck('id')->implode(',')],
             'keterangan' => 'nullable',
             'utang_id' => ['sometimes', 'in:' . auth()->user()->utangs->pluck('id')->implode(',')],
             'utang_teman_id' => ['sometimes', 'in:' . auth()->user()->utangtemans->pluck('id')->implode(',')],
-            'category_id' => ['sometimes', 'in:' . Category::pluck('id')->implode(',')]
+            'category_id' => ['sometimes', 'in:' . Category::pluck('id')->implode(',')],
+            'categor_ymasuk_id' => ['sometimes', 'in:' . CategoryMasuk::pluck('id')->implode(',')]
         ];
     }
 }

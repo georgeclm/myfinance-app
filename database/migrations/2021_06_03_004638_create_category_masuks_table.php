@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoriesTable extends Migration
+class CreateCategoryMasuksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,20 +14,17 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('category_masuks', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
             $table->timestamps();
         });
-        DB::table('categories')->insert(
+        DB::table('category_masuks')->insert(
             array(
-                ['nama' => 'Sedekah atau Donasi'],
-                ['nama' => 'Cicilan'],
-                ['nama' => 'Makanan'],
-                ['nama' => 'Pengeluaran Pribadi'],
-                ['nama' => 'Kendaraan'],
-                ['nama' => 'Nongky'],
-                ['nama' => 'Admin'],
+                ['nama' => 'Gaji'],
+                ['nama' => 'Bonus dan Tunjangan'],
+                ['nama' => 'Pendapatan Pasif'],
+                ['nama' => 'Bisnis'],
             )
         );
     }
@@ -39,6 +36,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('category_masuks');
     }
 }

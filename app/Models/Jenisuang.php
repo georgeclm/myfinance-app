@@ -51,4 +51,12 @@ class Jenisuang extends Model
     {
         return $this->user_transactions->where('category_id', $q)->sum('jumlah');
     }
+    public function categoryMasuksTotal()
+    {
+        return $this->user_transactions->sum('jumlah');
+    }
+    public function categoryMasukTotal($q)
+    {
+        return $this->user_transactions->where('category_masuk_id', $q)->sum('jumlah');
+    }
 }

@@ -14,6 +14,9 @@ class JenisuangController extends Controller
         $transactions = (request()->has('search'))
             ? $jenisuang->user_transactions->where('category_id', request()->search)
             : $jenisuang->user_transactions;
+        $transactions = (request()->has('search2'))
+            ? $jenisuang->user_transactions->where('category_masuk_id', request()->search2)
+            : $jenisuang->user_transactions;
 
         $categories = Category::all();
         return view('jenisuang.detail', compact('transactions', 'jenisuang', 'categories'));

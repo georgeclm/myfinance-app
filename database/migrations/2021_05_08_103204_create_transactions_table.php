@@ -21,9 +21,9 @@ class CreateTransactionsTable extends Migration
             $table->integer('utang_id')->nullable();
             $table->integer('utangteman_id')->nullable();
             $table->integer('category_id')->nullable();
+            $table->integer('category_masuk_id')->nullable();
             $table->integer('jenisuang_id');
             $table->string('jumlah');
-            $table->string('kategori')->nullable();
             $table->string('keterangan')->nullable();
             $table->timestamps();
         });

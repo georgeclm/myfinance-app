@@ -72,7 +72,7 @@
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Pengeluaran
+                                    <h6 class="m-0 font-weight-bold text-danger">Pengeluaran
                                         Bulan {{ now()->format('F') }}</h6>
                                 </div>
                                 <div class="card-body">
@@ -93,8 +93,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 mb-4">
-                        </div>
                     @else
                         <div class="col-lg-6">
                             <div class="card mb-4 py-3 border-left-success">
@@ -103,6 +101,37 @@
                                 </div>
                             </div>
                         </div>
+                    @endif
+                    @if (auth()->user()->uangmasuk() != 0)
+                        <!-- Content Column -->
+                        <div class="col-lg-6 mb-4">
+                            <!-- Project Card Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-success">Pemasukan
+                                        Bulan {{ now()->format('F') }}</h6>
+                                </div>
+                                <div class="card-body">
+                                    @foreach (App\Models\CategoryMasuk::all() as $category)
+                                        @if ($category->persen() != 0)
+                                            <h4 class="small font-weight-bold">{{ $category->nama }}<span
+                                                    class="float-right">{{ $category->persen() }}%</span>
+                                            </h4>
+                                            <div class="progress mb-4">
+                                                <div class="progress-bar {{ $category->bgColor() }}" role="progressbar"
+                                                    style="width: {{ $category->persen() }}%"
+                                                    aria-valuenow="{{ $category->persen() }}" aria-valuemin="0"
+                                                    aria-valuemax="100">
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-4">
+                        </div>
+
                     @endif
                 </div>
 

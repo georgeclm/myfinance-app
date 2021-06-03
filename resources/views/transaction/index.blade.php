@@ -110,7 +110,7 @@
                                                 @endif
                                                 @if ($jenisuang->id == 1)
                                                     <div class="cell" data-title="Kategori">
-                                                        {{ $transaction->kategori }}
+                                                        {{ $transaction->category_masuk->nama }}
                                                     </div>
                                                 @endif
                                                 @if ($jenisuang->id == 2)
@@ -170,7 +170,7 @@
                                                     </td>
                                                 @endif
                                                 @if ($jenisuang->id == 1)
-                                                    <td>{{ $transaction->kategori }}</td>
+                                                    <td>{{ $transaction->category_masuk->nama }}</td>
                                                 @endif
                                                 @if ($jenisuang->id == 2)
                                                     <td>{{ $transaction->category->nama }}</td>

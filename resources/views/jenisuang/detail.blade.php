@@ -27,6 +27,9 @@
                                     @if (request()->has('search'))
                                         <input type="hidden" name="search" value="{{ request()->search }}">
                                     @endif
+                                    @if (request()->has('search2'))
+                                        <input type="hidden" name="search2" value="{{ request()->search2 }}">
+                                    @endif
                                     <select class="form-control form-control-user" name="q" onchange="this.form.submit()">
                                         <option value="" selected disabled hidden>This Month</option>
                                         <option value="1" @if (request()->q == 1) selected @endif>Previous Month</option>
@@ -70,6 +73,27 @@
                                             <option value="" selected disabled hidden>Category</option>
                                             @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}" @if (request()->search == $category->id) selected @endif>{{ $category->nama }}</option>
+                                            @endforeach
+                                        </select>
+                                    </form>
+                                </div>
+                            @endif
+                            @if ($jenisuang->id == 1)
+                                <div class="col-md-5">
+                                    <h6 class="font-weight-bold text-danger">Rp.
+                                        {{ number_format(!request()->has('search2') ? $jenisuang->categoryMasuksTotal() : $jenisuang->categoryMasukTotal(request()->search2)) }}
+                                    </h6>
+                                </div>
+                                <div class="col-md-2">
+                                    <form action="" method="get">
+                                        @if (request()->has('q'))
+                                            <input type="hidden" name="q" value="{{ request()->q }}">
+                                        @endif
+                                        <select class="form-control form-control-user" name="search2"
+                                            onchange="this.form.submit()">
+                                            <option value="" selected disabled hidden>Category</option>
+                                            @foreach (App\Models\CategoryMasuk::all() as $category)
+                                                <option value="{{ $category->id }}" @if (request()->search2 == $category->id) selected @endif>{{ $category->nama }}</option>
                                             @endforeach
                                         </select>
                                     </form>
@@ -127,7 +151,7 @@
                                             @endif
                                             @if ($jenisuang->id == 1)
                                                 <div class="cell" data-title="Kategori">
-                                                    {{ $transaction->kategori }}
+                                                    {{ $transaction->category_masuk->nama }}
                                                 </div>
                                             @endif
                                             @if ($jenisuang->id == 2)
@@ -185,7 +209,7 @@
                                                 </td>
                                             @endif
                                             @if ($jenisuang->id == 1)
-                                                <td>{{ $transaction->kategori }}</td>
+                                                <td>{{ $transaction->category_masuk->nama }}</td>
                                             @endif
                                             @if ($jenisuang->id == 2)
                                                 <td>{{ $transaction->category->nama }}</td>

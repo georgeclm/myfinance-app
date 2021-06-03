@@ -87,12 +87,16 @@
                             </span>
                         @enderror
                     </div>
-                    <div class="form-group" id="kategori">
-                        <input type="text" disabled
-                            class="form-control form-control-user @error('kategori') is-invalid @enderror"
-                            name="kategori" value="{{ old('kategori') }}" required aria-describedby="emailHelp"
-                            placeholder="Kategori">
-                        @error('kategori')
+                    <div class="form-group">
+                        <select disabled
+                            class="form-control form-control-user form-block @error('category_id') is-invalid @enderror"
+                            name="category_id" style="padding: 0.5rem !important" required id="category_id">
+                            <option value="" selected disabled hidden>Pilih Kategori</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->nama }}</option>
+                            @endforeach
+                        </select>
+                        @error('category_id')
                             <script>
                                 $('#addRekening').modal('show');
 
@@ -104,14 +108,14 @@
                     </div>
                     <div class="form-group">
                         <select disabled
-                            class="form-control form-control-user form-block @error('category_id') is-invalid @enderror"
-                            name="category_id" style="padding: 0.5rem !important" required id="category_id">
+                            class="form-control form-control-user form-block @error('category_masuk_id') is-invalid @enderror"
+                            name="category_masuk_id" style="padding: 0.5rem !important" required id="category_masuk_id">
                             <option value="" selected disabled hidden>Pilih Kategori</option>
-                            @foreach ($categories as $category)
+                            @foreach (App\Models\CategoryMasuk::all() as $category)
                                 <option value="{{ $category->id }}">{{ $category->nama }}</option>
                             @endforeach
                         </select>
-                        @error('category_id')
+                        @error('category_masuk_id')
                             <script>
                                 $('#addRekening').modal('show');
 
@@ -197,32 +201,32 @@
             $('input').prop('disabled', false);
             $('select').prop('disabled', false);
             if (valueSelected == 1) {
-                $('#kategori').show("slow");
                 $('#category_id').hide("slow");
+                $('#category_masuk_id').show("slow");
                 $('#transfer').hide("slow");
                 $('#utang').hide("slow");
                 $('#utangteman').hide("slow");
             } else if (valueSelected == 2) {
-                $('#kategori').hide("slow");
                 $('#category_id').show("slow");
+                $('#category_masuk_id').hide("slow");
                 $('#transfer').hide("slow");
                 $('#utang').hide("slow");
                 $('#utangteman').hide("slow");
             } else if (valueSelected == 4) {
-                $('#kategori').hide("slow");
                 $('#category_id').hide("slow");
+                $('#category_masuk_id').hide("slow");
                 $('#transfer').hide("slow");
                 $('#utang').show("slow");
                 $('#utangteman').hide("slow");
             } else if (valueSelected == 3) {
-                $('#kategori').hide("slow");
                 $('#category_id').hide("slow");
+                $('#category_masuk_id').hide("slow");
                 $('#transfer').show("slow");
                 $('#utang').hide("slow");
                 $('#utangteman').hide("slow");
             } else {
-                $('#kategori').hide("slow");
                 $('#category_id').hide("slow");
+                $('#category_masuk_id').hide("slow");
                 $('#transfer').hide("slow");
                 $('#utang').hide("slow");
                 $('#utangteman').show("slow");

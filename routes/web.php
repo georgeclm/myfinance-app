@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CategoryMasukController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JenisuangController;
 use App\Http\Controllers\RekeningController;
@@ -38,6 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('utangs', UtangController::class);
     Route::resource('utangtemans', UtangtemanController::class);
     Route::resource('categories', CategoryController::class);
+    Route::resource('category_masuks', CategoryMasukController::class);
     Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
     Route::get('categories/{category}/remove', [CategoryController::class, 'remove'])->name('categories.remove');
+    Route::get('category_masuks/{category}/remove', [CategoryMasukController::class, 'remove'])->name('category_masuks.remove');
 });
