@@ -82,10 +82,9 @@
                                                     class="float-right">{{ $category->persen() }}%</span>
                                             </h4>
                                             <div class="progress mb-4">
-                                                <div class="progress-bar {{ $category->bgColor() }}" role="progressbar"
-                                                    style="width: {{ $category->persen() }}%"
+                                                <div role="progressbar" style="width: {{ $category->persen() }}%"
                                                     aria-valuenow="{{ $category->persen() }}" aria-valuemin="0"
-                                                    aria-valuemax="100">
+                                                    aria-valuemax="100" class="progress-bar {{ $category->bgColor() }}">
                                                 </div>
                                             </div>
                                         @endif
@@ -118,18 +117,15 @@
                                                     class="float-right">{{ $category->persen() }}%</span>
                                             </h4>
                                             <div class="progress mb-4">
-                                                <div class="progress-bar {{ $category->bgColor() }}" role="progressbar"
-                                                    style="width: {{ $category->persen() }}%"
+                                                <div role="progressbar" style="width: {{ $category->persen() }}%"
                                                     aria-valuenow="{{ $category->persen() }}" aria-valuemin="0"
-                                                    aria-valuemax="100">
+                                                    aria-valuemax="100" class="progress-bar {{ $category->bgColor() }}">
                                                 </div>
                                             </div>
                                         @endif
                                     @endforeach
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6 mb-4">
                         </div>
 
                     @endif

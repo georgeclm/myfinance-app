@@ -11,23 +11,21 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="user" id="{{ $utang->id }}form" method="POST"
-                    action="{{ route('utangs.update', $utang) }}">
+                <form id="{{ $utang->id }}form" method="POST" action="{{ route('utangs.update', $utang) }}"
+                    class="user">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user " name="nama"
-                            value="{{ old('nama') ?? $utang->nama }}" required aria-describedby="emailHelp"
-                            placeholder="Utang ke Siapa">
+                        <input type="text" name="nama" value="{{ old('nama') ?? $utang->nama }}" required
+                            placeholder="Utang ke Siapa" class="form-control form-control-user">
                     </div>
                     <div class="form-group">
-                        <input type="number" class="form-control form-control-user " name="jumlah" disabled
-                            value="{{ $utang->jumlah }}" x aria-describedby="emailHelp" placeholder="Jumlah Utang">
+                        <input type="number" name="jumlah" disabled value="{{ $utang->jumlah }}"
+                            placeholder="Jumlah Utang" class="form-control form-control-user">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user " name="keterangan"
-                            value="{{ old('keterangan') ?? $utang->keterangan }}" aria-describedby="emailHelp"
-                            placeholder="Keterangan">
+                        <input type="text" name="keterangan" value="{{ old('keterangan') ?? $utang->keterangan }}"
+                            placeholder="Keterangan" class="form-control form-control-user">
                     </div>
                 </form>
             </div>

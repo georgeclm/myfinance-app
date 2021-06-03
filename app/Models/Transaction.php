@@ -23,7 +23,7 @@ class Transaction extends Model
     }
     public function category_masuk()
     {
-        return $this->belongsTo(Categorymasuk::class, 'category_masuk_id');
+        return $this->belongsTo(CategoryMasuk::class, 'category_masuk_id');
     }
     public function rekening()
     {

@@ -52,7 +52,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" width="100%" cellspacing="0">
+                            <table width="100%" cellspacing="0" class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Utang dari Siapa</th>

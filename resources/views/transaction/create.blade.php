@@ -111,7 +111,7 @@
                             class="form-control form-control-user form-block @error('category_masuk_id') is-invalid @enderror"
                             name="category_masuk_id" style="padding: 0.5rem !important" required id="category_masuk_id">
                             <option value="" selected disabled hidden>Pilih Kategori</option>
-                            @foreach (App\Models\CategoryMasuk::all() as $category)
+                            @foreach ($categorymasuks as $category)
                                 <option value="{{ $category->id }}">{{ $category->nama }}</option>
                             @endforeach
                         </select>

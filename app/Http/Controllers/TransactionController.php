@@ -10,6 +10,7 @@ use App\Models\Utang;
 use App\Models\Utangteman;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateTransactionRequest;
+use App\Models\Categorymasuk;
 
 class TransactionController extends Controller
 {
@@ -37,7 +38,8 @@ class TransactionController extends Controller
             });
         }
         $categories = Category::all();
-        return view('transaction.index', compact('jenisuangs', 'categories', 'jenisuangsSelect'));
+        $categorymasuks = CategoryMasuk::all();
+        return view('transaction.index', compact('jenisuangs', 'categories', 'jenisuangsSelect', 'categorymasuks'));
     }
 
     /**

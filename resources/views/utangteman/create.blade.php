@@ -4,19 +4,19 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Utang Teman Baru</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form class="user" id="rekening" method="POST" action="{{ route('utangtemans.store') }}">
+                <form id="rekening" method="POST" action="{{ route('utangtemans.store') }}" class="user">
                     @csrf
                     <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                     <input type="hidden" name="lunas" value="0">
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user @error('nama') is-invalid @enderror"
-                            name="nama" value="{{ old('nama') }}" required aria-describedby="emailHelp"
-                            placeholder="Utang dari Siapa">
+                        <input type="text" name="nama" value="{{ old('nama') }}" required
+                            placeholder="Utang dari Siapa"
+                            class="form-control form-control-user @error('nama') is-invalid @enderror">
                         @error('nama')
                             <script>
                                 $('#addRekening').modal('show');
@@ -28,9 +28,8 @@
                         @enderror
                     </div>
                     <div class="form-group" id="kategori">
-                        <input type="number"
-                            class="form-control form-control-user @error('jumlah') is-invalid @enderror" name="jumlah"
-                            value="{{ old('jumlah') }}" required aria-describedby="emailHelp" placeholder="Jumlah">
+                        <input type="number" name="jumlah" value="{{ old('jumlah') }}" required placeholder="Jumlah"
+                            class="form-control form-control-user @error('jumlah') is-invalid @enderror">
                         @error('jumlah')
                             <script>
                                 $('#addRekening').modal('show');
@@ -42,10 +41,8 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <input type="text"
-                            class="form-control form-control-user @error('keterangan') is-invalid @enderror"
-                            name="keterangan" value="{{ old('keterangan') }}" aria-describedby="emailHelp"
-                            placeholder="Keterangan">
+                        <input type="text" name="keterangan" value="{{ old('keterangan') }}" placeholder="Keterangan"
+                            class="form-control form-control-user @error('keterangan') is-invalid @enderror">
                         @error('keterangan')
                             <script>
                                 $('#addRekening').modal('show');
