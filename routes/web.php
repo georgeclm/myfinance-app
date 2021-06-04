@@ -24,8 +24,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect()->route('login');
-});
+    return view('portfolio.english');
+})->name('english');
+Route::get('/in', function () {
+    return view('portfolio.indonesia');
+})->name('indo');
 
 Auth::routes();
 

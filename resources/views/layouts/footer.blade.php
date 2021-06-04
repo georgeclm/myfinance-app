@@ -21,9 +21,11 @@
                     <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
                         <div class="h5 text-uppercase">cavidjaja@gmail.com</div>
                         <div class="h5 text-uppercase mb-4">089647590083</div>
-                        <a class="btn btn-outline-dark btn-lg" href="https://georgeclm.github.io/" target="_blank">Visit
+                        <a class="btn btn-outline-dark btn-lg"
+                            href="https://drive.google.com/file/d/12HqVgUFlR5ZdICW8_tAg2YhkYXyGmgVv/view"
+                            target="_blank">
                             My
-                            Website</a>
+                            CV</a>
                     </div>
                 </div>
             </div>

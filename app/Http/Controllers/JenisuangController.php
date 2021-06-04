@@ -11,12 +11,13 @@ class JenisuangController extends Controller
 {
     public function show(Jenisuang $jenisuang)
     {
-        $transactions = (request()->has('search'))
-            ? $jenisuang->user_transactions->where('category_id', request()->search)
-            : $jenisuang->user_transactions;
-        $transactions = (request()->has('search2'))
-            ? $jenisuang->user_transactions->where('category_masuk_id', request()->search2)
-            : $jenisuang->user_transactions;
+        if (request()->has('search')) {
+            $transactions = $jenisuang->user_transactions->where('category_id', request()->search);
+        } else if (request()->has('search2')) {
+            $transactions = $jenisuang->user_transactions->where('category_masuk_id', request()->search2);
+        } else {
+            $transactions = $jenisuang->user_transactions;
+        }
 
         $categories = Category::all();
         return view('jenisuang.detail', compact('transactions', 'jenisuang', 'categories'));

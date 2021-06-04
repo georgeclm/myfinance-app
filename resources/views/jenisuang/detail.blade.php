@@ -58,7 +58,7 @@
                                 <h6 class="font-weight-bold text-primary">{{ $jenisuang->nama }}</h6>
                             </div>
                             @if ($jenisuang->id == 2)
-                                <div class="col-md-5">
+                                <div class="col-md-5 my-2">
                                     <h6 class="font-weight-bold text-danger">Rp.
                                         {{ number_format(!request()->has('search') ? $jenisuang->categoriesTotal() : $jenisuang->categoryTotal(request()->search)) }}
                                     </h6>
@@ -79,8 +79,8 @@
                                 </div>
                             @endif
                             @if ($jenisuang->id == 1)
-                                <div class="col-md-5">
-                                    <h6 class="font-weight-bold text-danger">Rp.
+                                <div class="col-md-5 my-2">
+                                    <h6 class="font-weight-bold text-success">Rp.
                                         {{ number_format(!request()->has('search2') ? $jenisuang->categoryMasuksTotal() : $jenisuang->categoryMasukTotal(request()->search2)) }}
                                     </h6>
                                 </div>
@@ -105,35 +105,7 @@
                         <div class="table-responsive">
                             <div class="wrap-table100 " id="thetable">
                                 <div class="table">
-                                    <div class="row header">
-                                        <div class="cell ">
-                                            Jumlah
-                                        </div>
-                                        @if (in_array($jenisuang->id, [4, 5]))
-                                            <div class="cell">
-                                                Nama Utang
-                                            </div>
-                                        @endif
-                                        @if (in_array($jenisuang->id, [1, 2]))
-                                            <div class="cell">
-                                                Kategori
-                                            </div>
-                                        @endif
-                                        <div class="cell">
-                                            Akun
-                                        </div>
-                                        @if ($jenisuang->id == 3)
-                                            <div class="cell">
-                                                Akun Tujuan
-                                            </div>
-                                        @endif
-                                        <div class="cell">
-                                            Keterangan
-                                        </div>
-                                        <div class="cell">
-                                            Tanggal
-                                        </div>
-                                    </div>
+
                                     @forelse ($transactions as $transaction)
                                         <div class="row">
                                             <div class="cell {{ $jenisuang->textColor() }}" data-title="Jumlah">
