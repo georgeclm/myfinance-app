@@ -371,7 +371,7 @@
                                         <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Settings
                                     </a> --}}
-                                    <a class="dropdown-item" href="{{ route('english') }}">
+                                    <a class="dropdown-item" href="http://web.epafroditusgeorge.com" target="_blank">
                                         <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                         My Website
                                     </a>
