@@ -190,7 +190,7 @@
                                             @if ($transaction->rekening_tujuan)
                                                 <td>{{ $transaction->rekening_tujuan->nama_akun }}</td>
                                             @endif
-                                            <td>{{ $transaction->keterangan }}</td>
+                                            <td>{{ $transaction->keterangan ?? '-' }}</td>
                                             <td>{{ $transaction->created_at->format('l j F Y') }}</td>
                                         </tr>
                                     @empty
