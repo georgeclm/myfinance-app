@@ -34,7 +34,7 @@ class CreateTransactionRequest extends FormRequest
             'rekening_id2' => ['sometimes', 'in:' . auth()->user()->rekenings->pluck('id')->implode(',')],
             'keterangan' => 'nullable',
             'utang_id' => ['sometimes', 'in:' . auth()->user()->utangs->pluck('id')->implode(',')],
-            'utang_teman_id' => ['sometimes', 'in:' . auth()->user()->utangtemans->pluck('id')->implode(',')],
+            'utangteman_id' => ['sometimes', 'in:' . auth()->user()->utangtemans->pluck('id')->implode(',')],
             'category_id' => ['sometimes', 'in:' . Category::pluck('id')->implode(',')],
             'category_masuk_id' => ['sometimes', 'in:' . CategoryMasuk::pluck('id')->implode(',')]
         ];
