@@ -11,7 +11,7 @@ class Category extends Model
     protected $fillable = ['nama'];
     public function userTransactionsByCategory()
     {
-        return $this->hasMany(Transaction::class)->whereMonth('created_at', now()->month)->where('user_id', auth()->id());
+        return $this->hasMany(Transaction::class)->whereMonth('created_at', now()->month)->where('user_id', auth()->id())->where('jenisuang_id', 2);
     }
     public function bgColor()
     {
