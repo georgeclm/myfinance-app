@@ -18,7 +18,7 @@ class CreateUtangsTable extends Migration
             $table->integer('user_id');
             $table->string('nama');
             $table->string('jumlah');
-            $table->string('keterangan');
+            $table->string('keterangan')->nullable();
             $table->string('lunas');
             $table->timestamps();
         });
