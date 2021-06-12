@@ -39,15 +39,7 @@
                             </div>
                         </div>
                     </div>
-                    @if (auth()->user()->rekenings->isEmpty())
-                        <div class="col-lg-6">
-                            <div class="card mb-4 py-3 border-left-success">
-                                <div class="card-body">
-                                    Buat Rekening Dulu Sebelum Mencatat Keuangan
-                                </div>
-                            </div>
-                        </div>
-                    @endif
+                    @include('layouts.partials.newaccount')
                 </div>
                 @foreach ($jenisuangs as $jenisuang)
 

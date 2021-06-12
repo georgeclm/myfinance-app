@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rekening;
+use App\Models\Transaction;
 use App\Models\Utangteman;
 use Illuminate\Http\Request;
 
@@ -40,10 +42,21 @@ class UtangtemanController extends Controller
             'nama' => 'required',
             'jumlah' => ['required', 'numeric'],
             'keterangan' => 'nullable',
+            'rekening_id' => ['required', 'numeric', 'in:' . auth()->user()->rekenings->pluck('id')->implode(',')],
+            'user_id' => ['required', 'in:' . auth()->id()],
+            'lunas' => ['required', 'in:0']
         ]);
+        $rekening = Rekening::findOrFail(request()->rekening_id);
+        if ($rekening->saldo_sekarang < request()->jumlah) {
+            return redirect()->back()->with('error', 'Saldomu tidak cukup');
+        }
+        $rekening->saldo_sekarang -= request()->jumlah;
+        $rekening->save();
+        // dd(request()->all());
         Utangteman::create($request->all());
 
-        return redirect()->back()->with('success', 'Utang Teman Anda Telah Tersimpan');
+
+        return redirect()->back()->with('success', 'Utang Teman Tersimpan, Saldo Berkurang');
     }
 
     /**

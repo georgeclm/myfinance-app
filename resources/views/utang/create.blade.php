@@ -26,7 +26,27 @@
                             </span>
                         @enderror
                     </div>
-                    <div class="form-group" id="kategori">
+                    <div class="form-group">
+                        <select
+                            class="form-control form-control-user form-block @error('rekening_id') is-invalid @enderror"
+                            name="rekening_id" style="padding: 0.5rem !important" required aria-describedby="emailHelp">
+                            <option value="" selected disabled hidden>Untuk Akun</option>
+                            @foreach (auth()->user()->rekenings as $rekening)
+                                <option value="{{ $rekening->id }}">{{ $rekening->nama_akun }}</option>
+                            @endforeach
+                        </select>
+                        @error('rekening_id')
+                            <script>
+                                $('#addRekening').modal('show');
+
+                            </script>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
                         <input type="number" name="jumlah" value="{{ old('jumlah') }}" required placeholder="Jumlah"
                             class="form-control form-control-user @error('jumlah') is-invalid @enderror">
                         @error('jumlah')

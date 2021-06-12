@@ -10,9 +10,11 @@
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-2 text-gray-800">Utang Teman Anda</h1>
-                    <a href="#" data-toggle="modal" data-target="#addRekening"
-                        class="d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i
-                            class="fas fa-download fa-sm text-white-50"></i> Tambah Utang Anda</a>
+                    @if (auth()->user()->rekenings->isNotEmpty())
+                        <a href="#" data-toggle="modal" data-target="#addRekening"
+                            class="d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Tambah Utang Teman Anda</a>
+                    @endif
                 </div>
                 <div class="row">
                     <!-- Income (Monthly) Card Example -->
@@ -44,6 +46,8 @@
                             </div>
                         </div>
                     @endif
+                    @include('layouts.partials.newaccount')
+
                 </div>
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
