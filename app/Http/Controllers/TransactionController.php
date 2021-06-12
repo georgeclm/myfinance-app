@@ -10,7 +10,7 @@ use App\Models\Utang;
 use App\Models\Utangteman;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateTransactionRequest;
-use App\Models\Categorymasuk;
+use App\Models\CategoryMasuk;
 
 class TransactionController extends Controller
 {
@@ -87,9 +87,7 @@ class TransactionController extends Controller
             $rekening1->saldo_sekarang -= request()->jumlah;
             $rekening1->save();
         } else if (request()->jenisuang_id == 5) {
-            if ($rekening1->saldo_sekarang < request()->jumlah) {
-                return redirect()->back()->with('error', 'Jumlah melebihi saldo');
-            }
+
             $utang = Utangteman::findOrFail(request()->utangteman_id);
             if ($utang->jumlah < request()->jumlah) {
                 return redirect()->back()->with('error', 'Bayar melebihi Utang');
