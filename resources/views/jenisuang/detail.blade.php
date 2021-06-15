@@ -18,7 +18,7 @@
                             <div class="h3 fw-bold text-info card-body">
                                 <form action="" method="get">
                                     <select class="form-control form-control-user" name="q" onchange="this.form.submit()">
-                                        <option value="" selected>This Month</option>
+                                        <option value="" selected disabled hidden>This Month</option>
                                         <option value="1" @if (request()->q == 1) selected @endif>Previous Month</option>
                                         <option value="2" @if (request()->q == 2) selected @endif>All</option>
 
