@@ -15,8 +15,6 @@
                             class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Tambah Transaksi</a>
                     @endif
-
-
                 </div>
                 <div class="row">
                     @include('layouts.partials.income')
@@ -26,14 +24,11 @@
                         <div class="card shadow h-100 py-2 border-bottom-info">
                             <div class="h3 fw-bold text-info card-body">
                                 <form action="" method="get">
-
                                     <select class="form-control form-control-user" name="q" onchange="this.form.submit()">
-                                        <option value="" selected disabled hidden>This Month</option>
+                                        <option value="" selected>This Month</option>
                                         <option value="1" @if (request()->q == 1) selected @endif>Previous Month</option>
                                         <option value="2" @if (request()->q == 2) selected @endif>All</option>
-
                                     </select>
-
                                 </form>
                                 {{-- <b>Bulan {{ now()->format('F') }}</b> --}}
                             </div>
@@ -42,7 +37,6 @@
                     @include('layouts.partials.newaccount')
                 </div>
                 @foreach ($jenisuangs as $jenisuang)
-
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -50,7 +44,6 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-
                                 <div class="wrap-table100 " id="thetable">
                                     <div class="table">
                                         <div class="row header">
@@ -63,7 +56,6 @@
                                                 </div>
                                             @endif
                                             @if (in_array($jenisuang->id, [1, 2]))
-
                                                 <div class="cell">
                                                     Kategori
                                                 </div>
@@ -72,7 +64,6 @@
                                                 Akun
                                             </div>
                                             @if ($jenisuang->id == 3)
-
                                                 <div class="cell">
                                                     Akun Tujuan
                                                 </div>
@@ -84,7 +75,6 @@
                                                 Tanggal
                                             </div>
                                         </div>
-
                                         @forelse ($jenisuang->user_transactions->take(5) as $transaction)
                                             <div class="row">
                                                 <div class="cell {{ $jenisuang->textColor() }}" data-title="Jumlah">

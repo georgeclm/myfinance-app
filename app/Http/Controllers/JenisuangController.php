@@ -11,6 +11,7 @@ class JenisuangController extends Controller
 {
     public function show(Jenisuang $jenisuang)
     {
+        session(['q' => request()->get('q')]);
         if (request()->has('search')) {
             $transactions = $jenisuang->user_transactions->where('category_id', request()->search);
         } else if (request()->has('search2')) {
