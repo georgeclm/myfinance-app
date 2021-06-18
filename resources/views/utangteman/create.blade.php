@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="rekening" method="POST" action="{{ route('utangtemans.store') }}" class="user">
+                <form id="rekening" method="POST" action="{{ route('utangtemans.store') }}">
                     @csrf
                     <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                     <input type="hidden" name="lunas" value="0">
@@ -47,9 +47,13 @@
                         @enderror
                     </div>
 
-                    <div class="form-group" id="kategori">
-                        <input type="number" name="jumlah" value="{{ old('jumlah') }}" required placeholder="Jumlah"
-                            class="form-control form-control-user @error('jumlah') is-invalid @enderror">
+                    <div class="mb-3 hide-inputbtns input-group" id="kategori">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Rp.</span>
+                        </div>
+                        <input data-number-stepfactor="100" type="number" name="jumlah" value="{{ old('jumlah') }}"
+                            required placeholder="Jumlah"
+                            class="currency form-control form-control-user @error('jumlah') is-invalid @enderror">
                         @error('jumlah')
                             <script>
                                 $('#addRekening').modal('show');
@@ -74,13 +78,10 @@
                         @enderror
                     </div>
                 </form>
-
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary"
-                    onclick="event.preventDefault();document.getElementById('rekening').submit();">Add</a>
-
+                <input type="submit" class="btn btn-primary" form="rekening" value="Add" />
             </div>
         </div>
     </div>

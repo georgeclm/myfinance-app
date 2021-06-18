@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="user" id="rekening" method="POST" action="{{ route('rekenings.store') }}">
+                <form id="rekening" method="POST" action="{{ route('rekenings.store') }}">
                     @csrf
                     <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                     <div class="form-group">
@@ -34,7 +34,7 @@
                     <div class="form-group">
                         <input type="text"
                             class="form-control form-control-user @error('nama_akun') is-invalid @enderror"
-                            name="nama_akun" value="{{ old('nama_akun') }}" required placeholder="Nama Akun">
+                            name="nama_akun" value="{{ old('nama_akun') }}" required placeholder="Nama Akun" disabled>
                         @error('nama_akun')
                             <script>
                                 $('#addRekening').modal('show');
@@ -49,7 +49,7 @@
                         <input type="text"
                             class="form-control form-control-user @error('nama_bank') is-invalid @enderror"
                             name="nama_bank" value="{{ old('nama_bank') }}" required id="nama_bank"
-                            placeholder="Nama Bank">
+                            placeholder="Nama Bank" disabled>
                         @error('nama_bank')
                             <script>
                                 $('#addRekening').modal('show');
@@ -60,10 +60,13 @@
                             </span>
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <input type="number"
-                            class="form-control form-control-user @error('saldo_sekarang') is-invalid @enderror"
-                            name="saldo_sekarang" value="{{ old('saldo_sekarang') }}" required
+                    <div class="mb-3 hide-inputbtns input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Rp.</span>
+                        </div>
+                        <input type="number" data-number-stepfactor="100"
+                            class="form-control form-control-user @error('saldo_sekarang') is-invalid @enderror currency"
+                            name="saldo_sekarang" value="{{ old('saldo_sekarang') }}" required disabled
                             placeholder="Saldo Sekarang">
                         @error('saldo_sekarang') .
                             <script>
@@ -75,11 +78,14 @@
                             </span>
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <input type="number"
-                            class="form-control form-control-user @error('saldo_mengendap') is-invalid @enderror"
+                    <div class="mb-3 hide-inputbtns input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Rp.</span>
+                        </div>
+                        <input type="number" data-number-stepfactor="100"
+                            class="currency form-control form-control-user @error('saldo_mengendap') is-invalid @enderror"
                             name="saldo_mengendap" value="{{ old('saldo_mengendap') }}" aria-describedby="emailHelp"
-                            id="saldo_mengendap" placeholder="Saldo Mengendap">
+                            id="saldo_mengendap" placeholder="Saldo Mengendap" disabled>
                         @error('saldo_mengendap')
                             <script>
                                 $('#addRekening').modal('show');
@@ -94,7 +100,7 @@
                         <input type="text"
                             class="form-control form-control-user @error('keterangan') is-invalid @enderror"
                             name="keterangan" value="{{ old('keterangan') }}" aria-describedby="emailHelp"
-                            placeholder="Keterangan">
+                            placeholder="Keterangan" disabled>
                         @error('keterangan')
                             <script>
                                 $('#addRekening').modal('show');
@@ -109,8 +115,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="{{ route('rekenings.store') }}"
-                    onclick="event.preventDefault();document.getElementById('rekening').submit();">Add</a>
+                <input type="submit" class="btn btn-primary" form="rekening" value="Add" />
             </div>
         </div>
     </div>
@@ -125,7 +130,8 @@
         $('select').on('change', function(e) {
             var optionSelected = $("option:selected", this);
             var valueSelected = this.value;
-            console.log(valueSelected);
+            $('input').prop('disabled', false);
+            $('select').prop('disabled', false);
             if (valueSelected == 1) {
                 $('#nama_bank').prop('disabled', true);
                 $('#nama_bank').prop('required', false);

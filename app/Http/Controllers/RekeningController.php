@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\CategoryMasuk;
 use App\Models\Jenis;
 use App\Models\Rekening;
+use App\Models\Transaction;
 use App\Models\Utang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -70,9 +73,37 @@ class RekeningController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function adjust(Rekening $rekening)
     {
-        //
+        request()->validate([
+            'saldo_sekarang' => ['required', 'numeric', 'unique:rekenings']
+        ]);
+
+        $jumlah = abs($rekening->saldo_sekarang - request()->saldo_sekarang);
+        $jenisuang_id = 0;
+        $category_id = null;
+        $category_masuk_id = null;
+
+        if (request()->saldo_sekarang > $rekening->saldo_sekarang) {
+            $jenisuang_id = 1;
+            $category_masuk_id = CategoryMasuk::firstWhere('nama', 'Penyesuaian')->id;
+        } else {
+            $jenisuang_id = 2;
+            $category_id = Category::firstWhere('nama', 'Penyesuaian')->id;
+        }
+
+        Transaction::create([
+            'user_id' => auth()->id(),
+            'jenisuang_id' => $jenisuang_id,
+            'jumlah' => $jumlah,
+            'rekening_id' => $rekening->id,
+            'keterangan' => 'Penyesuaian',
+            'category_id' => $category_id,
+            'category_masuk_id' => $category_masuk_id
+        ]);
+
+        $rekening->update(request()->all());
+        return back()->with('success', 'Rekening telah disesuaikan');
     }
 
     /**

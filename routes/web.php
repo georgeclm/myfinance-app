@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('transactions', TransactionController::class);
     Route::resource('rekenings', RekeningController::class)->except('destroy');
     Route::get('rekenings/{id}/restore', [RekeningController::class, 'restore'])->name('rekenings.restore');
+    Route::post('rekenings/{rekening}/adjust', [RekeningController::class, 'adjust'])->name('rekenings.adjust');
     Route::get('rekenings/{rekening}/destroy', [RekeningController::class, 'destroy'])->name('rekenings.destroy');
     Route::get('jenisuangs/{jenisuang}', [JenisuangController::class, 'show'])->name('jenisuangs.show');
     Route::resource('utangs', UtangController::class);

@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="user" id="rekening" method="POST" action="{{ route('transactions.store') }}">
+                <form id="transaction" method="POST" action="{{ route('transactions.store') }}">
                     @csrf
                     <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                     <div class="form-group">
@@ -73,10 +73,14 @@
                             </span>
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <input type="number" disabled
-                            class="form-control form-control-user @error('jumlah') is-invalid @enderror" name="jumlah"
-                            value="{{ old('jumlah') }}" required aria-describedby="emailHelp" placeholder="Jumlah">
+                    <div class="mb-3 hide-inputbtns input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Rp.</span>
+                        </div>
+                        <input type="number" disabled data-number-stepfactor="100"
+                            class="currency form-control form-control-user @error('jumlah') is-invalid @enderror"
+                            name="jumlah" value="{{ old('jumlah') }}" required aria-describedby="emailHelp"
+                            placeholder="Jumlah">
                         @error('jumlah')
                             <script>
                                 $('#addRekening').modal('show');
@@ -181,13 +185,10 @@
                         @enderror
                     </div>
                 </form>
-
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary"
-                    onclick="event.preventDefault();document.getElementById('rekening').submit();">Add</a>
-
+                <input type="submit" class="btn btn-primary" form="transaction" value="Add" />
             </div>
         </div>
     </div>

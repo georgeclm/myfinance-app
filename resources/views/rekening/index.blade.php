@@ -62,6 +62,7 @@
                                         @forelse ($jenis->user_rekenings as $rekening)
                                             @include('rekening.edit')
                                             @include('rekening.delete')
+                                            @include('rekening.adjust')
                                             <tr>
                                                 <td>{{ $rekening->nama_akun }}</td>
                                                 @if ($rekening->jenis_id != 1)
@@ -71,17 +72,26 @@
                                                 @if ($rekening->jenis_id == 2)
                                                     <td>Rp. {{ number_format($rekening->saldo_mengendap) }}</td>
                                                 @endif
-                                                <td>{{ $rekening->keterangan }}</td>
-                                                <td> <button data-toggle="modal"
-                                                        data-target="#editmodal-{{ $rekening->id }}" type="button"
-                                                        class="btn btn-info btn-circle">
-                                                        <i class="fas fa-info-circle"></i>
-                                                    </button>
-                                                    <button data-toggle="modal"
-                                                        data-target="#deletemodal-{{ $rekening->id }}" type="button"
-                                                        class="btn btn-danger btn-circle">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
+                                                <td>{{ $rekening->keterangan ?? '-' }}</td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-secondary" type="button"
+                                                            id="dropdownMenuButton" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fa fa-caret-down"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                            <a data-toggle="modal"
+                                                                data-target="#editmodal-{{ $rekening->id }}"
+                                                                class="dropdown-item" href="#">Edit</a>
+                                                            <a data-toggle="modal"
+                                                                data-target="#deletemodal-{{ $rekening->id }}"
+                                                                class="dropdown-item" href="#">Delete</a>
+                                                            <a data-toggle="modal"
+                                                                data-target="#adjustmodal-{{ $rekening->id }}"
+                                                                class="dropdown-item" href="#">Sesuaikan</a>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @empty

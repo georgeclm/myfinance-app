@@ -11,17 +11,20 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="{{ $utang->id }}form" method="POST" action="{{ route('utangs.update', $utang) }}"
-                    class="user">
+                <form id="{{ $utang->id }}form" method="POST" action="{{ route('utangs.update', $utang) }}">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
                         <input type="text" name="nama" value="{{ old('nama') ?? $utang->nama }}" required
                             placeholder="Utang ke Siapa" class="form-control form-control-user">
                     </div>
-                    <div class="form-group">
-                        <input type="number" name="jumlah" disabled value="{{ $utang->jumlah }}"
-                            placeholder="Jumlah Utang" class="form-control form-control-user">
+                    <div class="mb-3 hide-inputbtns input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Rp.</span>
+                        </div>
+                        <input data-number-stepfactor="100" type="number" name="jumlah" disabled
+                            value="{{ $utang->jumlah }}" placeholder="Jumlah Utang"
+                            class="currency form-control form-control-user">
                     </div>
                     <div class="form-group">
                         <input type="text" name="keterangan" value="{{ old('keterangan') ?? $utang->keterangan }}"
@@ -31,9 +34,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary"
-                    onclick="event.preventDefault();document.getElementById('{{ $utang->id }}form').submit();">Edit</a>
-
+                <input type="submit" class="btn btn-primary" form="{{ $utang->id }}form" value="Edit" />
             </div>
         </div>
     </div>

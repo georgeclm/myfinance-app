@@ -115,6 +115,15 @@
     <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('js/demo/chart-pie-demo.js ') }}"></script>
     <script src="{{ asset('js/simple-notify.min.js') }}"></script>
+    <script src="{{ asset('js/polyfiller.js') }}"></script>
+    <script>
+        webshims.setOptions('forms-ext', {
+            replaceUI: 'auto',
+            types: 'number'
+        });
+        webshims.polyfill('forms forms-ext');
+
+    </script>
     @yield('script')
     @if ($errors->any())
         <script>

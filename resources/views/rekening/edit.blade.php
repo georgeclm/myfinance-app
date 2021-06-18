@@ -11,13 +11,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="user" id="{{ $rekening->id }}form" method="POST"
+                <form id="{{ $rekening->id }}form" method="POST"
                     action="{{ route('rekenings.update', $rekening) }}">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
                         <select class="form-control form-control-user form-block" style="padding: 0.5rem !important"
-                            aria-describedby="emailHelp" disabled>
+                            disabled>
                             @foreach ($jeniss as $jenis)
                                 <option value="{{ $jenis->id }}" @if ($jenis->id == $rekening->jenis_id) selected @endif>
                                     {{ $jenis->nama }}</option>
@@ -26,40 +26,45 @@
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user " name="nama_akune"
-                            value="{{ old('nama_akune') ?? $rekening->nama_akun }}" required
-                            aria-describedby="emailHelp" placeholder="Nama Akun">
+                            value="{{ old('nama_akune') ?? $rekening->nama_akun }}" required placeholder="Nama Akun">
                     </div>
                     @if ($rekening->jenis_id != 1)
                         <div class="form-group">
                             <input type="text" class="form-control form-control-user " name="nama_banke"
                                 value="{{ old('nama_banke') ?? $rekening->nama_bank }}" required
-                                aria-describedby="emailHelp" placeholder="Nama Bank">
+                                placeholder="Nama Bank">
                         </div>
                     @endif
-                    <div class="form-group">
-                        <input type="number" class="form-control form-control-user " name="saldo_sekarange"
+                    <div class="mb-3 hide-inputbtns input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Rp.</span>
+                        </div>
+                        <input data-number-stepfactor="100" type="number"
+                            class="currency form-control form-control-user " name="saldo_sekarange"
                             value="{{ old('saldo_sekarange') ?? $rekening->saldo_sekarang }}" disabled
-                            aria-describedby="emailHelp" placeholder="Saldo Sekarang">
+                            placeholder="Saldo Sekarang">
                     </div>
                     @if ($rekening->jenis_id == 2)
-                        <div class="form-group">
-                            <input type="number" class="form-control form-control-user " name="saldo_mengendape"
+                        <div class="mb-3 hide-inputbtns input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Rp.</span>
+                            </div>
+                            <input data-number-stepfactor="100" type="number"
+                                class="currency form-control form-control-user " name="saldo_mengendape"
                                 value="{{ old('saldo_mengendape') ?? $rekening->saldo_mengendap }}"
-                                aria-describedby="emailHelp" placeholder="Saldo Mengendap">
+                                placeholder="Saldo Mengendap">
                         </div>
                     @endif
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user " name="keterangane"
-                            value="{{ old('keterangane') ?? $rekening->keterangan }}" aria-describedby="emailHelp"
-                            placeholder="Keterangan">
+                            value="{{ old('keterangane') ?? $rekening->keterangan }}" placeholder="Keterangan">
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <a class="btn btn-danger" href="{{ route('rekenings.destroy', $rekening) }}">Delete</a>
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary"
-                    onclick="event.preventDefault();document.getElementById('{{ $rekening->id }}form').submit();">Edit</a>
+                <input type="submit" class="btn btn-primary" form="{{ $rekening->id }}form" value="Edit" />
             </div>
         </div>
     </div>
