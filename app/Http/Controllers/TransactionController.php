@@ -37,8 +37,15 @@ class TransactionController extends Controller
                 return $e->id  == 3;
             });
         }
+
         $categories = Category::all();
+        $categories = $categories->reject(function ($e) {
+            return $e->id  == 7;
+        });
         $categorymasuks = CategoryMasuk::all();
+        $categorymasuks = $categorymasuks->reject(function ($e) {
+            return $e->id  == 6;
+        });
         return view('transaction.index', compact('jenisuangs', 'categories', 'jenisuangsSelect', 'categorymasuks'));
     }
 
