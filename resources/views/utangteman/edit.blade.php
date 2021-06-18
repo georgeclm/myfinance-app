@@ -22,9 +22,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Rp.</span>
                         </div>
-                        <input type="number" data-number-stepfactor="100" name="jumlah" disabled
-                            value="{{ $utang->jumlah }}" x placeholder="Jumlah Utang"
-                            class="currency form-control form-control-user">
+                        <input type="number" data-number-stepfactor="100" disabled value="{{ $utang->jumlah }}" x
+                            placeholder="Jumlah Utang" class="currency form-control form-control-user">
                     </div>
                     <div class="form-group">
                         <input type="text" name="keterangan" value="{{ old('keterangan') ?? $utang->keterangan }}" x

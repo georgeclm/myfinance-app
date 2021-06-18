@@ -32,7 +32,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <input type="text"
+                        <input type="text" id="nama-akun"
                             class="form-control form-control-user @error('nama_akun') is-invalid @enderror"
                             name="nama_akun" value="{{ old('nama_akun') }}" required placeholder="Nama Akun" disabled>
                         @error('nama_akun')
@@ -67,7 +67,7 @@
                         <input type="number" data-number-stepfactor="100"
                             class="form-control form-control-user @error('saldo_sekarang') is-invalid @enderror currency"
                             name="saldo_sekarang" value="{{ old('saldo_sekarang') }}" required disabled
-                            placeholder="Saldo Sekarang">
+                            id="saldo_sekarang" placeholder="Saldo Sekarang">
                         @error('saldo_sekarang') .
                             <script>
                                 $('#addRekening').modal('show');
@@ -84,8 +84,8 @@
                         </div>
                         <input type="number" data-number-stepfactor="100"
                             class="currency form-control form-control-user @error('saldo_mengendap') is-invalid @enderror"
-                            name="saldo_mengendap" value="{{ old('saldo_mengendap') }}" aria-describedby="emailHelp"
-                            id="saldo_mengendap" placeholder="Saldo Mengendap" disabled>
+                            name="saldo_mengendap" value="{{ old('saldo_mengendap') }}" id="saldo_mengendap"
+                            placeholder="Saldo Mengendap" disabled>
                         @error('saldo_mengendap')
                             <script>
                                 $('#addRekening').modal('show');
@@ -99,7 +99,7 @@
                     <div class="form-group">
                         <input type="text"
                             class="form-control form-control-user @error('keterangan') is-invalid @enderror"
-                            name="keterangan" value="{{ old('keterangan') }}" aria-describedby="emailHelp"
+                            name="keterangan" value="{{ old('keterangan') }}" id="keterangan"
                             placeholder="Keterangan" disabled>
                         @error('keterangan')
                             <script>
@@ -130,8 +130,11 @@
         $('select').on('change', function(e) {
             var optionSelected = $("option:selected", this);
             var valueSelected = this.value;
-            $('input').prop('disabled', false);
-            $('select').prop('disabled', false);
+            $('#nama-akun').prop('disabled', false);
+            $('#nama-bank').prop('disabled', false);
+            $('#saldo_mengendap').prop('disabled', false);
+            $('#saldo_sekarang').prop('disabled', false);
+            $('#keterangan').prop('disabled', false);
             if (valueSelected == 1) {
                 $('#nama_bank').prop('disabled', true);
                 $('#nama_bank').prop('required', false);

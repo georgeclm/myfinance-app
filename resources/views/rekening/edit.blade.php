@@ -40,7 +40,7 @@
                             <span class="input-group-text">Rp.</span>
                         </div>
                         <input data-number-stepfactor="100" type="number"
-                            class="currency form-control form-control-user " name="saldo_sekarange"
+                            class="currency form-control form-control-user "
                             value="{{ old('saldo_sekarange') ?? $rekening->saldo_sekarang }}" disabled
                             placeholder="Saldo Sekarang">
                     </div>
