@@ -117,13 +117,6 @@
     <script src="{{ asset('js/simple-notify.min.js') }}"></script>
     <script src="{{ asset('js/polyfiller.js') }}"></script>
     <script>
-        $('.table-responsive').on('show.bs.dropdown', function() {
-            $('.table-responsive').css("overflow", "inherit");
-        });
-
-        $('.table-responsive').on('hide.bs.dropdown', function() {
-            $('.table-responsive').css("overflow", "auto");
-        })
         webshims.setOptions('forms-ext', {
             replaceUI: 'auto',
             types: 'number'
