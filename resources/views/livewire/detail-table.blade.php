@@ -1,5 +1,5 @@
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
+<div class="bg-gray-100 border-0 card shadow mb-4">
+    <div class="bg-gray-100 border-0 card-header py-3">
         <div class="row align-items-baseline">
             <div class="col-md-5">
                 <h6 class="font-weight-bold text-primary">{{ $jenisuang->nama }}</h6>
@@ -43,44 +43,43 @@
         <div class="table-responsive">
             <div class="wrap-table100 " id="thetable">
                 <div class="table">
-
                     @forelse ($transactions as $transaction)
                         <div class="row">
                             <div class="cell {{ $jenisuang->textColor() }}" data-title="Jumlah">
                                 Rp. {{ number_format($transaction->jumlah) }}
                             </div>
                             @if ($transaction->utang_id)
-                                <div class="cell" data-title="Nama Utang">
+                                <div class="cell text-white" data-title="Nama Utang">
                                     {{ $transaction->utang->keterangan ?? $transaction->utang->nama }}
                                 </div>
                             @endif
                             @if ($transaction->utangteman_id)
-                                <div class="cell" data-title="Nama Utang">
+                                <div class="cell text-white" data-title="Nama Utang">
                                     {{ $transaction->utangteman->keterangan ?? $transaction->utangteman->nama }}
                                 </div>
                             @endif
                             @if ($jenisuang->id == 1)
-                                <div class="cell" data-title="Kategori">
+                                <div class="cell text-white" data-title="Kategori">
                                     {{ $transaction->category_masuk->nama }}
                                 </div>
                             @endif
                             @if ($jenisuang->id == 2)
-                                <div class="cell" data-title="Kategori">
+                                <div class="cell text-white" data-title="Kategori">
                                     {{ $transaction->category->nama }}
                                 </div>
                             @endif
-                            <div class="cell" data-title="Akun">
+                            <div class="cell text-white" data-title="Akun">
                                 {{ $transaction->rekening->nama_akun }}
                             </div>
                             @if ($jenisuang->id == 3)
-                                <div class="cell" data-title="Akun Tujuan">
+                                <div class="cell text-white" data-title="Akun Tujuan">
                                     {{ $transaction->rekening_tujuan->nama_akun }}
                                 </div>
                             @endif
-                            <div class="cell" data-title="Keterangan">
+                            <div class="cell text-white" data-title="Keterangan">
                                 {{ $transaction->keterangan }}
                             </div>
-                            <div class="cell" data-title="Tanggal">
+                            <div class="cell text-white" data-title="Tanggal">
                                 {{ $transaction->created_at->format('l j F Y') }}
                             </div>
                         </div>
@@ -88,7 +87,7 @@
                     @endforelse
                 </div>
             </div>
-            <table class="table table-bordered" width="100%" cellspacing="0" id="bigtable">
+            <table class="table table-bordered table-dark" width="100%" cellspacing="0" id="bigtable">
                 <thead>
                     <tr class="{{ $jenisuang->color() }} text-light">
                         <th>Jumlah</th>

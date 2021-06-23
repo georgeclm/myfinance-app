@@ -1,15 +1,15 @@
 <div class="modal fade" id="adjustmodal-{{ $rekening->id }}" role="dialog" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">
+        <div class="bg-dark modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title text-white">
                     Sesuaikan Nominal
                 </h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body text-white">
                 <b> Saldo Anda saat ini</b>
                 <br>
                 Saldo {{ $rekening->nama }} : Rp. {{ number_format($rekening->saldo_sekarang) }}
@@ -29,7 +29,7 @@
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer border-0">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <input type="submit" class="btn btn-primary" form="{{ $rekening->id }}adjustform" value="Save" />
             </div>

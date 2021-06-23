@@ -21,6 +21,22 @@
     <link rel="stylesheet" href="{{ asset('css/simple-notify.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
     @livewireStyles
+    <style>
+        input[type="text"][disabled],
+        select[disabled],
+        select option[disabled] {
+            background-color: rgb(61, 61, 61) !important;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select,
+        select option {
+            background-color: rgb(33, 33, 33) !important;
+        }
+
+    </style>
     <!-- Styles -->
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 </head>

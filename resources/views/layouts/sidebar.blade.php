@@ -1,5 +1,5 @@
             <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+            <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion toggled" id="accordionSidebar">
                 <!-- Sidebar - Brand -->
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
                     <div class="sidebar-brand-icon">
@@ -46,28 +46,28 @@
                         uri, ['transactions', 'jenisuangs/{jenisuang}'])) show @endif"
                         aria-labelledby="headingUtilities"
                         data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
+                        <div class="bg-dark border-0  py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Jenis Uang:</h6>
-                            <a class="collapse-item @if (Route::current()->uri ==
+                            <a class="collapse-item text-white @if (Route::current()->uri ==
                                 'transactions') active @endif"
                                 href="{{ route('transactions.index') }}">All</a>
-                            <a class="collapse-item @if (strrchr(url()->current(), 'o') ==
-                                'om/jenisuangs/1') active @endif"
+                            <a class="collapse-item text-white @if (strrchr(url()->current(), 'o')
+                                == 'om/jenisuangs/1') active @endif"
                                 href="{{ route('jenisuangs.show', 1) }}">Uang
                                 Masuk</a>
-                            <a class="collapse-item @if (strrchr(url()->current(), 'o') ==
-                                'om/jenisuangs/2') active @endif"
+                            <a class="collapse-item text-white @if (strrchr(url()->current(), 'o')
+                                == 'om/jenisuangs/2') active @endif"
                                 href="{{ route('jenisuangs.show', 2) }}">Uang
                                 Keluar</a>
-                            <a class="collapse-item @if (strrchr(url()->current(), 'o') ==
-                                'om/jenisuangs/3') active @endif"
+                            <a class="collapse-item text-white @if (strrchr(url()->current(), 'o')
+                                == 'om/jenisuangs/3') active @endif"
                                 href="{{ route('jenisuangs.show', 3) }}">Transfer</a>
-                            <a class="collapse-item @if (strrchr(url()->current(), 'o') ==
-                                'om/jenisuangs/4') active @endif"
+                            <a class="collapse-item text-white @if (strrchr(url()->current(), 'o')
+                                == 'om/jenisuangs/4') active @endif"
                                 href="{{ route('jenisuangs.show', 4) }}">Bayar
                                 Utang</a>
-                            <a class="collapse-item @if (strrchr(url()->current(), 'o') ==
-                                'om/jenisuangs/5') active @endif"
+                            <a class="collapse-item text-white @if (strrchr(url()->current(), 'o')
+                                == 'om/jenisuangs/5') active @endif"
                                 href="{{ route('jenisuangs.show', 5) }}">Teman
                                 Bayar Utang</a>
                         </div>
@@ -179,7 +179,7 @@
                 <div id="content">
 
                     <!-- Topbar -->
-                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <nav class="navbar navbar-expand navbar-light bg-dark topbar static-top shadow">
 
                         <!-- Sidebar Toggle (Topbar) -->
                         <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -355,13 +355,13 @@
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    <span class="mr-2 d-none d-lg-inline text-white small">
                                         {{ Auth::user()->name }}
                                     </span>
                                     <img class="img-profile rounded-circle" src="{{ asset('img/no-image.png') }}">
                                 </a>
                                 <!-- Dropdown - User Information -->
-                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                <div class=" bg-dark border-0 dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                     aria-labelledby="userDropdown">
                                     {{-- <a class="dropdown-item" href="#">
                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -371,12 +371,14 @@
                                         <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Settings
                                     </a> --}}
-                                    <a class="dropdown-item" href="http://web.epafroditusgeorge.com" target="_blank">
+                                    <a class="dropdown-item text-white" href="http://web.epafroditusgeorge.com"
+                                        target="_blank">
                                         <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                         My Website
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <a class="dropdown-item text-white" href="#" data-toggle="modal"
+                                        data-target="#logoutModal">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Logout
                                     </a>
@@ -390,16 +392,18 @@
                     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <div class="bg-dark modal-content">
+                                <div class="border-0 modal-header">
+                                    <h5 class="modal-title text-white">Ready to Leave?</h5>
+                                    <button class="close text-white" type="button" data-dismiss="modal"
+                                        aria-label="Close">
                                         <span aria-hidden="true">×</span>
                                     </button>
                                 </div>
-                                <div class="modal-body">Select "Logout" below if you are ready to end your current
+                                <div class="modal-body text-white">Select "Logout" below if you are ready to end your
+                                    current
                                     session.</div>
-                                <div class="modal-footer">
+                                <div class="modal-footer border-0">
                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                     <a class="btn btn-primary" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
@@ -411,3 +415,4 @@
                             </div>
                         </div>
                     </div>
+                    <hr class="bg-gray-100 sidebar-divider my-0">

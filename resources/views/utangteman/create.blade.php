@@ -1,10 +1,10 @@
 <div class="modal fade" id="addRekening" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Utang Teman Baru</h5>
-                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+        <div class="bg-dark  modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title text-white">Utang Teman Baru</h5>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close text-white">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
@@ -20,7 +20,6 @@
                         @error('nama')
                             <script>
                                 $('#addRekening').modal('show');
-
                             </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -39,7 +38,6 @@
                         @error('rekening_id')
                             <script>
                                 $('#addRekening').modal('show');
-
                             </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -57,7 +55,6 @@
                         @error('jumlah')
                             <script>
                                 $('#addRekening').modal('show');
-
                             </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -70,7 +67,6 @@
                         @error('keterangan')
                             <script>
                                 $('#addRekening').modal('show');
-
                             </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -79,7 +75,7 @@
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer border-0">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <input type="submit" class="btn btn-primary" form="rekening" value="Add" />
             </div>

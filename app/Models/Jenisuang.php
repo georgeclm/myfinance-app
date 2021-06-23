@@ -19,6 +19,14 @@ class Jenisuang extends Model
             return $this->hasMany(Transaction::class)->whereMonth('created_at', now()->subMonth()->month)->where('user_id', auth()->id())->latest();
         } else if (request()->has('q') && request()->q == 2) {
             return $this->hasMany(Transaction::class)->where('user_id', auth()->id())->latest();
+        } else if (session('q')) {
+            if (session('q') == 1) {
+                return $this->hasMany(Transaction::class)->whereMonth('created_at', now()->subMonth()->month)->where('user_id', auth()->id())->latest();
+            } else if (session('q') == 2) {
+                return $this->hasMany(Transaction::class)->where('user_id', auth()->id())->latest();
+            } else {
+                return $this->hasMany(Transaction::class)->whereMonth('created_at', now()->month)->where('user_id', auth()->id())->latest();
+            }
         } else {
             return $this->hasMany(Transaction::class)->whereMonth('created_at', now()->month)->where('user_id', auth()->id())->latest();
         }

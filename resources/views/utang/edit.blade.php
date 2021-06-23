@@ -1,12 +1,12 @@
 <div class="modal fade" id="editmodal-{{ $utang->id }}" role="dialog" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">
+        <div class="bg-dark modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title text-white">
                     Update
                     Utang
                 </h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
@@ -31,7 +31,7 @@
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer border-0">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <input type="submit" class="btn btn-primary" form="{{ $utang->id }}form" value="Edit" />
             </div>

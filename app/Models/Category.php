@@ -20,7 +20,7 @@ class Category extends Model
             '2' => 'bg-warning',
             '3' => 'bg-info',
             '4' => 'bg-primary',
-            '5' => 'bg-secondary',
+            '5' => 'bg-primary',
             '6' => 'bg-danger'
         ][$this->id] ?? 'bg-info';
     }

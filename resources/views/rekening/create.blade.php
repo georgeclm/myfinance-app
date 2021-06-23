@@ -1,10 +1,10 @@
 <div class="modal fade" id="addRekening" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New Rekening</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+        <div class="bg-dark modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title text-white" id="exampleModalLabel">New Rekening</h5>
+                <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
@@ -24,7 +24,6 @@
                         @error('jenis_id')
                             <script>
                                 $('#addRekening').modal('show');
-
                             </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -38,7 +37,6 @@
                         @error('nama_akun')
                             <script>
                                 $('#addRekening').modal('show');
-
                             </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -53,7 +51,6 @@
                         @error('nama_bank')
                             <script>
                                 $('#addRekening').modal('show');
-
                             </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -71,7 +68,6 @@
                         @error('saldo_sekarang') .
                             <script>
                                 $('#addRekening').modal('show');
-
                             </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -89,7 +85,6 @@
                         @error('saldo_mengendap')
                             <script>
                                 $('#addRekening').modal('show');
-
                             </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -104,7 +99,6 @@
                         @error('keterangan')
                             <script>
                                 $('#addRekening').modal('show');
-
                             </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -113,7 +107,7 @@
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer border-0">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <input type="submit" class="btn btn-primary" form="rekening" value="Add" />
             </div>
@@ -146,11 +140,12 @@
                 $('#saldo_mengendap').prop('disabled', false);
                 $('#saldo_mengendap').prop('required', true);
             } else {
+                $('#nama_bank').prop('disabled', false);
+                $('#nama_bank').prop('required', true);
                 $('#saldo_mengendap').prop('disabled', true);
                 $('#saldo_mengendap').prop('required', false);
             }
         });
-
     </script>
 
 @endsection
