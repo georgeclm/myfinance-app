@@ -5,21 +5,11 @@
         <!-- Page Wrapper -->
         <div id="wrapper">
             @include('layouts.sidebar')
-            <!-- Begin Page Content -->
             <div class="container-fluid">
-                <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-2 text-gray-800">Catatan Keuangan</h1>
-                    @if (!auth()->user()->rekenings->isEmpty())
-                        <a href="#" data-toggle="modal" data-target="#addRekening"
-                            class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Tambah Transaksi</a>
-                    @endif
+                    <h1 class="h3 mb-2 text-gray-800">{{ $rekening->nama_akun }}</h1>
                 </div>
                 <div class="row">
-                    @include('layouts.partials.income')
-                    @include('layouts.partials.spending')
-                    @include('layouts.partials.balance')
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card shadow h-100 py-2 border-bottom-info">
                             <div class="h3 fw-bold text-info card-body">
@@ -28,13 +18,12 @@
                                         <option value="0" selected>This Month</option>
                                         <option value="1" @if (request()->q == 1) selected @endif>Previous Month</option>
                                         <option value="2" @if (request()->q == 2) selected @endif>All</option>
+
                                     </select>
                                 </form>
-                                {{-- <b>Bulan {{ now()->format('F') }}</b> --}}
                             </div>
                         </div>
                     </div>
-                    @include('layouts.partials.newaccount')
                 </div>
                 @foreach ($jenisuangs as $jenisuang)
                     <!-- DataTales Example -->
@@ -75,7 +64,7 @@
                                                 Tanggal
                                             </div>
                                         </div>
-                                        @forelse ($jenisuang->user_transactions->take(5) as $transaction)
+                                        @forelse ($jenisuang->user_transactions->where('rekening_id',$rekening->id) as $transaction)
                                             <div class="row">
                                                 <div class="cell {{ $jenisuang->textColor() }}" data-title="Jumlah">
                                                     Rp. {{ number_format($transaction->jumlah) }}
@@ -140,7 +129,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($jenisuang->user_transactions->take(5) as $transaction)
+                                        @forelse ($jenisuang->user_transactions->where('rekening_id',$rekening->id) as $transaction)
                                             <tr>
                                                 <td>Rp. {{ number_format($transaction->jumlah) }}</td>
                                                 @if ($transaction->utang_id)
@@ -169,37 +158,20 @@
                                                 <td colspan="5" class="text-center">Transaksi Kosong</td>
                                             </tr>
                                         @endforelse
-
                                     </tbody>
                                 </table>
-                                @if ($jenisuang->user_transactions->count() > 5)
-                                    @if (request()->has('q'))
-                                        <div class="text-end mt-3"><a
-                                                href="{{ route('jenisuangs.show', ['q' => request()->q, $jenisuang]) }}">Show
-                                                All</a></div>
-                                    @else
-                                        <div class="text-end mt-3"><a
-                                                href="{{ route('jenisuangs.show', $jenisuang) }}">Show
-                                                All</a></div>
-
-                                    @endif
-                                @endif
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
             <!-- /.container-fluid -->
-
         </div>
         <!-- End of Main Content -->
         @include('layouts.footer')
     </div>
-
-    @include('transaction.create')
 @endsection
 @section('script')
     <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
-
 @endsection

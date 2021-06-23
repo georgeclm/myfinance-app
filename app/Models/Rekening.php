@@ -21,6 +21,6 @@ class Rekening extends Model
     }
     public function transactions()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasMany(Transaction::class)->where('user_id', auth()->id());
     }
 }

@@ -90,6 +90,9 @@
                                                             <a data-toggle="modal"
                                                                 data-target="#adjustmodal-{{ $rekening->id }}"
                                                                 class="dropdown-item" href="#">Sesuaikan</a>
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('rekenings.show', $rekening) }}">Mutasi
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </td>

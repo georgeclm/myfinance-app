@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\CategoryMasuk;
 use App\Models\Jenis;
+use App\Models\Jenisuang;
 use App\Models\Rekening;
 use App\Models\Transaction;
 use App\Models\Utang;
@@ -62,9 +63,11 @@ class RekeningController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Rekening $rekening)
     {
-        //
+        // dd($rekening->transactions);
+        $jenisuangs = Jenisuang::with('user_transactions')->get();
+        return view('rekening.detail', compact('rekening', 'jenisuangs'));
     }
 
     /**
