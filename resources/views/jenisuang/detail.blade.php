@@ -31,13 +31,7 @@
                             </div>
                         </div>
                         @if (auth()->user()->rekenings->isEmpty())
-                            <div class="col-lg-6">
-                                <div class="bg-gray-100 border-0 card mb-4 py-3 border-left-success">
-                                    <div class="card-body">
-                                        Buat Rekening Dulu Sebelum Mencatat Keuangan
-                                    </div>
-                                </div>
-                            </div>
+                            @include('layouts.partials.newaccount')
                         @endif
                     </div>
                     <livewire:detail-table :jenisuang="$jenisuang" />

@@ -85,12 +85,14 @@
                         <span>Utang Teman Anda</span>
                     </a>
                 </li>
+                @if(auth()->id() == 2)
                 <li class="nav-item @if (Route::current()->uri == 'settings') active @endif">
                     <a class="nav-link" href="{{ route('settings.index') }}">
                         <i class="fas fa-fw fa-wrench"></i>
                         <span>Settings</span>
                     </a>
                 </li>
+                @endif
                 {{-- <!-- Nav Item - Utilities Collapse Menu -->
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -358,7 +360,7 @@
                                     <span class="mr-2 d-none d-lg-inline text-white small">
                                         {{ Auth::user()->name }}
                                     </span>
-                                    <img class="img-profile rounded-circle" src="{{ asset('img/no-image.png') }}">
+                                    {{-- <img class="img-profile rounded-circle" src="{{ asset('img/no-image.png') }}"> --}}
                                 </a>
                                 <!-- Dropdown - User Information -->
                                 <div class=" bg-dark border-0 dropdown-menu dropdown-menu-right shadow animated--grow-in"

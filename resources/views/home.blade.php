@@ -96,13 +96,7 @@
                                 </div>
                             </div>
                         @else
-                            <div class="col-lg-6">
-                                <div class="bg-gray-100 card mb-4 py-3 border-left-success">
-                                    <div class="card-body">
-                                        Mulai Buat Rekening Lalu Coba Transaksi
-                                    </div>
-                                </div>
-                            </div>
+                            @include('layouts.partials.no_data', ['message' => 'Mulai Buat Rekening Lalu Coba Transaksi'])
                         @endif
                         @if (auth()->user()->uangmasuk() != 0)
                             <!-- Content Column -->

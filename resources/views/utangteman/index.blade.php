@@ -40,13 +40,7 @@
                                 </div>
                             </div>
                         @else
-                            <div class="col-lg-6">
-                                <div class="bg-gray-100 border-0 card mb-4 py-3 border-left-success">
-                                    <div class="card-body">
-                                        Tumben Teman Anda Tidak Ngutang
-                                    </div>
-                                </div>
-                            </div>
+                            @include('layouts.partials.no_data', ['message' => 'Tumben Teman Anda Tidak Ngutang'])
                         @endif
                         @include('layouts.partials.newaccount')
 

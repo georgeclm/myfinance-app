@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
+
+    public function __construct()
+    {
+        if (auth()->id() != 2) {
+            abort(403);
+        }
+    }
     /**
      * Display a listing of the resource.
      *
