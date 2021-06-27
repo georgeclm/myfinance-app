@@ -15,17 +15,13 @@
                     <div class="form-group">
                         <select
                             class="form-control form-control-user form-block @error('jenisuang_id') is-invalid @enderror"
-                            name="jenisuang_id" style="padding: 0.5rem !important" required id="jenisuang"
-                            aria-describedby="emailHelp">
+                            name="jenisuang_id" style="padding: 0.5rem !important" required id="jenisuang">
                             <option value="" selected disabled hidden>Pilih Jenis</option>
                             @foreach ($jenisuangsSelect as $jenis)
                                 <option value="{{ $jenis->id }}">{{ $jenis->nama }}</option>
                             @endforeach
                         </select>
                         @error('jenisuang_id')
-                            <script>
-                                $('#addRekening').modal('show');
-                            </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -34,7 +30,7 @@
                     <div class="form-group" id="utang">
                         <select disabled
                             class="form-control form-control-user form-block @error('utang_id') is-invalid @enderror"
-                            name="utang_id" style="padding: 0.5rem !important" required" aria-describedby="emailHelp">
+                            name="utang_id" style="padding: 0.5rem !important" required>
                             <option value="" selected disabled hidden>Utang Siapa</option>
                             @foreach (auth()->user()->utangs as $utang)
                                 <option value="{{ $utang->id }}">
@@ -42,9 +38,6 @@
                             @endforeach
                         </select>
                         @error('utang_id')
-                            <script>
-                                $('#addRekening').modal('show');
-                            </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -53,8 +46,7 @@
                     <div class="form-group" id="utangteman">
                         <select disabled
                             class="form-control form-control-user form-block @error('utang_id') is-invalid @enderror"
-                            name="utangteman_id" style="padding: 0.5rem !important" required"
-                            aria-describedby="emailHelp">
+                            name="utangteman_id" style="padding: 0.5rem !important" required>
                             <option selected disabled hidden>Utang Siapa</option>
                             @foreach (auth()->user()->utangtemans as $utang)
                                 <option value="{{ $utang->id }}">
@@ -62,9 +54,6 @@
                             @endforeach
                         </select>
                         @error('utang_id')
-                            <script>
-                                $('#addRekening').modal('show');
-                            </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -79,9 +68,6 @@
                             name="jumlah" value="{{ old('jumlah') }}" required aria-describedby="emailHelp"
                             placeholder="Jumlah">
                         @error('jumlah')
-                            <script>
-                                $('#addRekening').modal('show');
-                            </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -97,9 +83,6 @@
                             @endforeach
                         </select>
                         @error('category_id')
-                            <script>
-                                $('#addRekening').modal('show');
-                            </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -115,9 +98,6 @@
                             @endforeach
                         </select>
                         @error('category_masuk_id')
-                            <script>
-                                $('#addRekening').modal('show');
-                            </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -126,16 +106,13 @@
                     <div class="form-group">
                         <select disabled
                             class="form-control form-control-user form-block @error('rekening_id') is-invalid @enderror"
-                            name="rekening_id" style="padding: 0.5rem !important" required aria-describedby="emailHelp">
+                            name="rekening_id" style="padding: 0.5rem !important" required>
                             <option value="" selected disabled hidden>Pilih Akun</option>
                             @foreach (auth()->user()->rekenings as $rekening)
                                 <option value="{{ $rekening->id }}">{{ $rekening->nama_akun }}</option>
                             @endforeach
                         </select>
                         @error('rekening_id')
-                            <script>
-                                $('#addRekening').modal('show');
-                            </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -144,17 +121,13 @@
                     <div class="form-group" id="transfer">
                         <select disabled
                             class="form-control form-control-user form-block @error('rekening_id2') is-invalid @enderror"
-                            name="rekening_id2" style="padding: 0.5rem !important" required"
-                            aria-describedby="emailHelp">
+                            name="rekening_id2" style="padding: 0.5rem !important" required>
                             <option value="" selected disabled hidden>Pilih Akun Tujuan</option>
                             @foreach (auth()->user()->rekenings as $rekening)
                                 <option value="{{ $rekening->id }}">{{ $rekening->nama_akun }}</option>
                             @endforeach
                         </select>
                         @error('rekening_id2')
-                            <script>
-                                $('#addRekening').modal('show');
-                            </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -164,12 +137,8 @@
                     <div class="form-group">
                         <input type="text" disabled
                             class="form-control form-control-user @error('keterangan') is-invalid @enderror"
-                            name="keterangan" value="{{ old('keterangan') }}" aria-describedby="emailHelp"
-                            placeholder="Keterangan">
+                            name="keterangan" value="{{ old('keterangan') }}" placeholder="Keterangan">
                         @error('keterangan')
-                            <script>
-                                $('#addRekening').modal('show');
-                            </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -185,7 +154,11 @@
     </div>
 </div>
 @section('script')
-
+    @if ($errors->any())
+        <script>
+            $('#addRekening').modal('show');
+        </script>
+    @endif
     <script>
         $('#jenisuang').on('change', function(e) {
             var optionSelected = $("option:selected", this);
