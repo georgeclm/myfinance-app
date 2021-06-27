@@ -16,20 +16,26 @@ class Jenisuang extends Model
     public function user_transactions($q = null)
     {
         if (request()->has('q') && request()->q == 1) {
-            return $this->hasMany(Transaction::class)->whereMonth('created_at', now()->subMonth()->month)->where('user_id', auth()->id())->latest();
+            $return =  $this->hasMany(Transaction::class)->whereMonth('created_at', now()->subMonth()->month)->where('user_id', auth()->id());
         } else if (request()->has('q') && request()->q == 2) {
-            return $this->hasMany(Transaction::class)->where('user_id', auth()->id())->latest();
+            $return =  $this->hasMany(Transaction::class)->where('user_id', auth()->id());
         } else if (session('q')) {
             if (session('q') == 1) {
-                return $this->hasMany(Transaction::class)->whereMonth('created_at', now()->subMonth()->month)->where('user_id', auth()->id())->latest();
+                $return =  $this->hasMany(Transaction::class)->whereMonth('created_at', now()->subMonth()->month)->where('user_id', auth()->id());
             } else if (session('q') == 2) {
-                return $this->hasMany(Transaction::class)->where('user_id', auth()->id())->latest();
+                $return =  $this->hasMany(Transaction::class)->where('user_id', auth()->id());
             } else {
-                return $this->hasMany(Transaction::class)->whereMonth('created_at', now()->month)->where('user_id', auth()->id())->latest();
+                $return =  $this->hasMany(Transaction::class)->whereMonth('created_at', now()->month)->where('user_id', auth()->id());
             }
         } else {
-            return $this->hasMany(Transaction::class)->whereMonth('created_at', now()->month)->where('user_id', auth()->id())->latest();
+            $return =  $this->hasMany(Transaction::class)->whereMonth('created_at', now()->month)->where('user_id', auth()->id());
         }
+        if (request()->has('daterange')) {
+            $date_range1 = explode(" / ", request()->daterange);
+            $return = $return->where('created_at', '>=', $date_range1[0]);
+            $return = $return->where('created_at', '<=', $date_range1[1]);
+        }
+        return $return->latest();
     }
 
     public function color()

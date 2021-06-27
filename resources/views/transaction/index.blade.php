@@ -37,13 +37,26 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-xl-12 col-md-12 mb-4">
+                            <div class="bg-gray-100 border-0 card shadow h-100 py-2 border-bottom-warning">
+                                <div class="h3 fw-bold text-info card-body text-center">
+                                    <form autocomplete="off" action="" method="get" id="date_submit">
+                                        <input class="form-control" type="text" name="daterange"
+                                            value="{{ request()->daterange ?? 'This Month' }}" />
+                                        <input type="submit"
+                                            class="mt-2 d-sm-inline-block btn btn-dark btn-secondary shadow-sm"
+                                            value="Custom" />
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                         @include('layouts.partials.newaccount')
                     </div>
                     @foreach ($jenisuangs as $jenisuang)
                         <!-- DataTales Example -->
                         <div class="bg-gray-100 border-0 card shadow mb-4">
                             <div class="bg-gray-100 border-0 card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">{{ $jenisuang->nama }}</h6>
+                                <h6 class="font-weight-bold text-primary">{{ $jenisuang->nama }}</h6>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -201,9 +214,4 @@
     </div>
 
     @include('transaction.create')
-@endsection
-@section('script')
-    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
-
 @endsection
