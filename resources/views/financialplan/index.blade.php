@@ -1,0 +1,162 @@
+@extends('layouts.app')
+
+@section('content')
+    <div id="page-top">
+        <!-- Page Wrapper -->
+        <div id="wrapper">
+            @include('layouts.sidebar')
+            <div class="bg-black">
+                <br>
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-2 text-white">Rencana Keuangan</h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <!-- Dropdown Card Example -->
+                            <div class="bg-dark border-0 card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="bg-gray-100 border-0 card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-success">Tambah</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <ul class="list-group">
+                                        <a href="#" data-toggle="modal" data-target="#danaDarurat"
+                                            class="list-group-item list-group-item-action bg-black  d-flex align-items-center">
+                                            <div class="w-100 text-white">
+                                                <i class="fas fa-exclamation-circle text-warning mx-2"></i>Dana Darurat
+                                            </div>
+                                        </a>
+                                        <a href="#" data-toggle="modal" data-target="#DanaMembeliBarang"
+                                            class="list-group-item list-group-item-action bg-black d-flex align-items-center">
+                                            <div class="w-100 text-white">
+                                                <i class="fas fa-shopping-basket text-warning mx-2"></i>Dana Membeli
+                                                Barang
+                                            </div>
+                                        </a>
+                                        {{-- <a href="#"
+                                            class="list-group-item list-group-item-action bg-black d-flex align-items-center">
+                                            <div class="w-100 text-white">
+                                                <i class="fas fa-umbrella-beach text-success mx-2"></i>Dana Liburan
+                                            </div>
+                                        </a> --}}
+                                        <a href="#" data-toggle="modal" data-target="#DanaMenabung"
+                                            class="list-group-item list-group-item-action bg-black d-flex align-items-center">
+                                            <div class="w-100 text-white">
+                                                <i class="fas fa-piggy-bank text-primary mx-2"></i>Dana Menabung
+                                                Rutin
+                                            </div>
+                                        </a>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Project Card Example -->
+                            <div class="bg-dark card shadow mb-4 border-0">
+                                <div class="bg-gray-100 card-header py-3 border-0">
+                                    <h6 class="m-0 font-weight-bold text-primary">Terwujud</h6>
+                                </div>
+                                <div class="card-body">
+                                    @foreach (auth()->user()->financialplans as $financialplan)
+                                        @if ($financialplan->jumlah >= $financialplan->target)
+                                            <div class="bg-success p-4 rounded mb-3">
+                                                <div class="text-center font-weight-bold text-white">
+                                                    {{ $financialplan->produk }}
+                                                </div>
+                                                <div class="progress mb-1">
+                                                    <div role="progressbar" style="width: {{ $financialplan->persen() }}%"
+                                                        aria-valuenow="{{ $financialplan->persen() }}" aria-valuemin="0"
+                                                        aria-valuemax="100" class="progress-bar bg-primary">
+                                                    </div>
+                                                </div>
+                                                <h4 class="small font-weight-bold text-white">Rp.
+                                                    {{ number_format($financialplan->jumlah) }}<span
+                                                        class="float-right">Rp.
+                                                        {{ number_format($financialplan->target) }}</span>
+                                                </h4>
+                                                <div class="text-center  font-weight-bold text-white"> Rp.
+                                                    {{ number_format($financialplan->perbulan) }} /Bulan
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6 mb-4">
+                            <!-- Project Card Example -->
+                            <div class="bg-dark card shadow mb-4 border-0">
+                                <div class="bg-gray-100 card-header py-3 border-0">
+                                    <h6 class="m-0 font-weight-bold text-danger">Dalam Proses</h6>
+                                </div>
+                                <div class="card-body">
+                                    @foreach (auth()->user()->financialplans as $financialplan)
+                                        @if ($financialplan->jumlah < $financialplan->target)
+                                            @include('financialplan.delete')
+                                            @include($financialplan->edit())
+                                            <div class="bg-black p-4 rounded mb-3">
+                                                <div class="text-center font-weight-bold text-white">
+                                                    {{ $financialplan->produk }}
+                                                </div>
+                                                <h4 class="small font-weight-bold text-white">{{ $financialplan->nama }}
+                                                    <span class="float-right">
+                                                        <div class="dropdown ml-2">
+                                                            <button class="btn btn-secondary" type="button"
+                                                                id="dropdownMenuButton" data-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false">
+                                                                <i class="fa fa-caret-down"></i>
+                                                            </button>
+                                                            <div class=" bg-dark border-0  dropdown-menu"
+                                                                aria-labelledby="dropdownMenuButton">
+                                                                <a class="dropdown-item text-white"
+                                                                    href="{{ route('investations.index') }}">Investasi</a>
+                                                                <a data-toggle="modal"
+                                                                    data-target="#editmodal-{{ $financialplan->id }}"
+                                                                    class="dropdown-item text-white" href="#">Sesuaikan</a>
+                                                                {{-- <a class="dropdown-item text-white" href="#">Detail
+                                                                </a> --}}
+                                                                {{-- <a data-toggle="modal"
+                                                                    data-target="#deletemodal-{{ $financialplan->id }}"
+                                                                    class="dropdown-item text-white" href="#">Hapus</a> --}}
+                                                            </div>
+                                                        </div>
+                                                    </span>
+                                                </h4>
+                                                <div class="progress mb-1">
+                                                    <div role="progressbar"
+                                                        style="width: {{ $financialplan->persen() }}%"
+                                                        aria-valuenow="{{ $financialplan->persen() }}" aria-valuemin="0"
+                                                        aria-valuemax="100" class="progress-bar bg-primary">
+                                                    </div>
+                                                </div>
+                                                <h4 class="small font-weight-bold text-white">Rp.
+                                                    {{ number_format($financialplan->jumlah) }}<span
+                                                        class="float-right">Rp.
+                                                        {{ number_format($financialplan->target) }}</span>
+                                                </h4>
+                                                <div class="text-center  font-weight-bold text-white"> Rp.
+                                                    {{ number_format($financialplan->perbulan) }} /Bulan
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+                @include('layouts.footer')
+            </div>
+        </div>
+        <!-- End of Main Content -->
+    </div>
+    @include('financialplan.createDanaDarurat')
+    @include('financialplan.createDanaMenabung')
+    @include('financialplan.createDanaMembeliBarang')
+    <!-- End of Page Wrapper -->
+@endsection

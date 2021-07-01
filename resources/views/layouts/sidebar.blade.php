@@ -85,13 +85,25 @@
                         <span>Utang Teman Anda</span>
                     </a>
                 </li>
-                @if(auth()->id() == 2)
-                <li class="nav-item @if (Route::current()->uri == 'settings') active @endif">
-                    <a class="nav-link" href="{{ route('settings.index') }}">
-                        <i class="fas fa-fw fa-wrench"></i>
-                        <span>Settings</span>
+                <li class="nav-item @if (Route::current()->uri == 'financialplans') active @endif">
+                    <a class="nav-link" href="{{ route('financialplans.index') }}">
+                        <i class="fas fa-fw fa-clipboard-list"></i>
+                        <span>Rencana Keuangan</span>
                     </a>
                 </li>
+                <li class="nav-item @if (Route::current()->uri == 'investations') active @endif">
+                    <a class="nav-link" href="{{ route('investations.index') }}">
+                        <i class="fas fa-fw fa-chart-line"></i>
+                        <span>Investasi</span>
+                    </a>
+                </li>
+                @if (auth()->id() == 2)
+                    <li class="nav-item @if (Route::current()->uri == 'settings') active @endif">
+                        <a class="nav-link" href="{{ route('settings.index') }}">
+                            <i class="fas fa-fw fa-wrench"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
                 @endif
                 {{-- <!-- Nav Item - Utilities Collapse Menu -->
                 <li class="nav-item">

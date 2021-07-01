@@ -2,7 +2,7 @@
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="bg-dark modal-content">
-            <div class="modal-header border-0">
+            <div class="modal-header bg-gray-100 border-0">
                 <h5 class="modal-title text-white" id="exampleModalLabel">New Rekening</h5>
                 <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>

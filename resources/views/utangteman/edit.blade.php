@@ -1,7 +1,7 @@
 <div class="modal fade" id="editmodal-{{ $utang->id }}" role="dialog" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="bg-dark modal-content">
-            <div class="modal-header border-0">
+            <div class="modal-header bg-gray-100 border-0">
                 <h5 class="modal-title text-white">
                     Update
                     Utang Teman

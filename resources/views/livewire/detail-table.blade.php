@@ -1,4 +1,4 @@
-<div class="bg-gray-100 border-0 card shadow mb-4">
+<div class="bg-dark border-0 card shadow mb-4">
     <div class="bg-gray-100 border-0 card-header py-3">
         <div class="row align-items-baseline">
             <div class="col-md-5">

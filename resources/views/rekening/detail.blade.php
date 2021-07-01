@@ -30,7 +30,7 @@
                     </div>
                     @foreach ($jenisuangs as $jenisuang)
                         <!-- DataTales Example -->
-                        <div class="bg-gray-100 border-0 card shadow mb-4">
+                        <div class="bg-dark border-0 card shadow mb-4">
                             <div class="bg-gray-100 border-0 card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">{{ $jenisuang->nama }}</h6>
                             </div>

@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Investation;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class SettingController extends Controller
+class InvestationController extends Controller
 {
-
-
     /**
      * Display a listing of the resource.
      *
@@ -16,10 +14,8 @@ class SettingController extends Controller
      */
     public function index()
     {
-        if (auth()->id() != 2) {
-            abort(403);
-        }
-        return view('settings.settings');
+        $investations = Investation::all();
+        return view('investation.index', compact('investations'));
     }
 
     /**

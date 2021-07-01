@@ -57,6 +57,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(Utangteman::class)->where('user_id', auth()->id())->where('lunas', 0);
     }
+    public function financialplans()
+    {
+        return $this->hasMany(FinancialPlan::class)->where('user_id', auth()->id());
+    }
+    public function stocks()
+    {
+        return $this->hasMany(Stock::class)->where('user_id', auth()->id())->latest();
+    }
+    public function total_stocks()
+    {
+        return $this->stocks()->sum('total');
+    }
     public function uangmasuk()
     {
         if (request()->has('q')) {

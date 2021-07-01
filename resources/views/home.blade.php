@@ -72,7 +72,7 @@
                             <!-- Content Column -->
                             <div class="col-lg-6 mb-4">
                                 <!-- Project Card Example -->
-                                <div class="bg-gray-100 card shadow mb-4 border-0">
+                                <div class="bg-dark card shadow mb-4 border-0">
                                     <div class="bg-gray-100 card-header py-3 border-0">
                                         <h6 class="m-0 font-weight-bold text-danger">Pengeluaran
                                             Bulan {{ now()->format('F') }}</h6>
@@ -96,13 +96,13 @@
                                 </div>
                             </div>
                         @else
-                            @include('layouts.partials.no_data', ['message' => 'Mulai Buat Rekening Lalu Coba Transaksi'])
+                            @include('layouts.partials.no_data', ['message' => 'Mulai Catat Keuangan'])
                         @endif
                         @if (auth()->user()->uangmasuk() != 0)
                             <!-- Content Column -->
                             <div class="col-lg-6 mb-4">
                                 <!-- Project Card Example -->
-                                <div class="bg-gray-100 card shadow mb-4 border-0">
+                                <div class="bg-dark card shadow mb-4 border-0">
                                     <div class="bg-gray-100 card-header py-3 border-0">
                                         <h6 class="m-0 font-weight-bold text-success">Pemasukan
                                             Bulan {{ now()->format('F') }}</h6>

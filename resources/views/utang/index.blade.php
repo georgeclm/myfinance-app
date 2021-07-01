@@ -45,7 +45,7 @@
                         @include('layouts.partials.newaccount')
                     </div>
                     <!-- DataTales Example -->
-                    <div class="bg-gray-100 border-0 card shadow mb-4">
+                    <div class="bg-dark border-0 card shadow mb-4">
                         <div class="bg-gray-100 border-0 card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Utang</h6>
                         </div>
@@ -97,9 +97,4 @@
     </div>
     <!-- End of Page Wrapper -->
     @include('utang.create')
-@endsection
-@section('script')
-<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
-
 @endsection
