@@ -12,7 +12,8 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-2 text-white">Saham</h1>
-                        @if (auth()->user()->rekenings->isNotEmpty())
+                        @if (auth()->user()->rekenings->isNotEmpty() &&
+        auth()->user()->financialplans->isNotEmpty())
                             <a href="#" data-toggle="modal" data-target="#stock"
                                 class="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"><i
                                     class="fas fa-download fa-sm text-white-50"></i> Tambah Saham</a>
@@ -39,7 +40,7 @@
                                 </div>
                             </div>
                         @else
-                            @include('layouts.partials.no_data', ['message' => 'Tumben Teman Anda Tidak Ngutang'])
+                            @include('layouts.partials.no_data', ['message' => 'Buat Rencana Keuangan Dulu untuk Invest'])
                         @endif
                     </div>
                     <div class="bg-dark border-0 card shadow mb-4">
