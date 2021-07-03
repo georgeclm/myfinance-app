@@ -13,22 +13,26 @@ class Jenisuang extends Model
     {
         return $this->hasMany(Transaction::class);
     }
-    public function user_transactions($q = null)
+    public function user_transactions()
     {
+        function relax()
+        {;
+        }
+        $return = $this->hasMany(Transaction::class)->where('user_id', auth()->id());
         if (request()->has('q') && request()->q == 1) {
-            $return =  $this->hasMany(Transaction::class)->whereMonth('created_at', now()->subMonth()->month)->where('user_id', auth()->id());
+            $return =  $return->whereMonth('created_at', now()->subMonth()->month);
         } else if (request()->has('q') && request()->q == 2) {
-            $return =  $this->hasMany(Transaction::class)->where('user_id', auth()->id());
+            relax();
         } else if (session('q')) {
             if (session('q') == 1) {
-                $return =  $this->hasMany(Transaction::class)->whereMonth('created_at', now()->subMonth()->month)->where('user_id', auth()->id());
+                $return =  $return->whereMonth('created_at', now()->subMonth()->month);
             } else if (session('q') == 2) {
-                $return =  $this->hasMany(Transaction::class)->where('user_id', auth()->id());
+                relax();
             } else {
-                $return =  $this->hasMany(Transaction::class)->whereMonth('created_at', now()->month)->where('user_id', auth()->id());
+                $return =  $return->whereMonth('created_at', now()->month);
             }
         } else {
-            $return =  $this->hasMany(Transaction::class)->whereMonth('created_at', now()->month)->where('user_id', auth()->id());
+            $return =  $return->whereMonth('created_at', now()->month);
         }
         if (request()->has('daterange')) {
             $date_range1 = explode(" / ", request()->daterange);
