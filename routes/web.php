@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CategoryMasukController;
+use App\Http\Controllers\CicilanController;
 use App\Http\Controllers\FinancialPlanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvestationController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\StockController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UtangController;
 use App\Http\Controllers\UtangtemanController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('transactions', TransactionController::class);
     Route::resource('investations', InvestationController::class);
     Route::resource('stocks', StockController::class);
+    Route::resource('cicilans', CicilanController::class);
     Route::put('stocks/{stock}/tujuan', [StockController::class, 'updateTujuan'])->name('stocks.update.tujuan');
     Route::post('stocks/{stock}/jual', [StockController::class, 'jual'])->name('stocks.jual');
     Route::resource('financialplans', FinancialPlanController::class)->except('destroy');

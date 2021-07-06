@@ -62,35 +62,6 @@
                                 <div class="table-responsive">
                                     <div class="wrap-table100 " id="thetable">
                                         <div class="table">
-                                            <div class="row header">
-                                                <div class="cell ">
-                                                    Jumlah
-                                                </div>
-                                                @if (in_array($jenisuang->id, [4, 5]))
-                                                    <div class="cell">
-                                                        Nama Utang
-                                                    </div>
-                                                @endif
-                                                @if (in_array($jenisuang->id, [1, 2]))
-                                                    <div class="cell">
-                                                        Kategori
-                                                    </div>
-                                                @endif
-                                                <div class="cell">
-                                                    Akun
-                                                </div>
-                                                @if ($jenisuang->id == 3)
-                                                    <div class="cell">
-                                                        Akun Tujuan
-                                                    </div>
-                                                @endif
-                                                <div class="cell">
-                                                    Keterangan
-                                                </div>
-                                                <div class="cell">
-                                                    Tanggal
-                                                </div>
-                                            </div>
                                             @forelse ($jenisuang->user_transactions->take(5) as $transaction)
                                                 <div class="row">
                                                     <div class="cell {{ $jenisuang->textColor() }}" data-title="Jumlah">
@@ -132,6 +103,11 @@
                                                     </div>
                                                 </div>
                                             @empty
+                                                <div class="row">
+                                                    <div class="cell">
+                                                        Transaksi Kosong
+                                                    </div>
+                                                </div>
                                             @endforelse
                                         </div>
                                     </div>

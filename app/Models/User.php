@@ -111,4 +111,12 @@ class User extends Authenticatable
     {
         return $this->saldo() - $this->totalutang() + $this->totalutangteman();
     }
+    public function cicil_notifications()
+    {
+        return $this->hasMany(NotifCicilan::class)->where('user_id', auth()->id());
+    }
+    public function total_notif()
+    {
+        return $this->cicil_notifications->where('check', 0)->count();
+    }
 }

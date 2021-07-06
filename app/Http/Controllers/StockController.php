@@ -42,14 +42,17 @@ class StockController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'kode' => ['required', 'unique:stocks,kode,NULL,id,deleted_at,NULL'],
+            'kode' => 'required',
             'lot' => ['required', 'numeric'],
             'harga_beli' => ['required', 'numeric'],
             'biaya_lain' => ['nullable', 'numeric'],
             'rekening_id' => ['required', 'numeric', 'in:' . auth()->user()->rekenings->pluck('id')->implode(',')],
             'financial_plan_id' => ['required', 'numeric', 'in:' . auth()->user()->financialplans->pluck('id')->implode(',')],
         ]);
-
+        $stocks = Stock::where('user_id', auth()->id())->where('kode', request()->kode)->get();
+        if ($stocks->isNotEmpty()) {
+            return redirect()->back()->with('error', 'Kode sudah terdaftar silahkan tambah');
+        }
         $total = request()->harga_beli * request()->lot * 100;
         $rekening = Rekening::findOrFail(request()->rekening_id);
 

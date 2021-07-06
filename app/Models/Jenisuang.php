@@ -13,6 +13,10 @@ class Jenisuang extends Model
     {
         return $this->hasMany(Transaction::class);
     }
+    public function cicilans()
+    {
+        return $this->hasMany(Cicilan::class)->where('user_id', auth()->id());
+    }
     public function user_transactions()
     {
         function relax()

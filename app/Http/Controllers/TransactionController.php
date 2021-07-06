@@ -81,7 +81,7 @@ class TransactionController extends Controller
                 return redirect()->back()->with('error', 'Bayar melebihi Utang');
             }
             $utang->jumlah -= request()->jumlah;
-            if ($utang->jumlah == 0) {
+            if ($utang->jumlah <= 0) {
                 $utang->lunas = 1;
             }
             $utang->save();
@@ -94,7 +94,7 @@ class TransactionController extends Controller
                 return redirect()->back()->with('error', 'Bayar melebihi Utang');
             }
             $utang->jumlah -= request()->jumlah;
-            if ($utang->jumlah == 0) {
+            if ($utang->jumlah <= 0) {
                 $utang->lunas = 1;
             }
             $utang->save();

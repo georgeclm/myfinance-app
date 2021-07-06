@@ -36,6 +36,12 @@
             background-color: rgb(33, 33, 33) !important;
         }
 
+        .scrollable {
+            height: auto;
+            max-height: 400px;
+            overflow-y: auto !important;
+        }
+
     </style>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <!-- Styles -->
