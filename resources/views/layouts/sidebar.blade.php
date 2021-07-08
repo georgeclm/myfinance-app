@@ -330,7 +330,8 @@
                                     <span class="mr-2 d-none d-lg-inline text-white small">
                                         {{ Auth::user()->name }}
                                     </span>
-                                    {{-- <img class="img-profile rounded-circle" src="{{ asset('img/no-image.png') }}"> --}}
+                                    <img class="img-profile rounded-circle"
+                                        src="{{ asset('img/default-user-icon.jpg') }}">
                                 </a>
                                 <!-- Dropdown - User Information -->
                                 <div class=" bg-dark border-0 dropdown-menu dropdown-menu-right shadow animated--grow-in"
