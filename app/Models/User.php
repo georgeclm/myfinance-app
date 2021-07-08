@@ -69,6 +69,11 @@ class User extends Authenticatable
     {
         return $this->stocks()->sum('total');
     }
+
+    public function total_investments()
+    {
+        return $this->total_stocks();
+    }
     public function uangmasuk()
     {
         if (request()->has('q')) {
@@ -118,5 +123,10 @@ class User extends Authenticatable
     public function total_notif()
     {
         return $this->cicil_notifications->where('check', 0)->count();
+    }
+
+    public function total_with_assets()
+    {
+        return $this->saldo() + $this->total_investments();
     }
 }

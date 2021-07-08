@@ -20,7 +20,7 @@
                         @include('layouts.partials.income')
                         @include('layouts.partials.spending')
                         @include('layouts.partials.balance')
-                        @include('layouts.partials.totalbalance')
+                        @include('layouts.partials.balancewithasset')
                     </div>
                     <!-- Content Row -->
                     <!-- Area Chart -->
@@ -74,8 +74,8 @@
                                 <!-- Project Card Example -->
                                 <div class="bg-dark card shadow mb-4 border-0">
                                     <div class="bg-gray-100 card-header py-3 border-0">
-                                        <h6 class="m-0 font-weight-bold text-danger">Pengeluaran
-                                            Bulan {{ now()->format('F') }}</h6>
+                                        <h6 class="m-0 font-weight-bold text-danger">{{ now()->format('F') }} Spending
+                                        </h6>
                                     </div>
                                     <div class="card-body">
                                         @foreach ($categories as $category)
@@ -104,8 +104,7 @@
                                 <!-- Project Card Example -->
                                 <div class="bg-dark card shadow mb-4 border-0">
                                     <div class="bg-gray-100 card-header py-3 border-0">
-                                        <h6 class="m-0 font-weight-bold text-success">Pemasukan
-                                            Bulan {{ now()->format('F') }}</h6>
+                                        <h6 class="m-0 font-weight-bold text-success">{{ now()->format('F') }} Income</h6>
                                     </div>
                                     <div class="card-body">
                                         @foreach (App\Models\CategoryMasuk::all() as $category)
