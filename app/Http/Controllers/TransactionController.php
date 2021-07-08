@@ -38,8 +38,8 @@ class TransactionController extends Controller
             });
         }
 
-        $categories = Category::where('nama', '!=', 'Penyesuaian')->get();
-        $categorymasuks = CategoryMasuk::where('nama', '!=', 'Penyesuaian')->get();
+        $categories = Category::whereNotIn('nama', ['Penyesuaian', 'Investasi'])->get();
+        $categorymasuks = CategoryMasuk::whereNotIn('nama',  ['Penyesuaian', 'Jual Investasi'])->get();
         return view('transaction.index', compact('jenisuangs', 'categories', 'jenisuangsSelect', 'categorymasuks'));
     }
 
