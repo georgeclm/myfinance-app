@@ -96,7 +96,7 @@
                                                         </div>
                                                     @endif
                                                     <div class="cell text-white" data-title="Keterangan">
-                                                        {{ $transaction->keterangan }}
+                                                        {{ $transaction->keterangan ?? '-' }}
                                                     </div>
                                                     <div class="cell text-white" data-title="Tanggal">
                                                         {{ $transaction->created_at->format('l j F Y') }}
