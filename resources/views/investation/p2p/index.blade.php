@@ -44,7 +44,7 @@
                         @endif
                     </div>
                     <div class="card-body">
-                        @foreach (auth()->user()->p2ps as $p2p)
+                        @forelse (auth()->user()->p2ps as $p2p)
                             @include('investation.p2p.change')
                             @include('investation.p2p.sell')
                             <div class="bg-dark border-0 card shadow mb-4">
@@ -78,7 +78,9 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                        @empty
+                            @include('layouts.partials.no_data', ['message' => 'Start Add P2P to Your Asset'])
+                        @endforelse
                     </div>
                 </div>
                 <!-- /.container-fluid -->
@@ -91,15 +93,15 @@
     <!-- End of Page Wrapper -->
 @endsection
 @section('script')
-    <script>
-        $(function() {
-            $('input[name="jatuh_tempo"]').daterangepicker({
-                singleDatePicker: true,
-                "locale": {
-                    "format": "YYYY-MM-DD",
-                    "separator": " / ",
-                },
-            });
+<script>
+    $(function() {
+        $('input[name="jatuh_tempo"]').daterangepicker({
+            singleDatePicker: true,
+            "locale": {
+                "format": "YYYY-MM-DD",
+                "separator": " / ",
+            },
         });
-    </script>
+    });
+</script>
 @endsection

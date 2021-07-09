@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="card-body">
-                        @foreach (auth()->user()->stocks as $stock)
+                        @forelse (auth()->user()->stocks as $stock)
                             @if ($stock->lot != 0)
                                 @include('investation.stock.topup')
                                 @include('investation.stock.change')
@@ -83,7 +83,9 @@
                                     </div>
                                 </div>
                             @endif
-                        @endforeach
+                        @empty
+                            @include('layouts.partials.no_data', ['message' => 'Start Add Stock to Your Asset'])
+                        @endforelse
                     </div>
                 </div>
                 <!-- /.container-fluid -->
