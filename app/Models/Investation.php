@@ -11,9 +11,17 @@ class Investation extends Model
 
     public function gettotalAttribute()
     {
-        if ($this->nama == 'Saham') {
-            return auth()->user()->total_stocks();
-        }
-        return 0;
+        return [
+            'Saham' => auth()->user()->total_stocks(),
+            'P2P' => auth()->user()->total_p2ps()
+        ][$this->nama] ?? 0;
+    }
+
+    public function route()
+    {
+        return [
+            'Saham' => 'stocks',
+            'P2P' => 'p2ps'
+        ][$this->nama] ?? 'stocks';
     }
 }

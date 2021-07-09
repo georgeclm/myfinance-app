@@ -65,14 +65,22 @@ class User extends Authenticatable
     {
         return $this->hasMany(Stock::class)->where('user_id', auth()->id())->latest();
     }
+    public function p2ps()
+    {
+        return $this->hasMany(P2P::class)->where('user_id', auth()->id())->latest();
+    }
     public function total_stocks()
     {
         return $this->stocks()->sum('total');
     }
+    public function total_p2ps()
+    {
+        return $this->p2ps()->sum('harga_jual');
+    }
 
     public function total_investments()
     {
-        return $this->total_stocks();
+        return $this->total_stocks() + $this->total_p2ps();
     }
     public function uangmasuk()
     {

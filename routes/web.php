@@ -7,6 +7,7 @@ use App\Http\Controllers\FinancialPlanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvestationController;
 use App\Http\Controllers\JenisuangController;
+use App\Http\Controllers\P2PController;
 use App\Http\Controllers\RekeningController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StockController;
@@ -39,6 +40,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('transactions', TransactionController::class);
     Route::resource('investations', InvestationController::class);
     Route::resource('stocks', StockController::class);
+    Route::resource('p2ps', P2PController::class);
+    Route::put('p2ps/{p2p}/tujuan', [P2PController::class, 'updateTujuan'])->name('p2ps.update.tujuan');
+    Route::post('p2ps/{p2p}/sell', [P2PController::class, 'sell'])->name('p2ps.sell');
     Route::resource('cicilans', CicilanController::class);
     Route::put('stocks/{stock}/tujuan', [StockController::class, 'updateTujuan'])->name('stocks.update.tujuan');
     Route::post('stocks/{stock}/jual', [StockController::class, 'jual'])->name('stocks.jual');

@@ -60,7 +60,7 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Terwujud</h6>
                                 </div>
                                 <div class="card-body">
-                                    @foreach (auth()->user()->financialplans as $financialplan)
+                                    @forelse (auth()->user()->financialplans as $financialplan)
                                         @if ($financialplan->jumlah >= $financialplan->target)
                                             <div class="bg-success p-4 rounded mb-3">
                                                 <div class="text-center font-weight-bold text-white">
@@ -82,10 +82,10 @@
                                                 </div>
                                             </div>
                                         @endif
-                                    @endforeach
+                                    @empty
+                                    @endforelse
                                 </div>
                             </div>
-
                         </div>
                         <div class="col-lg-6 mb-4">
                             <!-- Project Card Example -->
@@ -94,7 +94,7 @@
                                     <h6 class="m-0 font-weight-bold text-danger">Dalam Proses</h6>
                                 </div>
                                 <div class="card-body">
-                                    @foreach (auth()->user()->financialplans as $financialplan)
+                                    @forelse (auth()->user()->financialplans as $financialplan)
                                         @if ($financialplan->jumlah < $financialplan->target)
                                             @include('financialplan.delete')
                                             @include($financialplan->edit())
@@ -143,7 +143,13 @@
                                                 </div>
                                             </div>
                                         @endif
-                                    @endforeach
+                                    @empty
+                                        <div class="bg-black p-4 rounded mb-3">
+                                            <div class="text-center font-weight-bold text-white">
+                                                Create Financial Plan
+                                            </div>
+                                        </div>
+                                    @endforelse
                                 </div>
                             </div>
                         </div>

@@ -20,7 +20,7 @@ class StockController extends Controller
     public function index()
     {
         // dd('here');
-        return view('stock.index');
+        return view('investation.stock.index');
     }
 
     /**
@@ -57,7 +57,7 @@ class StockController extends Controller
         $rekening = Rekening::findOrFail(request()->rekening_id);
 
         if ($total > $rekening->saldo_sekarang) {
-            return back()->with('error', 'Saldo Tidak Cukup');
+            return back()->with('error', 'Balance Not Enough');
         }
 
         $rekening->saldo_sekarang -= $total;
@@ -129,7 +129,7 @@ class StockController extends Controller
         $total = request()->harga_beli * request()->lot * 100;
 
         if ($total > $rekening->saldo_sekarang) {
-            return back()->with('error', 'Saldo Tidak Cukup');
+            return back()->with('error', 'Balance Not Enough');
         }
 
         $rekening->saldo_sekarang -= $total;

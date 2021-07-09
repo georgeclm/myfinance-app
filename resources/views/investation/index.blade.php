@@ -18,7 +18,7 @@
                     </div>
                     <ul class="list-group">
                         @foreach ($investations as $investation)
-                            <a href="{{ route('stocks.index') }}"
+                            <a href="{{ route($investation->route() . '.index') }}"
                                 class="list-group-item list-group-item-action bg-dark  d-flex align-items-center">
                                 <div class="flex-grow-1 text-white">
                                     {{ $investation->nama }}

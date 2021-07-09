@@ -41,7 +41,7 @@
                             <div class="bg-gray-100 border-0 card shadow h-100 py-2 border-bottom-warning">
                                 <div class="h3 fw-bold text-info card-body text-center">
                                     <form autocomplete="off" action="" method="get" id="date_submit">
-                                        <input class="form-control" type="text" name="daterange"
+                                        <input class="form-control picker_select" type="text" name="daterange"
                                             value="{{ request()->daterange ?? 'This Month' }}" />
                                         <input type="submit"
                                             class="mt-2 d-sm-inline-block btn btn-dark btn-secondary shadow-sm"
