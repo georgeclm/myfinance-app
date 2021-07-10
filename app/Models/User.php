@@ -71,11 +71,19 @@ class User extends Authenticatable
     }
     public function total_stocks()
     {
-        return $this->stocks()->sum('total');
+        return $this->stocks()->withTrashed()->sum('total');
+    }
+    public function total_stocks_gain_or_loss()
+    {
+        return $this->stocks()->withTrashed()->sum('gain_or_loss');
     }
     public function total_p2ps()
     {
         return $this->p2ps()->sum('harga_jual');
+    }
+    public function total_p2p_gain_or_loss()
+    {
+        return $this->p2ps()->onlyTrashed()->sum('gain_or_loss');
     }
 
     public function total_investments()

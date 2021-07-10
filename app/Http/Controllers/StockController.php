@@ -196,12 +196,14 @@ class StockController extends Controller
         $rekening->saldo_sekarang += $total_jual;
         $rekening->save();
 
-        $stock->financialplan->jumlah -= $stock->harga_beli * request()->lot * 100;
+        $total_beli = $stock->harga_beli * request()->lot * 100;
+        $stock->financialplan->jumlah -= $total_beli;
         $stock->financialplan->save();
 
         $stock->harga_jual = request()->harga_jual;
         $stock->lot -= request()->lot;
         $stock->total = $stock->lot * 100 * $stock->harga_beli;
+        $stock->gain_or_loss += $total_jual - $total_beli;
         $stock->save();
         if ($stock->lot == 0) {
             $stock->delete();

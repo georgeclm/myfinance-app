@@ -108,7 +108,7 @@
                 <tbody>
                     @forelse ($transactions as $transaction)
                         <tr>
-                            <td>Rp. {{ number_format($transaction->jumlah) }}</td>
+                            <td>Rp {{ number_format($transaction->jumlah) }}</td>
                             @if ($transaction->utang_id)
                                 <td>{{ $transaction->utang->keterangan ?? $transaction->utang->nama }}
                                 </td>

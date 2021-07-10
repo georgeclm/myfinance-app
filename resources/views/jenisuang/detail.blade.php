@@ -57,6 +57,38 @@
     </div>
 @endsection
 @section('script')
-    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#bigtable').DataTable({
+                paging: false,
+                columnDefs: [{
+                    type: 'formatted-num',
+                    targets: 0
+                }]
+            });
+        });
+        jQuery.extend(jQuery.fn.dataTableExt.oSort, {
+            "formatted-num-pre": function(a) {
+                a = (a === "-" || a === "") ? 0 : a.replace(/[^\d\-\.]/g, "");
+                return parseFloat(a);
+            },
+
+            "formatted-num-asc": function(a, b) {
+                return a - b;
+            },
+
+            "formatted-num-desc": function(a, b) {
+                return b - a;
+            }
+        });
+    </script>
+
+@endsection
+@section('style')
+    <link href="{{ asset('datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/data-tables.css') }}" rel="stylesheet">
+
 @endsection

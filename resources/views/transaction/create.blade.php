@@ -198,4 +198,35 @@
             }
         });
     </script>
+    <script src="{{ asset('datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script>
+        @foreach ($jenisuangs as $jenisuang)
+            $(document).ready(function() {
+            $('#dataTable'+ {{ $jenisuang->id }}).DataTable({
+            paging: false,
+            columnDefs: [{
+            type: 'formatted-num',
+            targets: 0
+            }]
+            });
+            });
+        @endforeach
+        jQuery.extend(jQuery.fn.dataTableExt.oSort, {
+            "formatted-num-pre": function(a) {
+                a = (a === "-" || a === "") ? 0 : a.replace(/[^\d\-\.]/g, "");
+                return parseFloat(a);
+            },
+
+            "formatted-num-asc": function(a, b) {
+                return a - b;
+            },
+
+            "formatted-num-desc": function(a, b) {
+                return b - a;
+            }
+        });
+    </script>
+
+
 @endsection

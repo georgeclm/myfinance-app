@@ -88,6 +88,7 @@ class P2PController extends Controller
             'financial_plan_id' => request()->financial_plan_id,
             'keterangan' => request()->keterangan,
             'jatuh_tempo' => request()->jatuh_tempo,
+            'gain_or_loss' => request()->harga_jual - request()->jumlah,
         ]);
 
         return redirect()->back()->with('success', 'P2P Telah Tersimpan');

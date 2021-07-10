@@ -112,8 +112,8 @@
                                         </div>
                                     </div>
 
-                                    <table class="table table-bordered table-dark" width="100%" cellspacing="0"
-                                        id="bigtable">
+                                    <table class="table table-bordered table-dark" id="dataTable{{ $jenisuang->id }}"
+                                        width="100%" cellspacing="0" id="bigtable">
                                         <thead>
                                             <tr class="{{ $jenisuang->color() }} text-light">
                                                 <th>Jumlah</th>
@@ -135,7 +135,7 @@
                                         <tbody>
                                             @forelse ($jenisuang->user_transactions->take(5) as $transaction)
                                                 <tr>
-                                                    <td>Rp. {{ number_format($transaction->jumlah) }}</td>
+                                                    <td>Rp {{ number_format($transaction->jumlah) }}</td>
                                                     @if ($transaction->utang_id)
                                                         <td>{{ $transaction->utang->keterangan ?? $transaction->utang->nama }}
                                                         </td>
@@ -190,4 +190,9 @@
     </div>
 
     @include('transaction.create')
+@endsection
+@section('style')
+    <link href="{{ asset('datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/data-tables.css') }}" rel="stylesheet">
+
 @endsection
