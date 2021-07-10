@@ -127,10 +127,13 @@ class CicilanController extends Controller
     public function store(CreateCicilanRequest $request)
     {
         // dd($request->validated());
-
+        function relax()
+        {;
+        }
         $rekening1 = Rekening::findOrFail(request()->rekening_id);
-
-        if (request()->jenisuang_id == 2) {
+        if (request()->jenisuang_id == 1) {
+            relax();
+        } else if (request()->jenisuang_id == 2) {
             if ($rekening1->saldo_sekarang < request()->jumlah) {
                 return redirect()->back()->with('error', 'Jumlah melebihi saldo');
             }
