@@ -47,7 +47,12 @@ class User extends Authenticatable
     }
     public function transactions()
     {
-        return $this->hasMany(Transaction::class)->where('user_id', auth()->id())->whereMonth('created_at', now()->month);
+        if (request()->has('q')) {
+            return (request()->q == 1)
+                ? $this->hasMany(Transaction::class)->whereMonth('created_at', now()->subMonth()->month)->where('user_id', auth()->id())
+                : $this->hasMany(Transaction::class)->where('user_id', auth()->id());
+        }
+        return $this->hasMany(Transaction::class)->whereMonth('created_at', now()->month)->where('user_id', auth()->id());
     }
     public function utangs()
     {
@@ -92,21 +97,11 @@ class User extends Authenticatable
     }
     public function uangmasuk()
     {
-        if (request()->has('q')) {
-            return (request()->q == 1)
-                ? $this->hasMany(Transaction::class)->whereMonth('created_at', now()->subMonth()->month)->where('user_id', auth()->id())->where('jenisuang_id', 1)->sum('jumlah')
-                : $this->hasMany(Transaction::class)->where('user_id', auth()->id())->where('jenisuang_id', 1)->sum('jumlah');
-        }
-        return $this->hasMany(Transaction::class)->whereMonth('created_at', now()->month)->where('user_id', auth()->id())->where('jenisuang_id', 1)->sum('jumlah');
+        return $this->transactions->where('jenisuang_id', 1)->sum('jumlah');
     }
     public function uangkeluar()
     {
-        if (request()->has('q')) {
-            return (request()->q == 1)
-                ? $this->hasMany(Transaction::class)->whereMonth('created_at', now()->subMonth()->month)->where('user_id', auth()->id())->where('jenisuang_id', 2)->sum('jumlah')
-                : $this->hasMany(Transaction::class)->where('user_id', auth()->id())->where('jenisuang_id', 2)->sum('jumlah');
-        }
-        return $this->hasMany(Transaction::class)->whereMonth('created_at', now()->month)->where('user_id', auth()->id())->where('jenisuang_id', 2)->sum('jumlah');
+        return $this->transactions->where('jenisuang_id', 2)->sum('jumlah');
     }
     public function saldoperbulan()
     {

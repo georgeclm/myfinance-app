@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\CategoryMasuk;
 use App\Models\Rekening;
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -16,9 +19,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::with('userTransactionsByCategory')->get();
+        $category_masuks = CategoryMasuk::with('userTransactionsByCategory')->get();
 
-        // dd(now()->subMonth());
-        return view('home', compact('categories'));
+        // $user = Auth::user()->load('transactions');
+        return view('home', compact('categories',  'category_masuks'));
     }
 }

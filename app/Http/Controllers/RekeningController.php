@@ -8,8 +8,10 @@ use App\Models\Jenis;
 use App\Models\Jenisuang;
 use App\Models\Rekening;
 use App\Models\Transaction;
+use App\Models\User;
 use App\Models\Utang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 class RekeningController extends Controller
@@ -22,7 +24,9 @@ class RekeningController extends Controller
     public function index()
     {
         $jeniss = Jenis::with('user_rekenings')->get();
-        return view('rekening.index', compact('jeniss'));
+        $user = User::with('rekenings')->find(auth()->id());
+        // $user = Auth::user()->load('rekenings');
+        return view('rekening.index', compact('jeniss', 'user'));
     }
 
     /**

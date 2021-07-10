@@ -107,7 +107,7 @@
                                         <h6 class="m-0 font-weight-bold text-success">{{ now()->format('F') }} Income</h6>
                                     </div>
                                     <div class="card-body">
-                                        @foreach (App\Models\CategoryMasuk::all() as $category)
+                                        @foreach ($category_masuks as $category)
                                             @if ($category->persen() != 0)
                                                 <h4 class="small font-weight-bold text-white">{{ $category->nama }}<span
                                                         class="float-right">{{ $category->persen() }}%</span>
@@ -124,7 +124,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         @endif
                     </div>
 
