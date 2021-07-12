@@ -187,16 +187,42 @@
                                         class="fas fa-fw fa-tachometer-alt"></i> </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link"><i class="fas fa-fw fa-wallet"></i></a>
+                                <a href="{{ route('rekenings.index') }}" class="nav-link @if (Route::current()->uri == 'rekenings') active @endif"><i
+                                        class="fas fa-fw fa-wallet"></i></a>
+                            </li>
+                            <li class="nav-item dropup">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-fw fa-dollar-sign"></i>
+                                </a>
+                                <div class="dropdown-menu bg-dark border-0" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item text-white @if (Route::current()->uri
+                                        == 'transactions') active @endif"
+                                        href="{{ route('transactions.index') }}">All</a>
+                                    <a class="dropdown-item text-white @if (strrchr(url()->current(), 'o') == 'om/jenisuangs/1') active @endif"
+                                        href="{{ route('jenisuangs.show', 1) }}">Uang
+                                        Masuk</a>
+                                    <a class="dropdown-item text-white @if (strrchr(url()->current(), 'o') == 'om/jenisuangs/2') active @endif"
+                                        href="{{ route('jenisuangs.show', 2) }}">Uang
+                                        Keluar</a>
+                                    <a class="dropdown-item text-white @if (strrchr(url()->current(), 'o') == 'om/jenisuangs/3') active @endif"
+                                        href="{{ route('jenisuangs.show', 3) }}">Transfer</a>
+                                    <a class="dropdown-item text-white @if (strrchr(url()->current(), 'o') == 'om/jenisuangs/4') active @endif"
+                                        href="{{ route('jenisuangs.show', 4) }}">Bayar
+                                        Utang</a>
+                                    <a class="dropdown-item text-white @if (strrchr(url()->current(), 'o') == 'om/jenisuangs/5') active @endif"
+                                        href="{{ route('jenisuangs.show', 5) }}">Teman
+                                        Bayar Utang</a>
+                                </div>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Add</a>
+                                <a href="{{ route('financialplans.index') }}" class="nav-link @if (Route::current()->uri == 'financialplans') active @endif"><i class="fas fa-fw fa-clipboard-list"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Notif</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">Profile</a>
+                                <a href="{{ route('investations.index') }}" class="nav-link @if (Route::current()->uri == 'investations') active @endif
+                                    @if (Route::current()->uri == 'investations')
+                                        active @endif"><i class="fas fa-fw fa-chart-line"></i>
+                                </a>
                             </li>
                         </ul>
                     </nav>
