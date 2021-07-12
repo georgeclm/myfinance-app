@@ -20,7 +20,8 @@ class StockController extends Controller
     public function index()
     {
         // dd('here');
-        return view('investation.stock.index');
+        $stocks = Stock::where('user_id', auth()->id())->where('lot', '!=', 0)->get();
+        return view('investation.stock.index', compact('stocks'));
     }
 
     /**

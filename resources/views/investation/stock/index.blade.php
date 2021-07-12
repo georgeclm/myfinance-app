@@ -63,44 +63,42 @@
                     </div>
 
                     <div class="card-body">
-                        @forelse (auth()->user()->stocks as $stock)
-                            @if ($stock->lot != 0)
-                                @include('investation.stock.topup')
-                                @include('investation.stock.change')
-                                @include('investation.stock.jual')
-                                <div class="bg-dark border-0 card shadow mb-4">
-                                    <div
-                                        class="bg-gray-100 border-0 card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                        <h6 class="m-0 font-weight-bold text-primary">{{ $stock->kode }} - Rp.
-                                            {{ number_format($stock->total) }}
-                                        </h6>
-                                        <div class="dropdown no-arrow">
-                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                            </a>
-                                            <div class="bg-dark border-0 dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                                aria-labelledby="dropdownMenuLink">
-                                                <a class="dropdown-item text-white" data-toggle="modal"
-                                                    data-target="#topup-{{ $stock->id }}" href="#">Beli Lagi</a>
-                                                <a class="dropdown-item text-white" data-toggle="modal"
-                                                    data-target="#change-{{ $stock->id }}" href="#">Ubah Tujuan</a>
-                                                <a class="dropdown-item text-white" data-toggle="modal"
-                                                    data-target="#jual-{{ $stock->id }}" href="#">Jual</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Card Body -->
-                                    <div class="card-body text-white">
-                                        <div class="d-flex">
-                                            <div class="flex-grow-1">
-                                                Average Price: Rp. {{ number_format($stock->harga_beli) }} per-Lembar
-                                            </div>
-                                            {{ $stock->lot }} Lot
+                        @forelse ($stocks as $stock)
+                            @include('investation.stock.topup')
+                            @include('investation.stock.change')
+                            @include('investation.stock.jual')
+                            <div class="bg-dark border-0 card shadow mb-4">
+                                <div
+                                    class="bg-gray-100 border-0 card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">{{ $stock->kode }} - Rp.
+                                        {{ number_format($stock->total) }}
+                                    </h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="bg-dark border-0 dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <a class="dropdown-item text-white" data-toggle="modal"
+                                                data-target="#topup-{{ $stock->id }}" href="#">Beli Lagi</a>
+                                            <a class="dropdown-item text-white" data-toggle="modal"
+                                                data-target="#change-{{ $stock->id }}" href="#">Ubah Tujuan</a>
+                                            <a class="dropdown-item text-white" data-toggle="modal"
+                                                data-target="#jual-{{ $stock->id }}" href="#">Jual</a>
                                         </div>
                                     </div>
                                 </div>
-                            @endif
+                                <!-- Card Body -->
+                                <div class="card-body text-white">
+                                    <div class="d-flex">
+                                        <div class="flex-grow-1">
+                                            Average Price: Rp. {{ number_format($stock->harga_beli) }} per-Lembar
+                                        </div>
+                                        {{ $stock->lot }} Lot
+                                    </div>
+                                </div>
+                            </div>
                         @empty
                             @include('layouts.partials.no_data', ['message' => 'Start Add Stock to Your Asset'])
                         @endforelse
