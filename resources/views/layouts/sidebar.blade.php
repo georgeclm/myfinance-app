@@ -130,18 +130,20 @@
                 <div id="content">
 
                     <!-- Topbar -->
-                    <nav class="navbar navbar-expand navbar-light bg-dark topbar static-top shadow">
+                    <nav class="navbar navbar-expand navbar-dark bg-dark topbar static-top shadow">
 
                         <!-- Sidebar Toggle (Topbar) -->
-                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        {{-- <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </button> --}}
+                        <a class="ml-3 this_small text-white" href="{{ route('home') }}">
+                            <i class="fa fa-balance-scale fa-2x"></i>
+                        </a>
 
                         <!-- Topbar Navbar -->
                         <ul class="navbar-nav ml-auto">
-
-                            <livewire:alert-center />
                             <!-- Nav Item - Alerts -->
+                            <livewire:alert-center />
 
                             <!-- Nav Item - User Information -->
                             <li class="nav-item dropdown no-arrow">

@@ -93,8 +93,16 @@ iframe {
     display: table;
     margin: 0;
 }
-
+.this_small {
+    display: none;
+}
+.scroll-to-top {
+    display: block;
+}
 @media screen and (max-width: 768px) {
+    .scroll-to-top {
+        display: none;
+    }
     #thetable {
         display: block;
     }
@@ -111,7 +119,12 @@ iframe {
     #dataTable5 {
         display: none;
     }
-
+    #accordionSidebar {
+        display: none;
+    }
+    .this_small {
+        display: block;
+    }
     .table {
         display: block;
     }

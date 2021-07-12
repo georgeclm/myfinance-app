@@ -1,4 +1,4 @@
-<li class="nav-item dropdown no-arrow mx-1 {{ $style }}">
+<li class="nav-item dropdown no-arrow {{ $style }}">
     <a class="nav-link dropdown-toggle" wire:click="check_notif" href="#" id="alertsDropdown" role="button"
         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-bell fa-fw"></i>

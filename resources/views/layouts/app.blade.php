@@ -51,10 +51,10 @@
 </head>
 
 <body>
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
     <div id="app">
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
         <!-- Scroll to Top Button-->
         @if (session('restore'))
             <div class="row mb-2">
