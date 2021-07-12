@@ -103,7 +103,12 @@ iframe {
     #dataTable2_wrapper,
     #dataTable3_wrapper,
     #dataTable4_wrapper,
-    #dataTable5_wrapper {
+    #dataTable5_wrapper,
+    #dataTable1,
+    #dataTable2,
+    #dataTable3,
+    #dataTable4,
+    #dataTable5 {
         display: none;
     }
 
