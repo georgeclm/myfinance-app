@@ -98,9 +98,15 @@ iframe {
     #thetable {
         display: block;
     }
-    #bigtable {
+    #bigtable_wrapper,
+    #dataTable1_wrapper,
+    #dataTable2_wrapper,
+    #dataTable3_wrapper,
+    #dataTable4_wrapper,
+    #dataTable5_wrapper {
         display: none;
     }
+
     .table {
         display: block;
     }

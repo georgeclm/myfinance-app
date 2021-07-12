@@ -113,7 +113,7 @@
                                     </div>
 
                                     <table class="table table-bordered table-dark" id="dataTable{{ $jenisuang->id }}"
-                                        width="100%" cellspacing="0" id="bigtable">
+                                        width="100%" cellspacing="0" >
                                         <thead>
                                             <tr class="{{ $jenisuang->color() }} text-light">
                                                 <th>Jumlah</th>
