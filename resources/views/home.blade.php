@@ -10,7 +10,7 @@
                 <br>
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <div class=" d-sm-flex align-items-center justify-content-between mb-0">
+                    <div class=" d-sm-flex align-items-center justify-content-between mb-2">
                         <h1 class="h3 mb-0 text-white">Dashboard</h1>
                         {{-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
@@ -24,14 +24,14 @@
                                     style="max-width: 66px; line-height: 80% !important">
                                     <div class="card-body text-center p-2">
                                         <i class="fas fa-fw fa-bomb"></i><br>
-                                        <small style="font-size: 8px">Utang Teman</small>
+                                        <small style="font-size: 10px">Utang Teman</small>
                                     </div>
                                 </a>
                                 <a class="card bg-dark border-0" href="{{ route('utangs.index') }}"
                                     style="max-width: 66px; line-height: 80% !important">
                                     <div class="card-body text-center p-2">
                                         <i class="fas fa-fw fa-biohazard"></i><br>
-                                        <span style="font-size: 8px; " class="d-sm-inline">Utang
+                                        <span style="font-size: 10px; " class="d-sm-inline">Utang
                                             Anda</span>
                                     </div>
                                 </a>
@@ -39,7 +39,7 @@
                                     style="max-width: 66px; line-height: 80% !important; word-wrap:normal;">
                                     <div class="card-body text-center p-2">
                                         <i class="fas fa-fw fa-redo-alt"></i>
-                                        <span style="font-size: 8px" class="d-sm-inline">Pengulangan</span>
+                                        <span style="font-size: 10px" class="d-sm-inline">Berulang / Cicilan</span>
                                     </div>
                                 </a>
                             </div>
