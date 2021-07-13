@@ -17,7 +17,7 @@
                     </div>
                     <!-- Content Row -->
                     <div class="row">
-                        <div class="col-lg-6 mb-3 this_small">
+                        <div class="col-lg-6 small-when-0 mb-3 this_small">
                             <!-- Project Card Example -->
                             <div class="d-flex align-items-center justify-content-between">
                                 <a class="card bg-dark border-0" href="{{ route('utangtemans.index') }}"
@@ -100,7 +100,7 @@
 
                         @if (auth()->user()->uangkeluar() != 0)
                             <!-- Content Column -->
-                            <div class="col-lg-6 mb-4">
+                            <div class="small-when-0 col-lg-6 mb-4">
                                 <!-- Project Card Example -->
                                 <div class="bg-dark card shadow mb-4 border-0">
                                     <div class="bg-gray-100 card-header py-3 border-0">
@@ -130,7 +130,7 @@
                         @endif
                         @if (auth()->user()->uangmasuk() != 0)
                             <!-- Content Column -->
-                            <div class="col-lg-6 mb-4">
+                            <div class="col-lg-6 small-when-0  mb-4">
                                 <!-- Project Card Example -->
                                 <div class="bg-dark card shadow mb-4 border-0">
                                     <div class="bg-gray-100 card-header py-3 border-0">

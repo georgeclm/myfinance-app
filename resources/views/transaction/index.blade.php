@@ -22,7 +22,7 @@
                         @include('layouts.partials.income')
                         @include('layouts.partials.spending')
                         @include('layouts.partials.balance')
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="small-when-0 col-xl-3 col-md-6 mb-4">
                             <div class="bg-gray-100 border-0 card shadow h-100 py-2 border-bottom-info">
                                 <div class="h3 fw-bold text-info card-body">
                                     <form action="" method="get">
@@ -37,7 +37,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-12 col-md-12 mb-4">
+                        <div class="small-when-0 col-xl-12 col-md-12 mb-4">
                             <div class="bg-gray-100 border-0 card shadow h-100 py-2 border-bottom-warning">
                                 <div class="h3 fw-bold text-info card-body text-center">
                                     <form autocomplete="off" action="" method="get" id="date_submit">
@@ -113,7 +113,7 @@
                                     </div>
 
                                     <table class="table table-bordered table-dark" id="dataTable{{ $jenisuang->id }}"
-                                        width="100%" cellspacing="0" >
+                                        width="100%" cellspacing="0">
                                         <thead>
                                             <tr class="{{ $jenisuang->color() }} text-light">
                                                 <th>Jumlah</th>

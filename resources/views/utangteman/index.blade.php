@@ -21,7 +21,7 @@
                     <div class="row">
                         <!-- Income (Monthly) Card Example -->
                         @if (!$utangs->isEmpty())
-                            <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="small-when-0 col-xl-3 col-md-6 mb-4">
                                 <div class="bg-gray-100 border-0 card border-left-success shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
@@ -97,9 +97,4 @@
     <!-- End of Content Wrapper -->
     <!-- End of Page Wrapper -->
     @include('utangteman.create')
-@endsection
-@section('script')
-<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
-
 @endsection

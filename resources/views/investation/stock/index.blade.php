@@ -21,7 +21,7 @@
                     </div>
                     <div class="row">
                         @if (auth()->user()->stocks->count() > 0)
-                            <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="small-when-0 col-xl-3 col-md-6 mb-4">
                                 <div class="bg-gray-100 border-0 card border-left-success shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="small-when-0 col-xl-3 col-md-6 mb-4">
                                 <div class="bg-gray-100 border-0 card border-left-warning shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
@@ -62,7 +62,7 @@
                         @endif
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body small-when-0 ">
                         @forelse ($stocks as $stock)
                             @include('investation.stock.topup')
                             @include('investation.stock.change')
@@ -93,7 +93,7 @@
                                 <div class="card-body text-white">
                                     <div class="d-flex">
                                         <div class="flex-grow-1">
-                                            Average Price: Rp. {{ number_format($stock->harga_beli) }} per-Lembar
+                                            Avg Price: Rp. {{ number_format($stock->harga_beli) }} per-Lembar
                                         </div>
                                         {{ $stock->lot }} Lot
                                     </div>

@@ -42,6 +42,12 @@
             overflow-y: auto !important;
         }
 
+        @media screen and (max-width: 768px) {
+            .small-when-0 {
+                padding: 0 !important;
+            }
+        }
+
     </style>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <!-- Styles -->

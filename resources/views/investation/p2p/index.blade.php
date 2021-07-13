@@ -21,7 +21,7 @@
                     </div>
                     <div class="row">
                         @if (auth()->user()->p2ps->count() > 0)
-                            <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="small-when-0 col-xl-3 col-md-6 mb-4">
                                 <div class="bg-gray-100 border-0 card border-left-success shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="small-when-0 col-xl-3 col-md-6 mb-4">
                                 <div class="bg-gray-100 border-0 card border-left-primary shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
@@ -61,7 +61,7 @@
                             @include('layouts.partials.no_data', ['message' => 'Buat Rencana Keuangan Dulu untuk Invest'])
                         @endif
                     </div>
-                    <div class="card-body">
+                    <div class="card-body small-when-0">
                         @forelse (auth()->user()->p2ps as $p2p)
                             @include('investation.p2p.change')
                             @include('investation.p2p.sell')
@@ -89,7 +89,7 @@
                                 <div class="card-body text-white">
                                     <div class="d-flex">
                                         <div class="flex-grow-1">
-                                            Amount Invested : Rp. {{ number_format($p2p->jumlah) }}<br />
+                                            Amount : Rp. {{ number_format($p2p->jumlah) }}<br />
                                             {{ $p2p->jatuh_tempo }}
                                         </div>
                                         {{ number_format($p2p->bunga, 1) }} %

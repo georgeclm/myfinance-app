@@ -14,7 +14,7 @@
                         <h1 class="h3 mb-2 text-white">Rencana Keuangan</h1>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 small-when-0">
                             <!-- Dropdown Card Example -->
                             <div class="bg-dark border-0 card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
@@ -59,10 +59,10 @@
                                 <div class="bg-gray-100 card-header py-3 border-0">
                                     <h6 class="m-0 font-weight-bold text-primary">Terwujud</h6>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body p-2 bg-success ">
                                     @forelse (auth()->user()->financialplans as $financialplan)
                                         @if ($financialplan->jumlah >= $financialplan->target)
-                                            <div class="bg-success p-4 rounded mb-3">
+                                            <div class="pt-4 rounded mb-3">
                                                 <div class="text-center font-weight-bold text-white">
                                                     {{ $financialplan->produk }}
                                                 </div>
@@ -87,18 +87,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 mb-4">
+                        <div class="col-lg-6 small-when-0  mb-4">
                             <!-- Project Card Example -->
                             <div class="bg-dark card shadow mb-4 border-0">
                                 <div class="bg-gray-100 card-header py-3 border-0">
                                     <h6 class="m-0 font-weight-bold text-danger">Dalam Proses</h6>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body p-2">
                                     @forelse (auth()->user()->financialplans as $financialplan)
                                         @if ($financialplan->jumlah < $financialplan->target)
                                             @include('financialplan.delete')
                                             @include($financialplan->edit())
-                                            <div class="bg-black p-4 rounded mb-3">
+                                            <div class="pt-4 rounded mb-3">
                                                 <div class="text-center font-weight-bold text-white">
                                                     {{ $financialplan->produk }}
                                                 </div>
