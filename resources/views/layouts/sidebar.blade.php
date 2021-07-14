@@ -182,20 +182,27 @@
 
                         </ul>
                     </nav>
-                    <nav class="navbar navbar-dark bg-black navbar-expand d-md-none d-lg-none d-xl-none fixed-bottom">
+                    <nav
+                        class="navbar navbar-dark bg-black navbar-expand d-md-none d-lg-none d-xl-none fixed-bottom p-0">
                         <ul class="navbar-nav nav-justified w-100">
-                            <li class="nav-item">
-                                <a href="{{ route('home') }}" class="nav-link text-small @if (Route::current()->uri == 'home') active @endif"><i
-                                        class="fas fa-fw fa-tachometer-alt"></i> </a>
+                            <li class="nav-item" style="line-height: 80% !important; word-wrap:normal;">
+                                <a href="{{ route('home') }}" class="nav-link  @if (Route::current()->uri == 'home') active @endif"><i
+                                        class="fas fa-fw fa-tachometer-alt"></i><br>
+                                    <span style="font-size: 10px">Home</span>
+                                </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" style="line-height: 80% !important; word-wrap:normal;">
                                 <a href="{{ route('rekenings.index') }}" class="nav-link @if (Route::current()->uri == 'rekenings') active @endif"><i
-                                        class="fas fa-fw fa-wallet"></i></a>
+                                        class="fas fa-fw fa-wallet"></i><br>
+                                    <span style="font-size: 10px">Rekening</span>
+                                </a>
                             </li>
-                            <li class="nav-item dropup">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-fw fa-dollar-sign"></i>
+                            <li class="nav-item dropup no-arrow" style="line-height: 80% !important; word-wrap:normal;">
+                                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-fw fa-dollar-sign"></i><br>
+                                    <span style="font-size: 10px">Catatan</span>
+
                                 </a>
                                 <div class="dropdown-menu bg-dark border-0" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item text-white @if (Route::current()->uri
@@ -218,12 +225,19 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('financialplans.index') }}" class="nav-link @if (Route::current()->uri == 'financialplans') active @endif"><i class="fas fa-fw fa-clipboard-list"></i></a>
+                                <a href="{{ route('financialplans.index') }}"
+                                    style="line-height: 80% !important; word-wrap:normal;" class="nav-link @if (Route::current()->uri == 'financialplans') active @endif"><i class="fas fa-fw fa-clipboard-list"></i><br>
+                                    <span style="font-size: 10px">Rencana</span>
+
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('investations.index') }}" class="nav-link @if (Route::current()->uri == 'investations') active @endif
+                                <a href="{{ route('investations.index') }}"
+                                    style="line-height: 80% !important; word-wrap:normal;" class="nav-link @if (Route::current()->uri == 'investations') active @endif
                                     @if (Route::current()->uri == 'investations')
-                                        active @endif"><i class="fas fa-fw fa-chart-line"></i>
+                                        active @endif"><i class="fas fa-fw fa-chart-line"></i><br>
+                                        <span style="font-size: 10px">Investasi</span>
+
                                 </a>
                             </li>
                         </ul>
