@@ -36,10 +36,10 @@
                                                     <i
                                                         class="fas {{ $category->icon() }} text-danger mx-2"></i>{{ $category->nama }}
                                                 </div>
-                                                @if ($category->user_id != null)
+                                                {{-- @if ($category->user_id != null)
                                                     <a href="{{ route('categories.remove', $category) }}">
                                                         <span class="badge badge-danger badge-pill text-end">x</span></a>
-                                                @endif
+                                                @endif --}}
                                             </li>
                                         @endforeach
                                     </ul>
@@ -65,10 +65,10 @@
                                                     <i
                                                         class="fas {{ $category->icon() }} text-success mx-2"></i>{{ $category->nama }}
                                                 </div>
-                                                @if ($category->user_id != null)
+                                                {{-- @if ($category->user_id != null)
                                                     <a href="{{ route('category_masuks.remove', $category) }}">
                                                         <span class="badge badge-success badge-pill">x</span></a>
-                                                @endif
+                                                @endif --}}
                                             </li>
                                         @endforeach
                                     </ul>
