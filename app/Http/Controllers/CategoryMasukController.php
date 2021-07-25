@@ -35,7 +35,10 @@ class CategoryMasukController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(['nama' => ['required', 'unique:category_masuks']]);
+        request()->validate([
+            'nama' => ['required', 'unique:category_masuks'],
+            'user_id' => ['in:' . auth()->id(), 'required']
+        ]);
         CategoryMasuk::create(request()->all());
         return redirect()->back()->with('success', 'New Category have been added');
     }

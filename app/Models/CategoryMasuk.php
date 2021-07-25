@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CategoryMasuk extends Model
 {
     use HasFactory;
-    protected $fillable = ['nama'];
+    protected $fillable = ['nama', 'user_id'];
     public function userTransactionsByCategory()
     {
         return $this->hasMany(Transaction::class)->whereMonth('created_at', now()->month)->where('user_id', auth()->id())->where('jenisuang_id', 1);

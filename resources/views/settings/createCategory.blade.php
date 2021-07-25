@@ -1,9 +1,9 @@
 <div class="modal fade" id="addCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New Category Uang Keluar</h5>
+        <div class="bg-dark modal-content">
+            <div class="modal-header bg-gray-100 border-0">
+                <h5 class="modal-title text-white" id="exampleModalLabel">New Category Uang Keluar</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -13,12 +13,12 @@
                     @csrf
 
                     <div class="form-group">
+                        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                         <input type="text" class="form-control form-control-user @error('nama') is-invalid @enderror"
                             name="nama" value="{{ old('nama') }}" required placeholder="Nama Category">
                         @error('nama')
                             <script>
                                 $('#addCategory').modal('show');
-
                             </script>
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

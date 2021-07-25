@@ -107,14 +107,12 @@
                         <span>Investasi</span>
                     </a>
                 </li>
-                @if (auth()->id() == 2)
-                    <li class="nav-item @if (Route::current()->uri == 'settings') active @endif">
-                        <a class="nav-link" href="{{ route('settings.index') }}">
-                            <i class="fas fa-fw fa-wrench"></i>
-                            <span>Settings</span>
-                        </a>
-                    </li>
-                @endif
+                <li class="nav-item @if (Route::current()->uri == 'settings') active @endif">
+                    <a class="nav-link" href="{{ route('settings.index') }}">
+                        <i class="fas fa-fw fa-wrench"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
 
                 <!-- Sidebar Toggler (Sidebar) -->
                 <div class="text-center d-none d-md-inline">

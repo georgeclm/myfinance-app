@@ -15,7 +15,7 @@ class DetailTable extends Component
 
     public function mount()
     {
-        $this->categories = Category::all();
+        $this->categories = Category::where('user_id', null)->orWhere('user_id', auth()->id())->get();
     }
 
     public function render()

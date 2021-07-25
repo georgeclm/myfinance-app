@@ -20,7 +20,7 @@ class JenisuangController extends Controller
             $transactions = $jenisuang->user_transactions;
         }
 
-        $categories = Category::all();
+        $categories = Category::where('user_id', null)->orWhere('user_id', auth()->id())->get();
         return view('jenisuang.detail', compact('transactions', 'jenisuang', 'categories'));
     }
 }

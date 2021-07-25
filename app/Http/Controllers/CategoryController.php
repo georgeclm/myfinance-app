@@ -35,7 +35,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(['nama' => ['required', 'unique:categories']]);
+        request()->validate([
+            'nama' => ['required', 'unique:category_masuks'],
+            'user_id' => ['in:' . auth()->id(), 'required']
+        ]);
         Category::create(request()->all());
         return redirect()->back()->with('success', 'New Category have been added');
     }

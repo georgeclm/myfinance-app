@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\CategoryMasuk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,10 +18,9 @@ class SettingController extends Controller
      */
     public function index()
     {
-        if (auth()->id() != 2) {
-            abort(403);
-        }
-        return view('settings.settings');
+        $categories = Category::where('user_id', null)->orWhere('user_id', auth()->id())->get();
+        $category_masuks = CategoryMasuk::where('user_id', null)->orWhere('user_id', auth()->id())->get();
+        return view('settings.settings', compact('categories', 'category_masuks'));
     }
 
     /**
