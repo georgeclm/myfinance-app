@@ -47,7 +47,7 @@ class CicilanController extends Controller
     public function checkCicilanDaily()
     {
         $tanggal = now()->format('j');
-        $cicilans = Cicilan::where('tanggal', 6)->get();
+        $cicilans = Cicilan::where('tanggal', $tanggal)->get();
         // dd($cicilans);
         foreach ($cicilans as $cicilan) {
             if ($cicilan->sekarang < $cicilan->bulan) {
