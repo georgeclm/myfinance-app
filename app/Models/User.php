@@ -74,6 +74,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(P2P::class)->where('user_id', auth()->id())->latest();
     }
+    public function p2pscount()
+    {
+        return $this->hasMany(P2P::class)->where('user_id', auth()->id())->withTrashed()->count();
+    }
     public function total_stocks()
     {
         return $this->stocks()->withTrashed()->sum('total');

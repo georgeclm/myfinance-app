@@ -12,7 +12,7 @@ class Investation extends Model
     public function gettotalAttribute()
     {
         return [
-            'Saham' => auth()->user()->total_stocks(),
+            'Stock' => auth()->user()->total_stocks(),
             'P2P' => auth()->user()->total_p2ps()
         ][$this->nama] ?? 0;
     }
@@ -20,7 +20,7 @@ class Investation extends Model
     public function route()
     {
         return [
-            'Saham' => 'stocks',
+            'Stock' => 'stocks',
             'P2P' => 'p2ps'
         ][$this->nama] ?? 'stocks';
     }

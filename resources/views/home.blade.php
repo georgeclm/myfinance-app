@@ -21,25 +21,24 @@
                             <!-- Project Card Example -->
                             <div class="d-flex align-items-center justify-content-between">
                                 <a class="card bg-dark border-0" href="{{ route('utangtemans.index') }}"
-                                    style="max-width: 66px; line-height: 80% !important">
+                                    style="max-width: 69px; line-height: 80% !important">
                                     <div class="card-body text-center p-2">
                                         <i class="fas fa-fw fa-bomb"></i><br>
-                                        <small style="font-size: 10px">Utang Teman</small>
+                                        <small style="font-size: 10px">Friend&nbspDebt</small>
                                     </div>
                                 </a>
                                 <a class="card bg-dark border-0" href="{{ route('utangs.index') }}"
-                                    style="max-width: 66px; line-height: 80% !important">
+                                    style="max-width: 69px; line-height: 80% !important">
                                     <div class="card-body text-center p-2">
                                         <i class="fas fa-fw fa-biohazard"></i><br>
-                                        <span style="font-size: 10px; " class="d-sm-inline">Utang
-                                            Anda</span>
+                                        <span style="font-size: 10px; " class="d-sm-inline">Your Debt</span>
                                     </div>
                                 </a>
                                 <a class="card bg-dark border-0" href="{{ route('cicilans.index') }}"
-                                    style="max-width: 66px; line-height: 80% !important; word-wrap:normal;">
+                                    style="max-width: 69px; line-height: 80% !important; word-wrap:normal;">
                                     <div class="card-body text-center p-2">
                                         <i class="fas fa-fw fa-redo-alt"></i>
-                                        <span style="font-size: 10px" class="d-sm-inline">Berulang / Cicilan</span>
+                                        <span style="font-size: 10px" class="d-sm-inline">Repetition</span>
                                     </div>
                                 </a>
                             </div>
@@ -126,7 +125,7 @@
                                 </div>
                             </div>
                         @else
-                            @include('layouts.partials.no_data', ['message' => 'Mulai Catat Keuangan'])
+                            @include('layouts.partials.no_data', ['message' => 'Start Writting Records'])
                         @endif
                         @if (auth()->user()->uangmasuk() != 0)
                             <!-- Content Column -->

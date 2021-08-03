@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="bg-dark  modal-content">
             <div class="modal-header bg-gray-100 border-0">
-                <h5 class="modal-title text-white">Dana Membeli Barang</h5>
+                <h5 class="modal-title text-white">Fund For Stuff</h5>
                 <button type="button" data-dismiss="modal" aria-label="Close" class="close text-white">
                     <span aria-hidden="true">×</span>
                 </button>

@@ -116,20 +116,20 @@
                                         id="bigtable">
                                         <thead>
                                             <tr class="{{ $jenisuang->color() }} text-light">
-                                                <th>Jumlah</th>
+                                                <th>Total</th>
                                                 @if (in_array($jenisuang->id, [4, 5]))
-                                                    <th>Nama Utang</th>
+                                                    <th>Debt Name</th>
                                                 @endif
 
                                                 @if (in_array($jenisuang->id, [1, 2]))
-                                                    <th>Kategori</th>
+                                                    <th>Category</th>
                                                 @endif
-                                                <th>Akun</th>
+                                                <th>Pocket</th>
                                                 @if ($jenisuang->id == 3)
-                                                    <th>Akun Tujuan</th>
+                                                    <th>Pocket Destination</th>
                                                 @endif
-                                                <th>Keterangan</th>
-                                                <th>Tanggal</th>
+                                                <th>Description</th>
+                                                <th>Date</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -159,7 +159,7 @@
                                                 </tr>
                                             @empty
                                                 <tr>
-                                                    <td colspan="5" class="text-center">Transaksi Kosong</td>
+                                                    <td colspan="5" class="text-center">Records Empty</td>
                                                 </tr>
                                             @endforelse
                                         </tbody>

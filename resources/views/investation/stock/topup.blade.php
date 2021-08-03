@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="bg-dark  modal-content">
             <div class="modal-header bg-gray-100 border-0">
-                <h5 class="modal-title text-white">Saham</h5>
+                <h5 class="modal-title text-white">Stock</h5>
                 <button type="button" data-dismiss="modal" aria-label="Close" class="close text-white">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -14,12 +14,12 @@
                     @method('PUT')
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user @error('kode') is-invalid @enderror"
-                            value="{{ old('kode') ?? $stock->kode }}" placeholder="Kode Saham" disabled>
+                            value="{{ old('kode') ?? $stock->kode }}" placeholder="Kode Stock" disabled>
                     </div>
                     <div class="mb-3 hide-inputbtns input-group">
                         <input type="text" maxlength="3"
                             class="form-control form-control-user @error('lot') is-invalid @enderror" name="lot"
-                            value="{{ old('lot') }}" placeholder="Jumlah" required>
+                            value="{{ old('lot') }}" placeholder="Total" required>
                         <div class="input-group-append">
                             <span class="input-group-text">lot</span>
                         </div>
@@ -49,7 +49,7 @@
                         <select
                             class="form-control form-control-user form-block @error('rekening_id') is-invalid @enderror"
                             name="rekening_id" style="padding: 0.5rem !important" required aria-describedby="emailHelp">
-                            <option value="" selected disabled hidden>Dari Akun</option>
+                            <option value="" selected disabled hidden>From Pocket</option>
                             @foreach (auth()->user()->rekenings as $rekening)
                                 <option @if ($rekening->id == $stock->rekening_id) selected @endif value="{{ $rekening->id }}">
                                     {{ $rekening->nama_akun }}</option>
@@ -79,7 +79,7 @@
                         <input type="text"
                             class="form-control form-control-user @error('keterangan') is-invalid @enderror"
                             name="keterangan" value="{{ old('keterangan') }}" id="keterangan"
-                            placeholder="Keterangan">
+                            placeholder="Description">
                         @error('keterangan')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

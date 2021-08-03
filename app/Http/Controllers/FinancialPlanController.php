@@ -53,15 +53,15 @@ class FinancialPlanController extends Controller
         request()->jumlah *= $multiply;
         FinancialPlan::create([
             'user_id' => auth()->id(),
-            'nama' => 'Dana Darurat',
-            'produk' => 'Dana Darurat',
+            'nama' => 'Emergency Fund',
+            'produk' => 'Emergency Fund',
             'target' => request()->jumlah,
             'jumlah' => 0,
             'status_pernikahan' => request()->status,
             'perbulan' => request()->jumlah / $multiply
         ]);
 
-        return redirect()->back()->with('success', 'Rencana Keuangan Telah Terbuat');
+        return redirect()->back()->with('success', 'Financial Plan Telah Terbuat');
     }
 
     public function updateDanaDarurat(FinancialPlan $financialplan)
@@ -83,7 +83,7 @@ class FinancialPlanController extends Controller
             'perbulan' => request()->jumlah / $multiply
         ]);
 
-        return redirect()->back()->with('success', 'Rencana Keuangan Telah Disesuaikan');
+        return redirect()->back()->with('success', 'Financial Plan Telah Disesuaikan');
     }
 
     public function storeDanaMembeliBarang(Request $request)
@@ -100,14 +100,14 @@ class FinancialPlanController extends Controller
         FinancialPlan::create([
             'user_id' => auth()->id(),
             'nama' => request()->nama,
-            'produk' => 'Dana Membeli Barang',
+            'produk' => 'Fund For Stuff',
             'target' => $target,
             'jumlah' => 0,
             'perbulan' => $perbulan,
             'bulan' => request()->bulan,
             'dana_awal' => request()->jumlah
         ]);
-        return redirect()->back()->with('success', 'Rencana Keuangan Telah Terbuat');
+        return redirect()->back()->with('success', 'Financial Plan Telah Terbuat');
     }
     public function updateDanaMembeliBarang(FinancialPlan $financialplan)
     {
@@ -127,7 +127,7 @@ class FinancialPlanController extends Controller
             'bulan' => request()->bulan,
             'dana_awal' => request()->jumlah
         ]);
-        return redirect()->back()->with('success', 'Rencana Keuangan Telah Diubah');
+        return redirect()->back()->with('success', 'Financial Plan Telah Diubah');
     }
     public function storeDanaMenabung(Request $request)
     {
@@ -141,14 +141,14 @@ class FinancialPlanController extends Controller
         FinancialPlan::create([
             'user_id' => auth()->id(),
             'nama' => 'Menabung Rutin',
-            'produk' => 'Dana Menabung Rutin',
+            'produk' => 'Regular Savings Fund',
             'target' => $target,
             'jumlah' => 0,
             'perbulan' => request()->jumlah,
             'bulan' => request()->bulan,
             'dana_awal' => request()->target
         ]);
-        return redirect()->back()->with('success', 'Rencana Keuangan Telah Terbuat');
+        return redirect()->back()->with('success', 'Financial Plan Telah Terbuat');
     }
     public function updateDanaMenabung(FinancialPlan $financialplan)
     {
@@ -165,7 +165,7 @@ class FinancialPlanController extends Controller
             'bulan' => request()->bulan,
             'dana_awal' => request()->target
         ]);
-        return redirect()->back()->with('success', 'Rencana Keuangan Telah Diubah');
+        return redirect()->back()->with('success', 'Financial Plan Telah Diubah');
     }
 
 

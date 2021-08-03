@@ -11,10 +11,10 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-2 text-white">Rekeningku</h1>
+                        <h1 class="h3 mb-2 text-white">Pockets</h1>
                         <a href="#" data-toggle="modal" data-target="#addRekening"
                             class="d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Tambah Rekening</a>
+                                class="fas fa-download fa-sm text-white-50"></i> Add Pocket</a>
                     </div>
                     <div class="row">
                         @include('layouts.partials.totalbalance')
@@ -31,15 +31,15 @@
                                     <table class="table table-bordered table-dark" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Nama Akun</th>
+                                                <th>Pocket Name</th>
                                                 @if ($jenis->id != 1)
-                                                    <th>Nama Bank</th>
+                                                    <th>Bank Name</th>
                                                 @endif
-                                                <th>Saldo Sekarang</th>
+                                                <th>Current Balance</th>
                                                 @if ($jenis->id == 2)
-                                                    <th>Saldo Mengendap</th>
+                                                    <th>Balance Settles</th>
                                                 @endif
-                                                <th>Keterangan</th>
+                                                <th>Description</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -75,9 +75,9 @@
                                                                     class="dropdown-item text-white" href="#">Delete</a>
                                                                 <a data-toggle="modal"
                                                                     data-target="#adjustmodal-{{ $rekening->id }}"
-                                                                    class="dropdown-item text-white" href="#">Sesuaikan</a>
+                                                                    class="dropdown-item text-white" href="#">Adjust</a>
                                                                 <a class="dropdown-item text-white"
-                                                                    href="{{ route('rekenings.show', $rekening) }}">Mutasi
+                                                                    href="{{ route('rekenings.show', $rekening) }}">Mutation
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -85,7 +85,7 @@
                                                 </tr>
                                             @empty
                                                 <tr>
-                                                    <td colspan="5" class="text-center">Rekening Kosong</td>
+                                                    <td colspan="5" class="text-center">Pocket Empty</td>
                                                 </tr>
                                             @endforelse
                                         </tbody>

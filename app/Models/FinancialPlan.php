@@ -20,8 +20,8 @@ class FinancialPlan extends Model
     public function edit()
     {
         return [
-            'Dana Darurat' => 'financialplan.editDanaDarurat',
-            'Dana Membeli Barang' => 'financialplan.editDanaMembeliBarang'
+            'Emergency Fund' => 'financialplan.editDanaDarurat',
+            'Fund For Stuff' => 'financialplan.editDanaMembeliBarang'
         ][$this->produk] ?? 'financialplan.editDanaMenabung';
     }
 }

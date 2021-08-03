@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="bg-dark  modal-content">
             <div class="modal-header bg-gray-100 border-0">
-                <h5 class="modal-title text-white">Jual Saham</h5>
+                <h5 class="modal-title text-white">Jual Stock</h5>
                 <button type="button" data-dismiss="modal" aria-label="Close" class="close text-white">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -13,12 +13,12 @@
                     @csrf
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user @error('kode') is-invalid @enderror"
-                            value="{{ old('kode') ?? $stock->kode }}" placeholder="Kode Saham" disabled>
+                            value="{{ old('kode') ?? $stock->kode }}" placeholder="Kode Stock" disabled>
                     </div>
                     <div class="mb-3 hide-inputbtns input-group">
                         <input type="text" maxlength="3"
                             class="form-control form-control-user @error('lot') is-invalid @enderror" name="lot"
-                            value="{{ old('lot') ?? $stock->lot }}" placeholder="Jumlah" required>
+                            value="{{ old('lot') ?? $stock->lot }}" placeholder="Total" required>
                         <div class="input-group-append">
                             <span class="input-group-text">lot</span>
                         </div>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user " value="{{ $stock->keterangan }}"
-                            disabled placeholder="Keterangan">
+                            disabled placeholder="Description">
                     </div>
                 </form>
             </div>

@@ -11,11 +11,11 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-2 text-white">Utang Anda</h1>
+                        <h1 class="h3 mb-2 text-white">Your Debt</h1>
                         @if (auth()->user()->rekenings->isNotEmpty())
                             <a href="#" data-toggle="modal" data-target="#addRekening"
                                 class="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"><i
-                                    class="fas fa-download fa-sm text-white-50"></i> Tambah Utang Anda</a>
+                                    class="fas fa-download fa-sm text-white-50"></i> Add Your Debt</a>
                         @endif
                     </div>
                     <div class="row">
@@ -27,8 +27,8 @@
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                    Total Utang</div>
-                                                <div class="h5 mb-0 font-weight-bold text-danger">Rp.
+                                                    Total Debt</div>
+                                                <div class="h7 mb-0 font-weight-bold text-danger">Rp.
                                                     {{ number_format(Auth::user()->totalutang()) }}
                                                 </div>
                                             </div>
@@ -47,17 +47,17 @@
                     <!-- DataTales Example -->
                     <div class="bg-dark border-0 card shadow mb-4">
                         <div class="bg-gray-100 border-0 card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Utang</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Debt</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-dark" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Utang ke Siapa</th>
-                                            <th>Jumlah</th>
-                                            <th>Keterangan</th>
-                                            <th>Tanggal</th>
+                                            <th>Debt to who</th>
+                                            <th>Total</th>
+                                            <th>Description</th>
+                                            <th>Date</th>
                                             <th></th>
                                         </tr>
                                     </thead>

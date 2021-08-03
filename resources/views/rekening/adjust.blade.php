@@ -3,20 +3,20 @@
         <div class="bg-dark modal-content">
             <div class="modal-header bg-gray-100 border-0">
                 <h5 class="modal-title text-white">
-                    Sesuaikan Nominal
+                    Adjust Balance
                 </h5>
                 <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body text-white">
-                <b> Saldo Anda saat ini</b>
+                <b> Current Balance</b>
                 <br>
-                Saldo {{ $rekening->nama }} : Rp. {{ number_format($rekening->saldo_sekarang) }}
+                Balance {{ $rekening->nama }} : Rp. {{ number_format($rekening->saldo_sekarang) }}
                 <hr>
-                <b> Penyesuaian Nominal</b>
+                <b> Adjust Balance</b>
                 <br>
-                Aktual Nominal Anda
+                Your Real Balance
                 <form class="mt-2" id="{{ $rekening->id }}adjustform" method="POST"
                     action="{{ route('rekenings.adjust', $rekening) }}">
                     @csrf
@@ -24,7 +24,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Rp.</span>
                         </div>
-                        <input type="number" name="saldo_sekarang" placeholder="Isikan aktual nominal Anda" required
+                        <input type="number" name="saldo_sekarang" placeholder="Fill Your Real Balance" required
                             data-number-stepfactor="100" class="form-control currency">
                     </div>
                 </form>

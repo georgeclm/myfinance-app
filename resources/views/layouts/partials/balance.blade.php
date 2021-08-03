@@ -8,7 +8,7 @@
                                         Balance @if (request()->q == 2)@else
                                                 (Monthly)@endif
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-primary">Rp.
+                                        <div class="h7 mb-0 font-weight-bold text-primary">Rp.
                                             {{ number_format(Auth::user()->saldoperbulan()) }}
                                         </div>
                                     </div>

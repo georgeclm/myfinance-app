@@ -75,7 +75,7 @@
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user " value="{{ $p2p->keterangan }}"
-                            placeholder="Keterangan" disabled>
+                            placeholder="Description" disabled>
                     </div>
                 </form>
             </div>

@@ -16,11 +16,11 @@
         auth()->user()->financialplans->isNotEmpty())
                             <a href="#" data-toggle="modal" data-target="#p2p"
                                 class="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"><i
-                                    class="fas fa-download fa-sm text-white-50"></i> Tambah P2P</a>
+                                    class="fas fa-download fa-sm text-white-50"></i> Add P2P</a>
                         @endif
                     </div>
                     <div class="row">
-                        @if (auth()->user()->p2ps->count() > 0)
+                        @if (auth()->user()->p2pscount() > 0)
                             <div class="small-when-0 col-xl-3 col-md-6 mb-4">
                                 <div class="bg-gray-100 border-0 card border-left-success shadow h-100 py-2">
                                     <div class="card-body">
@@ -28,7 +28,7 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                     Total P2P</div>
-                                                <div class="h5 mb-0 font-weight-bold text-success">Rp.
+                                                <div class="h7 mb-0 font-weight-bold text-success">Rp.
                                                     {{ number_format(Auth::user()->total_p2ps()) }}
                                                 </div>
                                             </div>
@@ -46,7 +46,7 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                     Total Earnings</div>
-                                                <div class="h5 mb-0 font-weight-bold text-primary">Rp.
+                                                <div class="h7 mb-0 font-weight-bold text-primary">Rp.
                                                     {{ number_format(Auth::user()->total_p2p_gain_or_loss()) }}
                                                 </div>
                                             </div>
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                         @else
-                            @include('layouts.partials.no_data', ['message' => 'Buat Rencana Keuangan Dulu untuk Invest'])
+                            @include('layouts.partials.no_data', ['message' => 'Buat Financial Plan Dulu untuk Invest'])
                         @endif
                     </div>
                     <div class="card-body small-when-0">

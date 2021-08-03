@@ -14,7 +14,7 @@
                     <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                     <input type="hidden" name="lunas" value="0">
                     <div class="form-group">
-                        <input type="text" name="nama" value="{{ old('nama') }}" required placeholder="Utang ke Siapa"
+                        <input type="text" name="nama" value="{{ old('nama') }}" required placeholder="Debt to who"
                             class="form-control form-control-user @error('nama') is-invalid @enderror">
                         @error('nama')
                             <script>
@@ -29,7 +29,7 @@
                         <select
                             class="form-control form-control-user form-block @error('rekening_id') is-invalid @enderror"
                             name="rekening_id" style="padding: 0.5rem !important" required aria-describedby="emailHelp">
-                            <option value="" selected disabled hidden>Untuk Akun</option>
+                            <option value="" selected disabled hidden>For Pocket</option>
                             @foreach (auth()->user()->rekenings as $rekening)
                                 <option value="{{ $rekening->id }}">{{ $rekening->nama_akun }}</option>
                             @endforeach
@@ -49,7 +49,7 @@
                             <span class="input-group-text">Rp.</span>
                         </div>
                         <input type="number" data-number-stepfactor="100" name="jumlah" value="{{ old('jumlah') }}"
-                            required placeholder="Jumlah"
+                            required placeholder="Total"
                             class="currency form-control form-control-user @error('jumlah') is-invalid @enderror">
                         @error('jumlah')
                             <script>
@@ -61,7 +61,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <input type="text" name="keterangan" value="{{ old('keterangan') }}" placeholder="Keterangan"
+                        <input type="text" name="keterangan" value="{{ old('keterangan') }}" placeholder="Description"
                             class="form-control form-control-user @error('keterangan') is-invalid @enderror">
                         @error('keterangan')
                             <script>

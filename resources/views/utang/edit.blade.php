@@ -4,7 +4,7 @@
             <div class="modal-header bg-gray-100 border-0">
                 <h5 class="modal-title text-white">
                     Update
-                    Utang
+                    Debt
                 </h5>
                 <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
@@ -16,7 +16,7 @@
                     @method('PUT')
                     <div class="form-group">
                         <input type="text" name="nama" value="{{ old('nama') ?? $utang->nama }}" required
-                            placeholder="Utang ke Siapa" class="form-control form-control-user">
+                            placeholder="Debt to who" class="form-control form-control-user">
                     </div>
                     <div class="mb-3 hide-inputbtns input-group">
                         <div class="input-group-prepend">
@@ -27,7 +27,7 @@
                     </div>
                     <div class="form-group">
                         <input type="text" name="keterangan" value="{{ old('keterangan') ?? $utang->keterangan }}"
-                            placeholder="Keterangan" class="form-control form-control-user">
+                            placeholder="Description" class="form-control form-control-user">
                     </div>
                 </form>
             </div>

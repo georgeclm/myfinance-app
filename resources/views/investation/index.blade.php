@@ -11,7 +11,7 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-2 text-white">Investasi</h1>
+                        <h1 class="h3 mb-2 text-white">Investment</h1>
                         <a href="#" class="d-sm-inline-block btn btn-primary shadow-sm">Rp.
                             {{ number_format(Auth::user()->total_investments()) }}</a>
 

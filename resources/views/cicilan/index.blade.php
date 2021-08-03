@@ -11,11 +11,11 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-2 text-white">Cicilan / Berulang</h1>
+                        <h1 class="h3 mb-2 text-white">Repetition</h1>
                         @if (!auth()->user()->rekenings->isEmpty())
                             <a href="#" data-toggle="modal" data-target="#addCicilan"
                                 class="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"><i
-                                    class="fas fa-download fa-sm text-white-50"></i> Tambah</a>
+                                    class="fas fa-download fa-sm text-white-50"></i> Add</a>
                         @endif
                     </div>
                     <div class="row">
@@ -32,15 +32,15 @@
                                     <table class="table table-bordered table-dark" width="100%" cellspacing="0">
                                         <thead>
                                             <tr class="{{ $jenisuang->color() }} text-light">
-                                                <th>Nama</th>
-                                                <th>Jumlah</th>
-                                                <th>Pengulangan (Bulan) </th>
-                                                <th>Tanggal</th>
+                                                <th>Name</th>
+                                                <th>Total</th>
+                                                <th>Repetition (Month) </th>
+                                                <th>Date</th>
                                                 @if (in_array($jenisuang->id, [4, 5]))
-                                                    <th>Nama Utang</th>
+                                                    <th>Debt Name</th>
                                                 @endif
                                                 @if (in_array($jenisuang->id, [1, 2]))
-                                                    <th>Kategori</th>
+                                                    <th>Category</th>
                                                 @endif
                                                 <th></th>
                                             </tr>

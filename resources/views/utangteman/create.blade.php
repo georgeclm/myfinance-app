@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="bg-dark  modal-content">
             <div class="modal-header bg-gray-100 border-0">
-                <h5 class="modal-title text-white">Utang Teman Baru</h5>
+                <h5 class="modal-title text-white">New Friends Debt </h5>
                 <button type="button" data-dismiss="modal" aria-label="Close" class="close text-white">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -30,7 +30,7 @@
                         <select
                             class="form-control form-control-user form-block @error('rekening_id') is-invalid @enderror"
                             name="rekening_id" style="padding: 0.5rem !important" required aria-describedby="emailHelp">
-                            <option value="" selected disabled hidden>Dari Akun</option>
+                            <option value="" selected disabled hidden>From Pocket</option>
                             @foreach (auth()->user()->rekenings as $rekening)
                                 <option value="{{ $rekening->id }}">{{ $rekening->nama_akun }}</option>
                             @endforeach
@@ -50,7 +50,7 @@
                             <span class="input-group-text">Rp.</span>
                         </div>
                         <input data-number-stepfactor="100" type="number" name="jumlah" value="{{ old('jumlah') }}"
-                            required placeholder="Jumlah"
+                            required placeholder="Total"
                             class="currency form-control form-control-user @error('jumlah') is-invalid @enderror">
                         @error('jumlah')
                             <script>
@@ -62,7 +62,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <input type="text" name="keterangan" value="{{ old('keterangan') }}" placeholder="Keterangan"
+                        <input type="text" name="keterangan" value="{{ old('keterangan') }}" placeholder="Description"
                             class="form-control form-control-user @error('keterangan') is-invalid @enderror">
                         @error('keterangan')
                             <script>

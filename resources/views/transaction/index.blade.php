@@ -11,11 +11,11 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-2 text-white">Catatan Keuangan</h1>
+                        <h1 class="h3 mb-2 text-white">Financial Records</h1>
                         @if (!auth()->user()->rekenings->isEmpty())
                             <a href="#" data-toggle="modal" data-target="#addRekening"
                                 class="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"><i
-                                    class="fas fa-download fa-sm text-white-50"></i> Tambah Transaksi</a>
+                                    class="fas fa-download fa-sm text-white-50"></i> Add Transaction</a>
                         @endif
                     </div>
                     <div class="row">
@@ -105,7 +105,7 @@
                                             @empty
                                                 <div class="row">
                                                     <div class="cell">
-                                                        Transaksi Kosong
+                                                        Records Empty
                                                     </div>
                                                 </div>
                                             @endforelse
@@ -116,20 +116,20 @@
                                         width="100%" cellspacing="0">
                                         <thead>
                                             <tr class="{{ $jenisuang->color() }} text-light">
-                                                <th>Jumlah</th>
+                                                <th>Total</th>
                                                 @if (in_array($jenisuang->id, [4, 5]))
-                                                    <th>Nama Utang</th>
+                                                    <th>Debt Name</th>
                                                 @endif
 
                                                 @if (in_array($jenisuang->id, [1, 2]))
-                                                    <th>Kategori</th>
+                                                    <th>Category</th>
                                                 @endif
-                                                <th>Akun</th>
+                                                <th>Pocket</th>
                                                 @if ($jenisuang->id == 3)
-                                                    <th>Akun Tujuan</th>
+                                                    <th>Pocket Destination</th>
                                                 @endif
-                                                <th>Keterangan</th>
-                                                <th>Tanggal</th>
+                                                <th>Description</th>
+                                                <th>Date</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -159,7 +159,7 @@
                                                 </tr>
                                             @empty
                                                 <tr>
-                                                    <td colspan="5" class="text-center">Transaksi Kosong</td>
+                                                    <td colspan="5" class="text-center">Records Empty</td>
                                                 </tr>
                                             @endforelse
 

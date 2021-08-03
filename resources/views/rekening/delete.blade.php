@@ -8,7 +8,7 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body text-white">Select "Delete" below if you are ready to delete this rekening, this
+            <div class="modal-body text-white">Select "Delete" below if you are ready to delete this pocket, this
                 action cannot
                 be undone </div>
             <div class="modal-footer border-0">

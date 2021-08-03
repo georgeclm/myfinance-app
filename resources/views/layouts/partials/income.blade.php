@@ -9,7 +9,7 @@
                                                 (Monthly)
                                             @endif
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-success">Rp.
+                                        <div class="h7 mb-0 font-weight-bold text-success">Rp.
                                             {{ number_format(Auth::user()->uangmasuk()) }}</div>
                                     </div>
                                     <div class="col-auto">

@@ -72,7 +72,7 @@ class StockController extends Controller
             'jenisuang_id' => 2,
             'jumlah' => $total,
             'rekening_id' => request()->rekening_id,
-            'keterangan' => 'Beli Saham ' . request()->kode,
+            'keterangan' => 'Beli Stock ' . request()->kode,
             'category_id' => Category::firstWhere('nama', 'Investasi')->id,
         ]);
         Stock::create([
@@ -87,7 +87,7 @@ class StockController extends Controller
             'total' => $total
         ]);
 
-        return redirect()->back()->with('success', 'Saham Telah Tersimpan');
+        return redirect()->back()->with('success', 'Stock Telah Tersimpan');
     }
 
     /**
@@ -146,7 +146,7 @@ class StockController extends Controller
             'jenisuang_id' => 2,
             'jumlah' => $total,
             'rekening_id' => request()->rekening_id,
-            'keterangan' => 'Beli Saham ' . $stock->kode,
+            'keterangan' => 'Beli Stock ' . $stock->kode,
             'category_id' => Category::firstWhere('nama', 'Investasi')->id,
         ]);
 
@@ -158,7 +158,7 @@ class StockController extends Controller
             'keterangan' => request()->keterangan,
             'total' => $total + $stock->total
         ]);
-        return redirect()->back()->with('success', 'Saham Telah di beli');
+        return redirect()->back()->with('success', 'Stock Telah di beli');
     }
 
     public function updateTujuan(Stock $stock)
@@ -175,7 +175,7 @@ class StockController extends Controller
         $financialplan->save();
 
         $stock->update(['financial_plan_id' => request()->financial_plan_id]);
-        return redirect()->back()->with('success', 'Tujuan Saham Telah Dipindah');
+        return redirect()->back()->with('success', 'Tujuan Stock Telah Dipindah');
     }
 
 
@@ -214,10 +214,10 @@ class StockController extends Controller
             'jenisuang_id' => 1,
             'jumlah' => $total_jual,
             'rekening_id' => request()->rekening_id,
-            'keterangan' => 'Jual Saham ' . $stock->kode,
+            'keterangan' => 'Jual Stock ' . $stock->kode,
             'category_masuk_id' => CategoryMasuk::firstWhere('nama', 'Jual Investasi')->id,
         ]);
-        return redirect()->back()->with('success', 'Saham Telah Terjual');
+        return redirect()->back()->with('success', 'Stock Telah Terjual');
     }
     /**
      * Remove the specified resource from storage.

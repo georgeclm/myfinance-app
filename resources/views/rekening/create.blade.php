@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="bg-dark modal-content">
             <div class="modal-header bg-gray-100 border-0">
-                <h5 class="modal-title text-white" id="exampleModalLabel">New Rekening</h5>
+                <h5 class="modal-title text-white" id="exampleModalLabel">New Pocket</h5>
                 <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -16,7 +16,7 @@
                         <select
                             class="form-control form-control-user form-block @error('jenis_id') is-invalid @enderror"
                             name="jenis_id" style="padding: 0.5rem !important" required>
-                            <option value="" selected disabled hidden>Pilih Jenis</option>
+                            <option value="" selected disabled hidden>Choose Type</option>
                             @foreach ($jeniss as $jenis)
                                 <option value="{{ $jenis->id }}">{{ $jenis->nama }}</option>
                             @endforeach
@@ -33,7 +33,8 @@
                     <div class="form-group">
                         <input type="text" id="nama-akun"
                             class="form-control form-control-user @error('nama_akun') is-invalid @enderror"
-                            name="nama_akun" value="{{ old('nama_akun') }}" required placeholder="Nama Akun" disabled>
+                            name="nama_akun" value="{{ old('nama_akun') }}" required placeholder="Pocket Name"
+                            disabled>
                         @error('nama_akun')
                             <script>
                                 $('#addRekening').modal('show');
@@ -64,7 +65,7 @@
                         <input type="number" data-number-stepfactor="100"
                             class="form-control form-control-user @error('saldo_sekarang') is-invalid @enderror currency"
                             name="saldo_sekarang" value="{{ old('saldo_sekarang') }}" required disabled
-                            id="saldo_sekarang" placeholder="Saldo Sekarang">
+                            id="saldo_sekarang" placeholder="Current Balance">
                         @error('saldo_sekarang') .
                             <script>
                                 $('#addRekening').modal('show');
@@ -81,7 +82,7 @@
                         <input type="number" data-number-stepfactor="100"
                             class="currency form-control form-control-user @error('saldo_mengendap') is-invalid @enderror"
                             name="saldo_mengendap" value="{{ old('saldo_mengendap') }}" id="saldo_mengendap"
-                            placeholder="Saldo Mengendap" disabled>
+                            placeholder="Balance Settles" disabled>
                         @error('saldo_mengendap')
                             <script>
                                 $('#addRekening').modal('show');
@@ -95,7 +96,7 @@
                         <input type="text"
                             class="form-control form-control-user @error('keterangan') is-invalid @enderror"
                             name="keterangan" value="{{ old('keterangan') }}" id="keterangan"
-                            placeholder="Keterangan" disabled>
+                            placeholder="Description" disabled>
                         @error('keterangan')
                             <script>
                                 $('#addRekening').modal('show');

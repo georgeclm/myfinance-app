@@ -72,7 +72,7 @@
                         <select
                             class="form-control form-control-user form-block @error('rekening_id') is-invalid @enderror"
                             name="rekening_id" style="padding: 0.5rem !important" required aria-describedby="emailHelp">
-                            <option value="" selected disabled hidden>Dari Akun</option>
+                            <option value="" selected disabled hidden>From Pocket</option>
                             @foreach (auth()->user()->rekenings as $rekening)
                                 <option value="{{ $rekening->id }}">{{ $rekening->nama_akun }}</option>
                             @endforeach
@@ -103,7 +103,7 @@
                         <input type="text"
                             class="form-control form-control-user @error('keterangan') is-invalid @enderror"
                             name="keterangan" value="{{ old('keterangan') }}" id="keterangan"
-                            placeholder="Keterangan">
+                            placeholder="Description">
                         @error('keterangan')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

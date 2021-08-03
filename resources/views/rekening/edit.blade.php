@@ -4,7 +4,7 @@
             <div class="modal-header bg-gray-100 border-0">
                 <h5 class="modal-title text-white">
                     Update
-                    Rekening
+                    Pocket
                 </h5>
                 <button class="close text-white" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
@@ -26,7 +26,8 @@
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user " name="nama_akune"
-                            value="{{ old('nama_akune') ?? $rekening->nama_akun }}" required placeholder="Nama Akun">
+                            value="{{ old('nama_akune') ?? $rekening->nama_akun }}" required
+                            placeholder="Pocket Name">
                     </div>
                     @if ($rekening->jenis_id != 1)
                         <div class="form-group">
@@ -42,7 +43,7 @@
                         <input data-number-stepfactor="100" type="number"
                             class="currency form-control form-control-user "
                             value="{{ old('saldo_sekarange') ?? $rekening->saldo_sekarang }}" disabled
-                            placeholder="Saldo Sekarang">
+                            placeholder="Current Balance">
                     </div>
                     @if ($rekening->jenis_id == 2)
                         <div class="mb-3 hide-inputbtns input-group">
@@ -52,12 +53,12 @@
                             <input data-number-stepfactor="100" type="number"
                                 class="currency form-control form-control-user " name="saldo_mengendape"
                                 value="{{ old('saldo_mengendape') ?? $rekening->saldo_mengendap }}"
-                                placeholder="Saldo Mengendap">
+                                placeholder="Balance Settles">
                         </div>
                     @endif
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user " name="keterangane"
-                            value="{{ old('keterangane') ?? $rekening->keterangan }}" placeholder="Keterangan">
+                            value="{{ old('keterangane') ?? $rekening->keterangan }}" placeholder="Description">
                     </div>
                 </form>
             </div>

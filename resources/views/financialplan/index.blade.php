@@ -11,7 +11,7 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-2 text-white">Rencana Keuangan</h1>
+                        <h1 class="h3 mb-2 text-white">Financial Plan</h1>
                     </div>
                     <div class="row">
                         <div class="col-lg-6 small-when-0">
@@ -20,7 +20,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="bg-gray-100 border-0 card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-success">Tambah</h6>
+                                    <h6 class="m-0 font-weight-bold text-success">Add</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -28,7 +28,7 @@
                                         <a href="#" data-toggle="modal" data-target="#danaDarurat"
                                             class="list-group-item list-group-item-action bg-black  d-flex align-items-center">
                                             <div class="w-100 text-white">
-                                                <i class="fas fa-exclamation-circle text-warning mx-2"></i>Dana Darurat
+                                                <i class="fas fa-exclamation-circle text-warning mx-2"></i>Emergency Fund
                                             </div>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#DanaMembeliBarang"
@@ -57,7 +57,7 @@
                             <!-- Project Card Example -->
                             <div class="bg-dark card shadow mb-4 border-0">
                                 <div class="bg-gray-100 card-header py-3 border-0">
-                                    <h6 class="m-0 font-weight-bold text-primary">Terwujud</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Realised</h6>
                                 </div>
                                 <div class="card-body p-2 bg-success ">
                                     @forelse (auth()->user()->financialplans as $financialplan)
@@ -78,7 +78,7 @@
                                                         {{ number_format($financialplan->target) }}</span>
                                                 </h4>
                                                 <div class="text-center  font-weight-bold text-white"> Rp.
-                                                    {{ number_format($financialplan->perbulan) }} /Bulan
+                                                    {{ number_format($financialplan->perbulan) }} /Month
                                                 </div>
                                             </div>
                                         @endif
@@ -91,7 +91,7 @@
                             <!-- Project Card Example -->
                             <div class="bg-dark card shadow mb-4 border-0">
                                 <div class="bg-gray-100 card-header py-3 border-0">
-                                    <h6 class="m-0 font-weight-bold text-danger">Dalam Proses</h6>
+                                    <h6 class="m-0 font-weight-bold text-danger">In Progress</h6>
                                 </div>
                                 <div class="card-body p-2">
                                     @forelse (auth()->user()->financialplans as $financialplan)
@@ -116,7 +116,7 @@
                                                                     href="{{ route('investations.index') }}">Investasi</a>
                                                                 <a data-toggle="modal"
                                                                     data-target="#editmodal-{{ $financialplan->id }}"
-                                                                    class="dropdown-item text-white" href="#">Sesuaikan</a>
+                                                                    class="dropdown-item text-white" href="#">Adjust</a>
                                                                 {{-- <a class="dropdown-item text-white" href="#">Detail
                                                                 </a> --}}
                                                                 {{-- <a data-toggle="modal"
@@ -139,7 +139,7 @@
                                                         {{ number_format($financialplan->target) }}</span>
                                                 </h4>
                                                 <div class="text-center  font-weight-bold text-white"> Rp.
-                                                    {{ number_format($financialplan->perbulan) }} /Bulan
+                                                    {{ number_format($financialplan->perbulan) }} /Month
                                                 </div>
                                             </div>
                                         @endif

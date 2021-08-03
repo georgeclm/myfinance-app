@@ -26,7 +26,7 @@
                         <select
                             class="form-control form-control-user form-block @error('jenisuang_id') is-invalid @enderror"
                             name="jenisuang_id" style="padding: 0.5rem !important" required id="jenisuang">
-                            <option value="" selected disabled hidden>Pilih Jenis</option>
+                            <option value="" selected disabled hidden>Choose Type</option>
                             @foreach ($jenisuangsSelect as $jenis)
                                 <option value="{{ $jenis->id }}">{{ $jenis->nama }}</option>
                             @endforeach
@@ -76,7 +76,7 @@
                         <input type="number" disabled data-number-stepfactor="100"
                             class="currency form-control form-control-user @error('jumlah') is-invalid @enderror"
                             name="jumlah" value="{{ old('jumlah') }}" required aria-describedby="emailHelp"
-                            placeholder="Jumlah">
+                            placeholder="Total">
                         @error('jumlah')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -169,7 +169,7 @@
                     <div class="form-group">
                         <input type="text" disabled
                             class="form-control form-control-user @error('keterangan') is-invalid @enderror"
-                            name="keterangan" value="{{ old('keterangan') }}" placeholder="Keterangan">
+                            name="keterangan" value="{{ old('keterangan') }}" placeholder="Description">
                         @error('keterangan')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

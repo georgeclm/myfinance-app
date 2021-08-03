@@ -45,7 +45,7 @@
                     <div class="form-group">
                         <select class="form-control form-control-user form-block " style="padding: 0.5rem !important"
                             required aria-describedby="emailHelp" disabled>
-                            <option value="" selected disabled hidden>Dari Akun</option>
+                            <option value="" selected disabled hidden>From Pocket</option>
                             @foreach (auth()->user()->rekenings as $rekening)
                                 <option @if ($rekening->id == $p2p->rekening_id) selected @endif value="{{ $rekening->id }}">
                                     {{ $rekening->nama_akun }}</option>
@@ -72,7 +72,7 @@
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user " value="{{ $p2p->keterangan }}"
-                            placeholder="Keterangan" disabled>
+                            placeholder="Description" disabled>
                     </div>
                 </form>
             </div>

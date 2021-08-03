@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="bg-dark  modal-content">
             <div class="modal-header bg-gray-100 border-0">
-                <h5 class="modal-title text-white">Saham</h5>
+                <h5 class="modal-title text-white">Stock</h5>
                 <button type="button" data-dismiss="modal" aria-label="Close" class="close text-white">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -15,11 +15,11 @@
                     @method('PUT')
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user" value="{{ $stock->kode }}"
-                            placeholder="Kode Saham" disabled>
+                            placeholder="Kode Stock" disabled>
                     </div>
                     <div class="mb-3 hide-inputbtns input-group">
                         <input type="text" maxlength="3" class="form-control form-control-user" disabled
-                            value="{{ $stock->lot }}" placeholder="Jumlah" required>
+                            value="{{ $stock->lot }}" placeholder="Total" required>
                         <div class="input-group-append">
                             <span class="input-group-text">lot</span>
                         </div>
@@ -38,7 +38,7 @@
                     <div class="form-group">
                         <select class="form-control form-control-user form-block" style="padding: 0.5rem !important"
                             disabled>
-                            <option value="" selected disabled hidden>Dari Akun</option>
+                            <option value="" selected disabled hidden>From Pocket</option>
                             @foreach (auth()->user()->rekenings as $rekening)
                                 <option @if ($rekening->id == $stock->rekening_id) selected @endif value="{{ $rekening->id }}">
                                     {{ $rekening->nama_akun }}</option>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user" value="{{ $stock->keterangan }}"
-                            disabled placeholder="Keterangan">
+                            disabled placeholder="Description">
                     </div>
                 </form>
             </div>

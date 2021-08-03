@@ -23,7 +23,7 @@
 
                 <!-- Heading -->
                 <div class="sidebar-heading">
-                    Keuangan
+                    Financial
                 </div>
 
                 <!-- Nav Item - Pages Collapse Menu -->
@@ -31,7 +31,7 @@
                     <a class="nav-link" href="{{ route('rekenings.index') }}">
 
                         <i class="fas fa-fw fa-wallet"></i>
-                        <span>Rekeningku</span>
+                        <span>Pockets</span>
                     </a>
                 </li>
                 <li class="nav-item @if (in_array(Route::current()->uri, ['transactions',
@@ -40,14 +40,14 @@
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                         aria-expanded="true" aria-controls="collapseUtilities">
                         <i class="fas fa-fw fa-dollar-sign"></i>
-                        <span>Catatan Keuangan</span>
+                        <span>Financial Records</span>
                     </a>
                     <div id="collapseUtilities" class="collapse @if (in_array(Route::current()->
                         uri, ['transactions', 'jenisuangs/{jenisuang}'])) show @endif"
                         aria-labelledby="headingUtilities"
                         data-parent="#accordionSidebar">
                         <div class="bg-dark border-0  py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Jenis Uang:</h6>
+                            <h6 class="collapse-header">Type:</h6>
                             <a class="collapse-item text-white @if (Route::current()->uri ==
                                 'transactions') active @endif"
                                 href="{{ route('transactions.index') }}">All</a>
@@ -76,35 +76,35 @@
                 <li class="nav-item @if (Route::current()->uri == 'utangs') active @endif">
                     <a class="nav-link" href="{{ route('utangs.index') }}">
                         <i class="fas fa-fw fa-biohazard"></i>
-                        <span>Utang Anda</span>
+                        <span>Your Debt</span>
                     </a>
                 </li>
                 <li class="nav-item @if (Route::current()->uri == 'utangtemans') active @endif">
                     <a class="nav-link" href="{{ route('utangtemans.index') }}">
                         <i class="fas fa-fw fa-bomb"></i>
-                        <span>Utang Teman Anda</span>
+                        <span>Your Friends Debt </span>
                     </a>
                 </li>
                 <li class="nav-item @if (Route::current()->uri == 'cicilans') active @endif">
                     <a class="nav-link" href="{{ route('cicilans.index') }}">
                         <i class="fas fa-fw fa-redo-alt"></i>
-                        <span>Cicilan / Berulang</span>
+                        <span>Repetition</span>
                     </a>
                 </li>
                 <hr class="sidebar-divider">
                 <div class="sidebar-heading">
-                    Masa Depan
+                    Future
                 </div>
                 <li class="nav-item @if (Route::current()->uri == 'financialplans') active @endif">
                     <a class="nav-link" href="{{ route('financialplans.index') }}">
                         <i class="fas fa-fw fa-clipboard-list"></i>
-                        <span>Rencana Keuangan</span>
+                        <span>Financial Plan</span>
                     </a>
                 </li>
                 <li class="nav-item @if (Route::current()->uri == 'investations') active @endif">
                     <a class="nav-link" href="{{ route('investations.index') }}">
                         <i class="fas fa-fw fa-chart-line"></i>
-                        <span>Investasi</span>
+                        <span>Investment</span>
                     </a>
                 </li>
                 <li class="nav-item @if (Route::current()->uri == 'settings') active @endif">

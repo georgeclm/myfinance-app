@@ -11,12 +11,12 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-2 text-white">Saham</h1>
+                        <h1 class="h3 mb-2 text-white">Stock</h1>
                         @if (auth()->user()->rekenings->isNotEmpty() &&
         auth()->user()->financialplans->isNotEmpty())
                             <a href="#" data-toggle="modal" data-target="#stock"
                                 class="d-sm-inline-block btn btn-sm btn-secondary shadow-sm"><i
-                                    class="fas fa-download fa-sm text-white-50"></i> Tambah Saham</a>
+                                    class="fas fa-download fa-sm text-white-50"></i> Add Stock</a>
                         @endif
                     </div>
                     <div class="row">
@@ -27,8 +27,8 @@
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                    Total Saham</div>
-                                                <div class="h5 mb-0 font-weight-bold text-success">Rp.
+                                                    Total Stock</div>
+                                                <div class="h7 mb-0 font-weight-bold text-success">Rp.
                                                     {{ number_format(Auth::user()->total_stocks()) }}
                                                 </div>
                                             </div>
@@ -46,7 +46,7 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                     Total Gain Or Loss</div>
-                                                <div class="h5 mb-0 font-weight-bold text-warning">Rp.
+                                                <div class="h7 mb-0 font-weight-bold text-warning">Rp.
                                                     {{ number_format(Auth::user()->total_stocks_gain_or_loss()) }}
                                                 </div>
                                             </div>
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                         @else
-                            @include('layouts.partials.no_data', ['message' => 'Buat Rencana Keuangan Dulu untuk Invest'])
+                            @include('layouts.partials.no_data', ['message' => 'Buat Financial Plan Dulu untuk Invest'])
                         @endif
                     </div>
 
